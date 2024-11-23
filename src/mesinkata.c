@@ -63,7 +63,7 @@ void CopyWord()
               currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
               Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
     currentWord.Length = 0;
-    while (currentChar != BLANK && currentChar != MARK && currentChar != EOP)
+    while (currentChar != BLANK && currentChar != MARK && currentChar != EOP && currentChar != NEWLINE)
     {
         if (currentWord.Length < NMax)
         { // jika lebih akan terpotong
