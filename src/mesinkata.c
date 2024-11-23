@@ -63,7 +63,7 @@ void CopyWord()
               currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
               Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
     currentWord.Length = 0;
-    while (currentChar != BLANK && currentChar != MARK && currentChar != EOF)
+    while (currentChar != BLANK && currentChar != MARK && currentChar != EOP)
     {
         if (currentWord.Length < NMax)
         { // jika lebih akan terpotong
@@ -89,17 +89,12 @@ void StartFileWord(FILE* input){
     else
     {
         EndWord = false;
-        CopyWordFile();
+        CopyWordFileNewLine();
     }
 }
 
 void ADVFileWordSpace()
 {
-    /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-       F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-              currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-              Jika currentChar = MARK, endWord = true.
-       Proses : Akuisisi kata menggunakan procedure CopyWord */
     IgnoreBlanks();
     for(int i = 0; i < currentWord.Length; i++){
         currentWord.TabWord[i] = ' ';
@@ -113,17 +108,12 @@ void ADVFileWordSpace()
     else
     {
         EndWord = false;
-        CopyWordFile();
+        CopyWordFileSpace();
     }
 }
 
 void ADVFileWordNewLine()
 {
-    /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-       F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-              currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-              Jika currentChar = MARK, endWord = true.
-       Proses : Akuisisi kata menggunakan procedure CopyWord */
     IgnoreBlanks();
     for(int i = 0; i < currentWord.Length; i++){
         currentWord.TabWord[i] = ' ';
@@ -137,25 +127,66 @@ void ADVFileWordNewLine()
     else
     {
         EndWord = false;
-        CopyWordFile();
+        CopyWordFileNewLine();
     }
 }
 
-void CopyWordFile()
+void CopyWordFileSpace()
 {
-    /* Mengakuisisi kata, menyimpan dalam currentWord
-       I.S. : currentChar adalah karakter pertama dari kata
-       F.S. : currentWord berisi kata yang sudah diakuisisi;
-              currentChar = BLANK atau currentChar = MARK;
-              currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-              Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
     currentWord.Length = 0;
-    while (currentChar != BLANK && currentChar != NEWLINE && currentChar != EOF)
+    while (currentChar != BLANK && !endOfFile)
     {
         if (currentWord.Length < NMax)
         { // jika lebih akan terpotong
             currentWord.TabWord[currentWord.Length++] = currentChar;
             ADVFile();
+        }
+        else
+            break;
+    }
+}
+
+void CopyWordFileNewLine()
+{
+    currentWord.Length = 0;
+    while (currentChar != NEWLINE && !endOfFile)
+    {
+        if (currentWord.Length < NMax)
+        { // jika lebih akan terpotong
+            currentWord.TabWord[currentWord.Length++] = currentChar;
+            ADVFile();
+        }
+        else {
+            break;
+        }
+    }
+}
+
+Word StartFilenameWord(){
+    StartReadFilename();
+    IgnoreBlanks();
+    if (currentChar == NEWLINE)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordFilename();
+    }
+
+    return currentWord;
+}
+
+void CopyWordFilename()
+{
+    currentWord.Length = 0;
+    while (currentChar != BLANK && currentChar != NEWLINE)
+    {
+        if (currentWord.Length < NMax)
+        { // jika lebih akan terpotong
+            currentWord.TabWord[currentWord.Length++] = currentChar;
+            ADVFilename();
         }
         else
             break;

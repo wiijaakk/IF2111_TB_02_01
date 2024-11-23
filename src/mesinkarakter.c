@@ -3,6 +3,8 @@
 
 char currentChar;
 boolean EOP;
+boolean endOfFile;
+
 static FILE *pita;
 static int retval;
 
@@ -41,8 +43,7 @@ void StartReadFile(FILE* input){
     /* DIGUNAKAN UNTUK MEMBACA FILE */
     pita = input;
     ADVFile();
-    EOP = (currentChar == EOF);
-    if (EOP) {
+    if (endOfFile) {
         printf("File yang Anda ingin buka isinya kosong.\n");
         fclose(pita);
     }
@@ -55,5 +56,24 @@ void ADVFile() {
     retval = fscanf(pita, "%c", &currentChar);
     if (pita == NULL){
         printf("File yang Anda ingin buka tidak ditemukan dalam sistem.\n");
+    }
+    if (retval == EOF){
+        endOfFile = true;
+    }
+}
+
+void StartReadFilename() {
+    /* Mesin siap dioperasikan. Pita disiapkan ... */
+    /* DIGUNAKAN UNTUK MEMBACA DARI INPUT PENGGUNA */
+    /* Algoritma */
+    pita = stdin;
+    ADVFilename();
+}
+
+void ADVFilename(){
+    retval = fscanf(pita, "%c", &currentChar);
+    EOP = (currentChar == NEWLINE);
+    if (EOP) {
+        fclose(pita);
     }
 }

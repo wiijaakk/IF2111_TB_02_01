@@ -1,9 +1,6 @@
+/* driver_config.c */
 #include <stdio.h>
-#include "mesinkarakter.h"
-#include "mesinkata.h"
-#include "array.h"
-#include "arraydin.h"
-#include "start.h"
+#include "load.h"
 
 void printBarang(Barang b) {
     printf("Harga: %d, Nama: %s\n", b.price, b.name);
@@ -18,9 +15,13 @@ int main() {
     TabInt arrayUsers;
     arrayItems = MakeArrayDin();
     MakeEmpty(&arrayUsers);
+    Word filename;
+    
+    printf("Masukkan nama file: ");
+    filename = StartFilenameWord();
 
-    printf("Membaca file config.txt...\n\n");
-    startStore(&arrayItems, &arrayUsers);
+    printf("Membaca file...\n\n");
+    load(filename, &arrayItems, &arrayUsers);
     
     printf("\nDaftar Barang:\n");
     printf("-------------\n");

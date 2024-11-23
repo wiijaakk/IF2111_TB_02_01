@@ -5,13 +5,13 @@
 #define __MESIN_KAR_H_
 
 #include "boolean.h"
-#include <stdio.h>
 
 #define MARK '.'
 #define NEWLINE '\n'
 /* State Mesin */
 extern char currentChar;
 extern boolean EOP;
+extern boolean endOfFile;
 
 void START();
 /* DIGUNAKAN UNTUK MEMBACA INPUT DARI PENGGUNA */
@@ -41,5 +41,10 @@ void StartReadFile(FILE* input);
 
 void ADVFile();
 /* DIGUNAKAN UNTUK MEMBACA FILE */
+
+void StartReadFilename();
+/* DIGUNAKAN UNTUK MULAI MEMBACA NAMA FILE */
+
+void ADVFilename();
 
 #endif

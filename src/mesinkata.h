@@ -57,7 +57,16 @@ void ADVFileWordSpace();
 void ADVFileWordNewLine();
 /* DIGUNAKAN UNTUK MEMBACA DARI INPUT FILE*/
 
-void CopyWordFile();
+void CopyWordFileSpace();
 /* DIGUNAKAN UNTUK MEMBACA DARI INPUT FILE*/
+
+void CopyWordFileNewLine();
+/* DIGUNAKAN UNTUK MEMBACA DARI INPUT FILE*/
+
+Word StartFilenameWord();
+/* DIGUNAKAN UNTUK MEMBACA NAMA FILE DARI INPUT PENGGUNA*/
+
+void CopyWordFilename();
+/* DIGUNAKAN UNTUK MEMBACA NAMA FILE DARI INPUT PENGGUNA*/
 
 #endif
