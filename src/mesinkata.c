@@ -136,7 +136,7 @@ void CopyWordFileSpace()
     currentWord.Length = 0;
     while (currentChar != BLANK && !endOfFile)
     {
-        if (currentWord.Length < NMax)
+        if (currentWord.Length < NMax-1)
         { // jika lebih akan terpotong
             currentWord.TabWord[currentWord.Length++] = currentChar;
             ADVFile();
@@ -144,6 +144,7 @@ void CopyWordFileSpace()
         else
             break;
     }
+    currentWord.TabWord[currentWord.Length] = '\0';
 }
 
 void CopyWordFileNewLine()
@@ -151,7 +152,7 @@ void CopyWordFileNewLine()
     currentWord.Length = 0;
     while (currentChar != NEWLINE && !endOfFile)
     {
-        if (currentWord.Length < NMax)
+        if (currentWord.Length < NMax-1)
         { // jika lebih akan terpotong
             currentWord.TabWord[currentWord.Length++] = currentChar;
             ADVFile();
@@ -160,6 +161,7 @@ void CopyWordFileNewLine()
             break;
         }
     }
+    currentWord.TabWord[currentWord.Length] = '\0';
 }
 
 void StartWordNewLine(){
