@@ -1,0 +1,299 @@
+#include <stdio.h>
+#include "mesinkata.h"
+
+boolean EndWord;
+Word currentWord;
+
+void IgnoreBlanks()
+{
+    /* Mengabaikan satu atau beberapa BLANK
+       I.S. : currentChar sembarang
+       F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+    while (currentChar == BLANK || currentChar == NEWLINE)
+    {
+        ADV();
+    }
+}
+
+void STARTWORD()
+{
+    /* I.S. : currentChar sembarang
+       F.S. : endWord = true, dan currentChar = MARK;
+              atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
+              currentChar karakter pertama sesudah karakter terakhir kata */
+    START();
+    IgnoreBlanks();
+    if (currentChar == MARK)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWord();
+    }
+}
+
+void ADVWORD()
+{
+    /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
+       F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
+              currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
+              Jika currentChar = MARK, endWord = true.
+       Proses : Akuisisi kata menggunakan procedure CopyWord */
+    IgnoreBlanks();
+    if (currentChar == MARK || currentChar == BLANK)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWord();
+        IgnoreBlanks();
+    }
+}
+
+void CopyWord()
+{
+    /* Mengakuisisi kata, menyimpan dalam currentWord
+       I.S. : currentChar adalah karakter pertama dari kata
+       F.S. : currentWord berisi kata yang sudah diakuisisi;
+              currentChar = BLANK atau currentChar = MARK;
+              currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
+              Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
+    currentWord.Length = 0;
+    while (currentChar != BLANK && currentChar != MARK && currentChar != EOP)
+    {
+        if (currentWord.Length < NMax)
+        { // jika lebih akan terpotong
+            currentWord.TabWord[currentWord.Length++] = currentChar;
+            ADV();
+        }
+        else
+            break;
+    }
+}
+
+boolean isEndWord() {
+    return EndWord;
+}
+
+void StartFileWord(char* input){
+    StartReadFile(input);
+    IgnoreBlanks();
+    if (currentChar == BLANK || currentChar == NEWLINE)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordFileNewLine();
+    }
+}
+
+void ADVFileWordSpace()
+{
+    IgnoreBlanks();
+    for(int i = 0; i < currentWord.Length; i++){
+        currentWord.TabWord[i] = ' ';
+    }
+    currentWord.Length = 0;
+
+    if (currentChar == BLANK)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordFileSpace();
+    }
+}
+
+void ADVFileWordNewLine()
+{
+    IgnoreBlanks();
+    for(int i = 0; i < currentWord.Length; i++){
+        currentWord.TabWord[i] = ' ';
+    }
+    currentWord.Length = 0;
+
+    if (currentChar == NEWLINE)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordFileNewLine();
+    }
+}
+
+void CopyWordFileSpace()
+{
+    currentWord.Length = 0;
+    while (currentChar != BLANK && !endOfFile)
+    {
+        if (currentWord.Length < NMax)
+        { // jika lebih akan terpotong
+            currentWord.TabWord[currentWord.Length++] = currentChar;
+            ADVFile();
+        }
+        else
+            break;
+    }
+}
+
+void CopyWordFileNewLine()
+{
+    currentWord.Length = 0;
+    while (currentChar != NEWLINE && !endOfFile)
+    {
+        if (currentWord.Length < NMax)
+        { // jika lebih akan terpotong
+            currentWord.TabWord[currentWord.Length++] = currentChar;
+            ADVFile();
+        }
+        else {
+            break;
+        }
+    }
+}
+
+void StartWordNewLine(){
+    StartReadNewLine();
+    IgnoreBlanks();
+    if (currentChar == NEWLINE)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordNewLine();
+    }
+}
+
+void StartWordSpace(){
+    StartReadNewLine();
+    IgnoreBlanks();
+    if (currentChar == BLANK || currentChar == NEWLINE)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordSpace();
+    }
+}
+
+void ADVWordNewLine()
+{
+    IgnoreBlanks();
+    for(int i = 0; i < currentWord.Length; i++){
+        currentWord.TabWord[i] = '\n';
+    }
+    currentWord.Length = 0;
+
+    if (currentChar == NEWLINE)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordNewLine();
+    }
+}
+
+void ADVWordSpace()
+{
+    IgnoreBlanks();
+    for(int i = 0; i < currentWord.Length; i++){
+        currentWord.TabWord[i] = ' ';
+    }
+    currentWord.Length = 0;
+
+    if (currentChar == BLANK)
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordSpace();
+    }
+}
+
+void CopyWordNewLine()
+{
+    currentWord.Length = 0;
+    while (currentChar != NEWLINE)
+    {
+        if (currentWord.Length < NMax)
+        { // jika lebih akan terpotong
+            currentWord.TabWord[currentWord.Length++] = currentChar;
+            ADVNewLine();
+        }
+        else
+            break;
+    }
+}
+
+void CopyWordSpace()
+{
+    currentWord.Length = 0;
+    while (currentChar != BLANK)
+    {
+        if (currentWord.Length < NMax)
+        { // jika lebih akan terpotong
+            currentWord.TabWord[currentWord.Length++] = currentChar;
+            ADVNewLine();
+        }
+        else {
+            break;
+        }
+    }
+}
+
+int wordToInt(Word word){
+    int number = 0;
+    for (int i = 0; i < word.Length; i++) {
+        number = number * 10 + (word.TabWord[i] - '0');
+    }
+    return number;
+}
+
+boolean compareWordToString(Word word, char* string){
+    int stringLength = 0;
+    char temp[50];
+
+    for (int i = 0; string[i] != '\0'; i++){
+        stringLength++;
+    }
+
+    for (int i = 0; i < word.Length; i++){
+        if (word.TabWord[i] >= 'a' && word.TabWord[i] <= 'z'){
+            temp[i] = word.TabWord[i] - 32;
+        }
+        else {
+            temp[i] = word.TabWord[i];
+        }
+    }
+
+    if (word.Length == stringLength) {
+        for (int i = 0; i < word.Length; i++){
+            if(temp[i] != string[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
