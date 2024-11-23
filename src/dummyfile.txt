@@ -1,5 +1,0 @@
-2
-10 Shrinkinator
-20 Landslideinator
-1
-10 dummy inidummy
