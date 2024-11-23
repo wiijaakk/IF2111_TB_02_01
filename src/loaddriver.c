@@ -22,16 +22,18 @@ int main() {
         ADVWordNewLine();
         load(currentWord, &arrayItems, &arrayUsers);
         
-        printf("Daftar Barang:\n");
-        for (int i = 0; i < Length(arrayItems); i++) {
-            printf("Barang %d - ", i+1);
-            printBarang(Get(arrayItems, i));
-        }
-        
-        printf("Daftar User:\n");
-        for (int i = GetFirstIdx(arrayUsers); i <= GetLastIdx(arrayUsers); i++) {
-            printf("User %d - ", i);
-            printUser(GetElmt(arrayUsers, i));
+        if (isFileValid && Length(arrayItems) > 0 && NbElmt(arrayUsers) > 0) {
+            printf("Daftar Barang:\n");
+            for (int i = 0; i < Length(arrayItems); i++) {
+                printf("Barang %d - ", i+1);
+                printBarang(Get(arrayItems, i));
+            }
+            
+            printf("Daftar User:\n");
+            for (int i = GetFirstIdx(arrayUsers); i <= GetLastIdx(arrayUsers); i++) {
+                printf("User %d - ", i);
+                printUser(GetElmt(arrayUsers, i));
+            }
         }
     }
 }

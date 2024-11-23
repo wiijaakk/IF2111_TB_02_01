@@ -68,4 +68,6 @@ void ADVNewLine();
           currentChar mungkin = NEWLINE
           Jika  currentChar = NEWLINE maka EOP akan menyala (true) */
 
+boolean isFileValid(char* input);
+
 #endif

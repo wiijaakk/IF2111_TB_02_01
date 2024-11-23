@@ -6,6 +6,7 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers) {
     int total = 0;
     Barang currentBarang;
     User currentUser;
+    boolean exists;
 
     char filenameStr[50];
     for (int i = 0; i < filename.Length; i++) {
@@ -13,54 +14,59 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers) {
     }
     filenameStr[filename.Length] = '\0';
 
-    // Membuka file
-    StartFileWord(filenameStr);
+    if (isFileValid(filenameStr)) {   
+        // Membuka file
+        StartFileWord(filenameStr);
 
-     // Membaca total barang yang tersimpan dalam file
-    total = wordToInt(currentWord);
+        // Membaca total barang yang tersimpan dalam file
+        total = wordToInt(currentWord);
 
-    // Memasukkan informasi barang ke arrayItems
-    for (int i = 0; i < total; i++) {
-        ADVFileWordSpace();
-        currentBarang.price = wordToInt(currentWord);
+        // Memasukkan informasi barang ke arrayItems
+        for (int i = 0; i < total; i++) {
+            ADVFileWordSpace();
+            currentBarang.price = wordToInt(currentWord);
 
+            ADVFileWordNewLine();
+            for (int j = 0; j < currentWord.Length; j++) {
+                currentBarang.name[j] = currentWord.TabWord[j];
+            }
+            currentBarang.name[currentWord.Length] = '\0';
+
+            InsertLast(arrayItems, currentBarang);
+        }
+
+        // Membaca total user yang tersimpan dalam file
         ADVFileWordNewLine();
-        for (int j = 0; j < currentWord.Length; j++) {
-            currentBarang.name[j] = currentWord.TabWord[j];
+        total = wordToInt(currentWord);
+
+        // Memasukkan informasi user ke arrayUsers
+        for (int i = 0; i < total; i++) {
+            ADVFileWordSpace();
+            currentUser.money = wordToInt(currentWord);
+            
+            ADVFileWordSpace();
+            for (int j = 0; j < currentWord.Length; j++) {
+                currentUser.name[j] = currentWord.TabWord[j];
+            }
+            currentUser.name[currentWord.Length] = '\0';
+
+            ADVFileWordNewLine();
+            for (int j = 0; j < currentWord.Length; j++) {
+                currentUser.password[j] = currentWord.TabWord[j];
+            }
+            currentUser.password[currentWord.Length] = '\0';
+
+            SetEl(arrayUsers, i + 1, currentUser);
         }
-        currentBarang.name[currentWord.Length] = '\0';
 
-        InsertLast(arrayItems, currentBarang);
-    }
-
-    // Membaca total user yang tersimpan dalam file
-    ADVFileWordNewLine();
-    total = wordToInt(currentWord);
-
-    // Memasukkan informasi user ke arrayUsers
-    for (int i = 0; i < total; i++) {
-        ADVFileWordSpace();
-        currentUser.money = wordToInt(currentWord);
-        
-        ADVFileWordSpace();
-        for (int j = 0; j < currentWord.Length; j++) {
-            currentUser.name[j] = currentWord.TabWord[j];
+        if (Length(*arrayItems) == 0 || NbElmt(*arrayUsers) == 0) {
+            printf("File tidak memuat data yang sesuai. PURRMART gagal dijalankan.\n");
         }
-        currentUser.name[currentWord.Length] = '\0';
-
-        ADVFileWordNewLine();
-        for (int j = 0; j < currentWord.Length; j++) {
-            currentUser.password[j] = currentWord.TabWord[j];
+        else {
+            printf("Save file berhasil dibaca. PURRMART berhasil dijalankan.\n");
         }
-        currentUser.password[currentWord.Length] = '\0';
-
-        SetEl(arrayUsers, i + 1, currentUser);
-    }
-
-    if (Length(*arrayItems) == 0 || NbElmt(*arrayUsers) == 0) {
-        printf("File tidak memuat data yang sesuai. PURRMART gagal dijalankan\n");
     }
     else {
-        printf("Save file berhasil dibaca. PURRMART berhasil dijalankan.\n");
+        printf("Save file tidak ditemukan. PURRMART gagal dijalankan.\n");
     }
 }

@@ -42,15 +42,6 @@ void StartReadFile(char* input){
     // Pembacaan file dihentikan jika file input tidak tersedia atau isinya kosong
     pita = fopen(input, "r");
     ADVFile();
-
-    if (!pita) {
-        printf("Save file tidak ditemukan. Purrmart gagal dijalankan.\n");
-        fclose(pita);
-    }
-    if (endOfFile) {
-        printf("File save yang Anda buka kosong.\n");
-        fclose(pita);
-    }
 }
 
 void ADVFile() {
@@ -76,5 +67,16 @@ void ADVNewLine(){
     EOP = (currentChar == NEWLINE);
     if (EOP) {
         fclose(pita);
+    }
+}
+
+boolean isFileValid(char* input){
+    FILE *file = fopen(input, "r");
+    if(file){
+        fclose(file);
+        return true;
+    }
+    else{
+        return false;
     }
 }

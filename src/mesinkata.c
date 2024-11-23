@@ -295,5 +295,4 @@ boolean compareWordToString(Word word, char* string){
     else {
         return false;
     }
-
 }
