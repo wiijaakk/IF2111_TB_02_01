@@ -2,7 +2,6 @@
 
 // TODO:
 // -Add input validation
-// -Change input method
 int RNG(int min, int max){
     srand(time(NULL));
     int v1 = rand();
@@ -14,14 +13,14 @@ int countWords(char *filename) {
     char word[6];
     int count = 0;
 
-    //TEMP
     FILE *file;
     file = fopen(filename, "r");
-    while (fscanf(file, "%s", word) == 1) {
+    StartFileWord(filename);
+    while (!endOfFile) {
+        ADVFileWordSpace();
         count++;
     }
     fclose(file);
-    //TEMP
 
     return count;
 }
@@ -30,18 +29,17 @@ void randomWord(char *filename, int index, char *result) {
     char word[6];
     int current = 0;
     
-    //TEMP
     FILE *file;
     file = fopen(filename, "r");
-    while (fscanf(file, "%s", word) == 1) {
+    StartFileWord(filename);
+    while (!endOfFile) {
         if (current == index) {
-            copyStr(word, result);
+            copyStr(currentWord.TabWord, result);
             break;
         }
         current++;
     }
     fclose(file);
-    //TEMP
 }
 
 void tebakAngka(){
@@ -49,10 +47,11 @@ void tebakAngka(){
     //printf("%d\n", n);
     printf("Tebak Angka: ");
     
-    //TEMP
-    int input;
-    scanf("%d", &input);
-    //TEMP
+    int input = 0;
+    STARTWORD();
+    for (int i = 0; i < currentWord.Length; i++) {
+        input = input * 10 + (currentWord.TabWord[i] - '0');
+    }
     int i = 1;
     while (input != n && i < 10)
     {
@@ -68,10 +67,11 @@ void tebakAngka(){
 
         printf("Tebak Angka: ");
     
-        //TEMP
-        scanf("%d", &input);
-        //TEMP
-
+        STARTWORD();
+        input = 0;
+        for (int i = 0; i < currentWord.Length; i++) {
+            input = input * 10 + (currentWord.TabWord[i] - '0');
+        }
         i++;
     }
     if (input == n)
@@ -136,9 +136,9 @@ void wordl3(){
         _printDash(count);
         printf("\n");
         printf("Masukan Kata Tebakan: ");
-        //TEMP
-        scanf("%s", input);
-        //TEMP
+
+        STARTWORD();
+        copyStr(currentWord.TabWord, input);
 
         i = 0;
         while (i < 5)
@@ -186,10 +186,9 @@ void workChallenge(){
     }
     printf("Masukkan challenge yang dipilih: ");
 
-    //TEMP
     char input[50];
-    scanf("%s", &input);
-    //TEMP
+    STARTWORD();
+    copyStr(currentWord.TabWord, input);
 
     int selected = -1;
     int i = 0;
@@ -205,7 +204,6 @@ void workChallenge(){
         }
         i++;
     }
-
     switch (selected)
     {
     case 0:

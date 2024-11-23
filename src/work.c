@@ -24,10 +24,9 @@ void work_(){
     }
     printf("Masukkan pekerjaan yang dipilih: ");
 
-    //TEMP
     char input[50];
-    scanf("%s", &input);
-    //TEMP
+    STARTWORD();
+    copyStr(currentWord.TabWord, input);
 
     int selected = -1;
     int i = 0;

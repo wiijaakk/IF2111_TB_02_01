@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "str.h"
+#include "mesinkata.h"
 
 #define chal_count 2
 //List Chal
