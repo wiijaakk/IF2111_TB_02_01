@@ -36,3 +36,13 @@ int check_str(char str1[], char str2[]){
     }
     return check;    
 }
+
+void toupperstr(char str[]) {
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] >= 'a' && str[i] <= 'z') {
+            str[i] = str[i] - 'a' + 'A';
+        }
+        i++;
+    }
+}

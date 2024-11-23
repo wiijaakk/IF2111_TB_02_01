@@ -1,7 +1,5 @@
 #include "workchallenge.h"
 
-// TODO:
-// -Add input validation
 int RNG(int min, int max){
     srand(time(NULL));
     int v1 = rand();
@@ -9,37 +7,37 @@ int RNG(int min, int max){
     return (rand() * v1) % (max - min + 1) + min;
 }
 
-int countWords(char *filename) {
+int countWords(char *filename, char wordlist[WordCount__][6]) {
     char word[6];
     int count = 0;
-
-    FILE *file;
-    file = fopen(filename, "r");
     StartFileWord(filename);
     while (!endOfFile) {
-        ADVFileWordSpace();
+        toupperstr(currentWord.TabWord);
+        copyStr(currentWord.TabWord, wordlist[count]);
+        ADVFileWordNewLine();
+        printf("%s\n", currentWord.TabWord);
         count++;
     }
-    fclose(file);
 
     return count;
 }
 
-void randomWord(char *filename, int index, char *result) {
-    char word[6];
-    int current = 0;
-    
-    FILE *file;
-    file = fopen(filename, "r");
-    StartFileWord(filename);
-    while (!endOfFile) {
-        if (current == index) {
-            copyStr(currentWord.TabWord, result);
-            break;
+int isWord(char wordlist[WordCount__][6], char word[6], int count){
+    int exist = 0;
+    int i = 0;
+    while (i < count && !exist)
+    {
+        if (check_str(wordlist[i], word))
+        {
+            exist = 1;
         }
-        current++;
+        i++;
     }
-    fclose(file);
+    return exist;
+}
+
+void randomWord(char wordlist[WordCount__][6], int index, char *result) {
+    copyStr(wordlist[index], result);
 }
 
 void tebakAngka(){
@@ -116,18 +114,20 @@ void _printDash(int count){
 
 void wordl3(){
     char *filename = "word.txt";
+    char wordlist[WordCount__][6];
     char word[6];
     char past[6][11];
     char input[20];
     int count = 0;
     int found = 0;
-    int wordnum = countWords(filename);
-    randomWord(filename, RNG(0, wordnum), word);
-    //printf("%s\n", word);
+    int wordnum = countWords(filename, wordlist);
+    randomWord(wordlist, RNG(0, wordnum), word);
+    //printf("%s %d %d\n", word, count, found);
     while (count < 5 && found < 5)
     {
         found = 0;
         int i = 0;
+        int aword = 0;
         if (count > 0)
         {
             printf("Hasil:\n");
@@ -135,10 +135,19 @@ void wordl3(){
         _printPast(past, count);
         _printDash(count);
         printf("\n");
-        printf("Masukan Kata Tebakan: ");
-
-        STARTWORD();
-        copyStr(currentWord.TabWord, input);
+        while (!aword)
+        {
+            printf("Masukan Kata Tebakan: ");
+            STARTWORD();
+            toupperstr(currentWord.TabWord);
+            copyStr(currentWord.TabWord, input);
+            aword = isWord(wordlist, input, wordnum);
+            if (!aword)
+            {
+                printf("Tebakan Bukan Kata Valid (Gunakan Huruf Kapital)\n");
+            }
+            
+        }
 
         i = 0;
         while (i < 5)

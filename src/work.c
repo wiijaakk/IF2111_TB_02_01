@@ -1,7 +1,5 @@
 #include "work.h"
 
-// TODO:
-// -Change input methode
 void work_timer(int second){
     int ms = second * 1000;
     int i = 0;

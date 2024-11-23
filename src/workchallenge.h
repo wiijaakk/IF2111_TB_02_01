@@ -7,6 +7,7 @@
 #include "str.h"
 #include "mesinkata.h"
 
+#define WordCount__ 14900
 #define chal_count 2
 //List Chal
 //             Name             Biaya

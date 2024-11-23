@@ -7,4 +7,6 @@ int isIn(char c, char* s);
 
 int check_str(char str1[], char str2[]);
 
+void toupperstr(char str[]);
+
 #endif
