@@ -5,7 +5,7 @@
 #define QUEUEBARANG_H
 
 #include "boolean.h"
-#include "arraydin.h"
+#include "ADT.h"
 
 #define IDX_UNDEF -1
 #define CAPACITY 100

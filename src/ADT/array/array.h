@@ -1,4 +1,4 @@
-#include "boolean.h"
+#include "../../boolean.h"
 
 #ifndef ARRAY_H
 #define ARRAY_H
@@ -8,7 +8,7 @@
 #define IdxMax 100
 #define IdxMin 1
 #define IdxUndef -999 /* indeks tak terdefinisi*/
-#define MAX_LEN 50
+#define MAX_LEN 100
 
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;

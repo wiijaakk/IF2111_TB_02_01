@@ -15,7 +15,7 @@ int countWords(char *filename, char wordlist[WordCount__][6]) {
         toupperstr(currentWord.TabWord);
         copyStr(currentWord.TabWord, wordlist[count]);
         ADVFileWordNewLine();
-        printf("%s\n", currentWord.TabWord);
+        //printf("%s\n", currentWord.TabWord);
         count++;
     }
 
@@ -123,7 +123,7 @@ void wordl3(){
     int wordnum = countWords(filename, wordlist);
     randomWord(wordlist, RNG(0, wordnum), word);
     //printf("%s %d %d\n", word, count, found);
-    while (count < 5 && found < 5)
+    while (count < 6 && found < 5)
     {
         found = 0;
         int i = 0;
@@ -144,7 +144,7 @@ void wordl3(){
             aword = isWord(wordlist, input, wordnum);
             if (!aword)
             {
-                printf("Tebakan Bukan Kata Valid (Gunakan Huruf Kapital)\n");
+                printf("Tebakan Bukan Kata Valid\n");
             }
             
         }

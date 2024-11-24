@@ -2,10 +2,8 @@
 #define STOREREQUEST_H
 
 #include "boolean.h"
-#include "arraydin.h"
 #include "queuebarang.h"
-#include "mesinkata.h"
-#include "mesinkarakter.h"
+#include "ADT.h"
 
 void copyString(char *dest, const char *src);
 

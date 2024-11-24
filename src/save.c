@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#define SAVE_FOLDER "save/"
+#include "save.h"
 
 // typedef struct {
 //   char name[100];
@@ -14,30 +11,30 @@
 //   int price;
 // } Barang;
 
-// User users[100];
-// Barang items[100];
+// User arrayUsers[100];
+// Barang arrayItems[100];
 // int itemCount;
 // int userCount;
 
-void save(char fileName) {
+void save(Word fileName, ArrayDin* arrayItems, TabInt* arrayUsers) {
     char fullPath[200];
 
     snprintf(fullPath, sizeof(fullPath), "%s%s", SAVE_FOLDER, fileName);
 
     FILE *file = fopen(fullPath, "w");
     if (!file) {
-        perror("Failed to open configuration file for writing");
+        perror("Gagal membuka file untuk overwrite");
         exit(EXIT_FAILURE);
     }
 
-    fprintf(file, "%d\n", itemCount);
-    for (int i = 0; i < itemCount; i++) {
-        fprintf(file, "%d %s\n", items[i].price, items[i].name);
+    fprintf(file, "%d\n", Length(*arrayItems));
+    for (int i = 0; i < Length(*arrayItems); i++) {
+        fprintf(file, "%d %s\n", arrayItems[i].A->price, arrayItems[i].A->name);
     }
 
-    fprintf(file, "%d\n", userCount);
-    for (int i = 0; i < userCount; i++) {
-        fprintf(file, "%d %s %s\n", users[i].money, users[i].name, users[i].password);
+    fprintf(file, "%d\n", NbElmt(*arrayUsers));
+    for (int i = 0; i < NbElmt(*arrayUsers); i++) {
+        fprintf(file, "%d %s %s\n", arrayUsers[i].TI->money, arrayUsers[i].TI->name, arrayUsers[i].TI->password);
     }
 
     fclose(file);
