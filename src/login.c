@@ -1,12 +1,21 @@
 #include <stdio.h>
 #include "kebutuhanlog.h"
 #include "login.h"
+#include "ADT/mesinkarakter/mesinkarakter.h"
+#include "ADT/mesinkata/mesinkata.h"
 
 int ngecek_login(const char *username, const char *password) {
+
+    Start
     FILE *file = fopen(FILE_NAME, "r");
     if (file == NULL) {
         return 0; // Jika file tidak ditemukan
     }
+
+    /* FILE *file = fopen(FILE_NAME, "r");
+    if (file == NULL) {
+        return 0; // Jika file tidak ditemukan
+    } */
 
     char file_username[PANJANG_UNAME_MAX];
     char file_password[PANJANG_PASS_MAX];

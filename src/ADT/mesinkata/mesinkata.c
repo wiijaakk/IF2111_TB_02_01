@@ -8,7 +8,7 @@ void IgnoreBlanks()
 {
     /* Mengabaikan satu atau beberapa BLANK
        I.S. : currentChar sembarang
-       F.S. : currentChar ≠ BLANK atau currentChar = MARK */
+       F.S. : currentChar ≠ BLANK atau currentChar = NEWLINE */
     while (currentChar == BLANK || currentChar == NEWLINE)
     {
         ADV();
@@ -18,12 +18,12 @@ void IgnoreBlanks()
 void STARTWORD()
 {
     /* I.S. : currentChar sembarang
-       F.S. : endWord = true, dan currentChar = MARK;
+       F.S. : endWord = true, dan currentChar = NEWLINE;
               atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
               currentChar karakter pertama sesudah karakter terakhir kata */
     START();
     IgnoreBlanks();
-    EndWord = GetCC() == MARK;
+    EndWord = (GetCC() == NEWLINE || GetCC() == BLANK);
     if (!EndWord) {
         ADVWORD();
     }
@@ -37,7 +37,7 @@ void ADVWORD()
               Jika currentChar = MARK, endWord = true.
        Proses : Akuisisi kata menggunakan procedure CopyWord */
     IgnoreBlanks();
-    EndWord = GetCC()==MARK;
+    EndWord = (GetCC() == NEWLINE || GetCC() == BLANK);
     if(!EndWord){
         CopyWord();
     }
@@ -246,7 +246,7 @@ void CopyWordSpace()
     }
 }
 
-int wordToInt(Word word){
+int wordToInt(Word word) {
     int number = 0;
     for (int i = 0; i < word.Length; i++) {
         number = number * 10 + (word.TabWord[i] - '0');
@@ -254,7 +254,7 @@ int wordToInt(Word word){
     return number;
 }
 
-boolean compareWordToString(Word word, char* string){
+boolean compareWordToString(Word word, char* string) {
     int stringLength = 0;
     char temp[50];
 
@@ -263,8 +263,10 @@ boolean compareWordToString(Word word, char* string){
     }
 
     for (int i = 0; i < word.Length; i++){
-        if (word.TabWord[i] >= 'a' && word.TabWord[i] <= 'z'){
-            temp[i] = word.TabWord[i] - 32;
+        if (word.TabWord[i] != ' '){    
+            if (word.TabWord[i] >= 'a' && word.TabWord[i] <= 'z'){
+                temp[i] = word.TabWord[i] - 32;
+            }
         }
         else {
             temp[i] = word.TabWord[i];

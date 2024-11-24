@@ -32,13 +32,13 @@ int main() {
     char filename = "config.txt";
     
     printf("Masukkan command: ");
-    StartWordNewLine();
-
+    STARTWORD();
     while (!sessionStatus && !loginStatus) {
         if (compareWordToString(currentWord, "START")) {
             startStore(&arrayItems, &arrayUsers);
             sessionStatus = true;
         } else if (compareWordToString(currentWord, "LOAD")) {
+            ADVWORD();
             load(currentWord, &arrayItems, &arrayUsers);
             sessionStatus = true;
         } else if (compareWordToString(currentWord, "HELP")) {
@@ -49,7 +49,7 @@ int main() {
         } else {
             printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
             printf("Masukkan command: ");
-            StartWordNewLine();
+            STARTWORD();
         }
     }
 
