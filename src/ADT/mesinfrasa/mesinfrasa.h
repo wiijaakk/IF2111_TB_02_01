@@ -46,4 +46,6 @@ void CopyFrasa();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
+boolean compareFrasaToString(Frasa word, char* string);
+
 #endif

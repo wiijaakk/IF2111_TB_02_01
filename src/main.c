@@ -30,8 +30,8 @@ int main() {
     MakeEmpty(&arrayUsers);
     //Queuebarang barang;
     //CreateQueuebarang(&barang);
-    boolean sessionStatus = false;
-    boolean loginStatus = false;
+    boolean sessionStatus = true;
+    boolean loginStatus = true;
     char filename[] = "config.txt";
     
 
@@ -80,28 +80,29 @@ int main() {
     }
 
     printf("==2\n");
-    while (sessionStatus && loginStatus && !compareWordToString(currentWord, "QUIT")) {
+    while (sessionStatus && loginStatus && !compareFrasaToString(CurrentFrasa, "QUIT")) {
         printf("Masukkan command: ");
-        STARTWORD();
-        if (compareWordToString(currentWord, "WORK")) {
+        STARTFRASA();
+        printf("%s\n", CurrentFrasa.TabWord);
+        if (compareFrasaToString(CurrentFrasa, "WORK")) {
             work_();
-        } else if (compareWordToString(currentWord, "WORK CHALLENGE")) {
+        } else if (compareFrasaToString(CurrentFrasa, "WORK CHALLENGE")) {
             workChallenge();
-        } else if (compareWordToString(currentWord, "STORE LIST")) {
+        } else if (compareFrasaToString(CurrentFrasa, "STORE LIST")) {
             //storelist(arrayItems);
-        } else if (compareWordToString(currentWord, "STORE REQUEST")) {
+        } else if (compareFrasaToString(CurrentFrasa, "STORE REQUEST")) {
             //storerequest(arrayItems, &barang);
-        } else if (compareWordToString(currentWord, "STORE SUPPLY")) {
+        } else if (compareFrasaToString(CurrentFrasa, "STORE SUPPLY")) {
             //storesupply(&arrayItems, &barang);
-        } else if (compareWordToString(currentWord, "STORE REMOVE")) {
+        } else if (compareFrasaToString(CurrentFrasa, "STORE REMOVE")) {
             //storeremove(&arrayItems);
-        } else if (compareWordToString(currentWord, "LOGOUT")) {
+        } else if (compareFrasaToString(CurrentFrasa, "LOGOUT")) {
             logout_User();
-        } else if (compareWordToString(currentWord, "SAVE")) {
+        } else if (compareFrasaToString(CurrentFrasa, "SAVE")) {
             save(filename, &arrayItems, &arrayUsers);
-        } else if (compareWordToString(currentWord, "QUIT")) {
+        } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
             quit(filename, &arrayItems, &arrayUsers);
-        } else if (compareWordToString(currentWord, "HELP")) {
+        } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
             help(sessionStatus, loginStatus);
         } else {
             printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");

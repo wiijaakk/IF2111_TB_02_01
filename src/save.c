@@ -16,7 +16,7 @@
 // int itemCount;
 // int userCount;
 
-void save(Word fileName, ArrayDin* arrayItems, TabInt* arrayUsers) {
+void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) {
     char fullPath[200];
 
     snprintf(fullPath, sizeof(fullPath), "%s%s", SAVE_FOLDER, fileName);

@@ -12,7 +12,7 @@ void IgnoreBlank(){
 
 void STARTFRASA(){
     START();
-    IgnoreBlanks();
+    IgnoreBlank();
     EndFrasa = GetCC() == NEWLINE;
     if (!EndFrasa) {
         ADVFRASA();
@@ -20,7 +20,7 @@ void STARTFRASA(){
 }
 
 void ADVFRASA(){
-    IgnoreBlanks();
+    IgnoreBlank();
     EndFrasa = GetCC()==NEWLINE;
     if(!EndFrasa){
         CopyFrasa();
@@ -34,5 +34,38 @@ void CopyFrasa(){
         ADV();
         i++;
     }
+    CurrentFrasa.TabWord[i] = '\0';
     CurrentFrasa.Length = i;
+}
+
+boolean compareFrasaToString(Frasa word, char* string) {
+    int stringLength = 0;
+    char temp[50];
+
+    for (int i = 0; string[i] != '\0'; i++){
+        stringLength++;
+    }
+
+    for (int i = 0; i < word.Length; i++){
+        if (word.TabWord[i] != '\n'){    
+            if (word.TabWord[i] >= 'a' && word.TabWord[i] <= 'z'){
+                temp[i] = word.TabWord[i] - 32;
+            }else {
+            temp[i] = word.TabWord[i];
+            }
+        }
+        
+    }
+
+    if (word.Length == stringLength) {
+        for (int i = 0; i < word.Length; i++){
+            if(temp[i] != string[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+    else {
+        return false;
+    }
 }

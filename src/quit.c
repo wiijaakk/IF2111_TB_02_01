@@ -1,19 +1,19 @@
 #include "quit.h"
-#include "save.h"
 
-void quit(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers) {
+void quit(char* filename, ArrayDin* arrayItems, TabInt* arrayUsers) {
     char input;
     
     do {
         printf("Apakah kamu ingin menyimpan data sesi kali ini (Y/N)? ");
-        scanf(" %c", &input);
-        if (input != 'Y' && input != 'N') {
+        START();
+        input = currentChar;
+        if ((input != 'Y' && input != 'y') && (input != 'N' && input != 'n')) {
             printf("Masukkan anda tidak valid!\n");
         }
-    } while (input != 'Y' && input != 'N');
+    } while ((input != 'Y' && input != 'y') && (input != 'N' && input != 'n'));
 
     if (input == 'Y') {
-        save(filename.TabWord, arrayItems, arrayUsers);
+        save(filename, arrayItems, arrayUsers);
         printf("Data sesi kali ini telah berhasil disimpan!\n\n");
     }
 
