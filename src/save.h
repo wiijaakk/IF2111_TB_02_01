@@ -4,10 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "mesinkarakter.h"
-#include "mesinkata.h"
-#include "array.h"
-#include "arraydin.h"
+#include "ADT.h"
 
 #define SAVE_FOLDER "save/"
 

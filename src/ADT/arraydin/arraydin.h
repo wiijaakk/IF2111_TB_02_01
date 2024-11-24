@@ -1,12 +1,12 @@
 #ifndef __ARRAY_DINAMIK__
 #define __ARRAY_DINAMIK__
 
-#include "boolean.h"
+#include "../../boolean.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 #define InitialSize 50
-#define MAX_LEN 50
+#define MAX_LEN 100
 
 typedef int IdxType;
 

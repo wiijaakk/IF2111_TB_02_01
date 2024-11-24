@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "str.h"
-#include "mesinkata.h"
+#include "ADT.h"
 
 #define WordCount__ 14900
 #define chal_count 2
