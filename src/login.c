@@ -6,7 +6,7 @@
 
 int ngecek_login(const char *username, const char *password) {
 
-    Start
+    START();
     FILE *file = fopen(FILE_NAME, "r");
     if (file == NULL) {
         return 0; // Jika file tidak ditemukan

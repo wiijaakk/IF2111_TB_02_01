@@ -11,7 +11,7 @@
 #define chal_count 2
 //List Chal
 //             Name             Biaya
-#define chal1 "Tebak Angka",    200
+#define chal1 "TebakAngka",    200
 #define chal2 "WORDL3",         500
 
 typedef struct {

@@ -3,21 +3,21 @@
 #include "ADT.h"
 
 #include "start.h"
-#include "login.h"
+//#include "login.h"
 #include "logout.h"
-//#include "storelist.h"
-//#include "storeremove.h"
-//#include "storerequest.h"
-//#include "storesupply.h"
+#include "storelist.h"
+#include "storeremove.h"
+#include "storerequest.h"
+#include "storesupply.h"
 #include "str.h"
 #include "save.h"
 #include "register.h"
 #include "quit.h"
-//#include "queuebarang.h"
+#include "queuebarang.h"
 #include "load.h"
 #include "kebutuhanlog.h"
 #include "help.h"
-//#include "bioweapon.h"
+#include "bioweapon.h"
 #include "boolean.h"
 #include "work.h"
 #include "workchallenge.h"
@@ -28,13 +28,13 @@ int main() {
     TabInt arrayUsers;
     arrayItems = MakeArrayDin();
     MakeEmpty(&arrayUsers);
-    //Queuebarang barang;
-    //CreateQueuebarang(&barang);
+    Queuebarang barang;
+    CreateQueuebarang(&barang);
     boolean sessionStatus = true;
     boolean loginStatus = true;
     char filename[] = "config.txt";
     
-
+    startStore(&arrayItems, &arrayUsers);
     while (!sessionStatus && !loginStatus) {
         printf("Masukkan command: ");
         STARTWORD();
@@ -89,13 +89,15 @@ int main() {
         } else if (compareFrasaToString(CurrentFrasa, "WORK CHALLENGE")) {
             workChallenge();
         } else if (compareFrasaToString(CurrentFrasa, "STORE LIST")) {
-            //storelist(arrayItems);
+            storelist(arrayItems);
         } else if (compareFrasaToString(CurrentFrasa, "STORE REQUEST")) {
-            //storerequest(arrayItems, &barang);
+            storerequest(arrayItems, &barang);
+        } else if (compareFrasaToString(CurrentFrasa, "STORE REQUEST BIOWEAPON")) {
+            bioweapon(&barang);
         } else if (compareFrasaToString(CurrentFrasa, "STORE SUPPLY")) {
-            //storesupply(&arrayItems, &barang);
+            storesupply(&arrayItems, &barang);
         } else if (compareFrasaToString(CurrentFrasa, "STORE REMOVE")) {
-            //storeremove(&arrayItems);
+            storeremove(&arrayItems);
         } else if (compareFrasaToString(CurrentFrasa, "LOGOUT")) {
             logout_User();
         } else if (compareFrasaToString(CurrentFrasa, "SAVE")) {

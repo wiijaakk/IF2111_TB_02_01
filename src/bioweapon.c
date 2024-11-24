@@ -237,10 +237,10 @@ void bioweapon(Queuebarang * request){
         }
         if(apakah_substring){
             enqueuebarang(request, senjata);
-            printf("Senjata biologis mengandung kode, barang akan ditambahkan ke dalam queue!");
+            printf("Senjata biologis mengandung kode, barang akan ditambahkan ke dalam queue!\n");
         }
         else{
-            printf("Kode rahasia tidak ditemukan, maka senjata biologis sudah disabotase, barang ditolak!");
+            printf("Kode rahasia tidak ditemukan, maka senjata biologis sudah disabotase, barang ditolak!\n");
         }
     }
 }

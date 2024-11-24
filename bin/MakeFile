@@ -1,6 +1,7 @@
 
 COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
               ../src/ADT/mesinkata/mesinkata.c \
+			  ../src/ADT/mesinfrasa/mesinfrasa.c \
 			  ../src/ADT/array/array.c \
 			  ../src/ADT/arraydin/arraydin.c \
 			  ../src/ADT/queue/queue.c \
@@ -8,16 +9,16 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
 			  ../src/help.c \
 			  ../src/kebutuhanlog.c \
 			  ../src/load.c \
-			  ../src/login.c \
-			  ../src/logout.c \
 			  ../src/queuebarang.c \
+			  ../src/logout.c \
+			  ../src/login.c \
 			  ../src/quit.c \
 			  ../src/register.c \
 			  ../src/save.c \
 			  ../src/start.c \
 			  ../src/storelist.c \
 			  ../src/storeremove.c \
-			  ../src/login.c \
+			  ../src/storerequest.c \
 			  ../src/storesupply.c \
               ../src/work.c \
               ../src/workchallenge.c \
@@ -46,4 +47,18 @@ $(BinDir)/$(OUTPUTBIN): $(COMMON_OBJS)
 	@echo building output ...
 	$(CC) -o $(BinDir)/$(OUTPUTBIN) $(COMMON_OBJS) $(LFLAGS)
 
+work: workchallenge.o work.o str.o mesinkarakter.o mesinkata.o workdriver.o mesinfrasa.o
+	gcc workchallenge.o work.o str.o mesinkarakter.o mesinkata.o workdriver.o mesinfrasa.o -o work
+
+workdriver.o: workdriver.c
+	gcc -c ../src/workdriver.c
+
+login: login.o kebutuhanlog.o
+	gcc login.o kebutuhanlog.o -o login
+
+register: register.o kebutuhanlog.o
+	gcc register.o kebutuhanlog.o -o register
+
+logout: logout.o kebutuhanlog.o
+	gcc logout.o kebutuhanlog.o -o logout
 	
