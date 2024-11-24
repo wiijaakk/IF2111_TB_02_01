@@ -20,10 +20,10 @@ void ADV() {
     // Input diambil dari masukan pengguna lewat character stream di console
     // Pembacaan file dihentikan jika currentChar == MARK
     retval = fscanf(pita, "%c", &currentChar);
-    EOP = (currentChar == MARK);
-    if (EOP) {
-        fclose(pita);
-    }
+    EOP = (currentChar == NEWLINE);
+//     if (EOP) {
+//         fclose(pita);
+//     }
 }
 
 char GetCC() {

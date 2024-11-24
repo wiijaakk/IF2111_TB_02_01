@@ -23,14 +23,9 @@ void STARTWORD()
               currentChar karakter pertama sesudah karakter terakhir kata */
     START();
     IgnoreBlanks();
-    if (currentChar == MARK)
-    {
-        EndWord = true;
-    }
-    else
-    {
-        EndWord = false;
-        CopyWord();
+    EndWord = GetCC() == MARK;
+    if (!EndWord) {
+        ADVWORD();
     }
 }
 
@@ -42,15 +37,9 @@ void ADVWORD()
               Jika currentChar = MARK, endWord = true.
        Proses : Akuisisi kata menggunakan procedure CopyWord */
     IgnoreBlanks();
-    if (currentChar == MARK || currentChar == BLANK)
-    {
-        EndWord = true;
-    }
-    else
-    {
-        EndWord = false;
+    EndWord = GetCC()==MARK;
+    if(!EndWord){
         CopyWord();
-        IgnoreBlanks();
     }
 }
 
@@ -62,17 +51,13 @@ void CopyWord()
               currentChar = BLANK atau currentChar = MARK;
               currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
               Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
-    currentWord.Length = 0;
-    while (currentChar != BLANK && currentChar != MARK && currentChar != EOP && currentChar != NEWLINE)
-    {
-        if (currentWord.Length < NMax)
-        { // jika lebih akan terpotong
-            currentWord.TabWord[currentWord.Length++] = currentChar;
-            ADV();
-        }
-        else
-            break;
+    int i = 0;
+    while(GetCC()!=NEWLINE && i<NMax){
+        currentWord.TabWord[i] = GetCC();
+        ADV();
+        i++;
     }
+    currentWord.Length = i;
 }
 
 boolean isEndWord() {
