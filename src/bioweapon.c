@@ -163,13 +163,13 @@ void torna(char * curr, int panjang){
 
 void bioweapon(Queuebarang * request){
     printf("Masukan nama senjata biologis: ");
-    STARTWORD();
+    STARTFRASA();
     Barang senjata;
     for(int i = 0; i<currentWord.Length; i++){
         senjata.name[i] = currentWord.TabWord[i];
     }
     printf("Masukan sekuens DNA: ");
-    STARTWORD();
+    STARTFRASA();
     char tampung[60];
     boolean valid = true;
     if(currentWord.Length<=60){
@@ -226,7 +226,7 @@ void bioweapon(Queuebarang * request){
             idx3++;
         }
         printf("Masukan kode rahasia: ");
-        STARTWORD();
+        STARTFRASA();
         boolean apakah_substring = false;
         apakah_substring = cek(protein1, currentWord.TabWord, idx1, currentWord.Length);
         if(!apakah_substring){
