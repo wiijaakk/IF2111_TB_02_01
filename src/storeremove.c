@@ -13,7 +13,7 @@ void storeremove(ArrayDin * barang){
         while(curr.name[idx]!='\0'){
             idx++;
         }
-        if(cekstring(curr.name, CurrentWord.TabWord, idx, CurrentWord.Length)){
+        if(cekstring(curr.name, currentWord.TabWord, idx, currentWord.Length)){
             DeleteAt(barang, i);
             sama = true;
             break;
@@ -21,8 +21,8 @@ void storeremove(ArrayDin * barang){
     }
     if (sama){
         int idx = 0;
-        while(CurrentWord.TabWord[idx]!='\0'){
-            printf("%c", CurrentWord.TabWord[idx]);
+        while(currentWord.TabWord[idx]!='\0'){
+            printf("%c", currentWord.TabWord[idx]);
             idx++;
         }
         printf(" telah berhasil dihapus.\n");
@@ -30,8 +30,8 @@ void storeremove(ArrayDin * barang){
     else{
         printf("Toko tidak menjual ");
         int idx = 0;
-        while(idx<CurrentWord.Length){
-            printf("%c", CurrentWord.TabWord[idx]);
+        while(idx<currentWord.Length){
+            printf("%c", currentWord.TabWord[idx]);
             idx++;
         }
         printf(".\n");

@@ -31,7 +31,7 @@ void storerequest(ArrayDin barang, Queuebarang * request){
     if(IsEmpty(barang)){
         if(isEmptybarang(*request)){
             Barang baru;
-            copyString(baru.name, CurrentWord.TabWord);
+            copyString(baru.name, currentWord.TabWord);
             baru.price = 0;
             enqueuebarang(request, baru);
         }
@@ -45,7 +45,7 @@ void storerequest(ArrayDin barang, Queuebarang * request){
                 while(wait.name[idx]!='\0'){
                     idx++;
                 }
-                if(cekstring(wait.name, CurrentWord.TabWord, idx, CurrentWord.Length)){
+                if(cekstring(wait.name, currentWord.TabWord, idx, currentWord.Length)){
                     sama = true;
                     printf("Barang dengan nama yang sama sudah ada di antrian!\n");
                     break;
@@ -53,7 +53,7 @@ void storerequest(ArrayDin barang, Queuebarang * request){
             }
             if (sama == false){
                 Barang baru;
-                copyString(baru.name, CurrentWord.TabWord);
+                copyString(baru.name, currentWord.TabWord);
                 baru.price = 0;
                 enqueuebarang (request, baru);
                 printf("Barang telah berhasil dimasukkan ke dalam antrian.\n");
@@ -69,7 +69,7 @@ void storerequest(ArrayDin barang, Queuebarang * request){
             while(curr.name[idx]!='\0'){
                 idx++;
             }
-            if(cekstring(curr.name,CurrentWord.TabWord, idx, CurrentWord.Length)){
+            if(cekstring(curr.name,currentWord.TabWord, idx, currentWord.Length)){
                 same = true;
                 printf("Barang dengan nama yang sama sudah ada di toko!\n");
                 break;
@@ -85,7 +85,7 @@ void storerequest(ArrayDin barang, Queuebarang * request){
                 while(wait.name[idx]!='\0'){
                     idx++;
                 }
-                if(cekstring(wait.name, CurrentWord.TabWord, idx, CurrentWord.Length)){
+                if(cekstring(wait.name, currentWord.TabWord, idx, currentWord.Length)){
                     sama = true;
                     printf("Barang dengan nama yang sama sudah ada di antrian!\n");
                     break;
@@ -93,7 +93,7 @@ void storerequest(ArrayDin barang, Queuebarang * request){
             }
             if (sama == false){
                 Barang baru;
-                copyString(baru.name, CurrentWord.TabWord);
+                copyString(baru.name, currentWord.TabWord);
                 baru.price = 0;
                 enqueuebarang(request, baru);
                 printf("Barang telah berhasil dimasukkan ke dalam antrian.\n");

@@ -165,26 +165,26 @@ void bioweapon(Queue * request){
     printf("Masukan nama senjata biologis: ");
     STARTWORD();
     Barang senjata;
-    for(int i = 0; i<CurrentWord.Length; i++){
-        senjata.name[i] = CurrentWord.TabWord[i];
+    for(int i = 0; i<currentWord.Length; i++){
+        senjata.name[i] = currentWord.TabWord[i];
     }
     printf("Masukan sekuens DNA: ");
     STARTWORD();
     char tampung[60];
     boolean valid = true;
-    if(CurrentWord.Length<=60){
+    if(currentWord.Length<=60){
     }
     else{
         valid = false;
     }
-    if(CurrentWord.Length>60){
+    if(currentWord.Length>60){
         printf("Sekuens DNA yang kamu masukkan tidak valid. Pastikan sekuens DNA yang kamu masukkan memiliki panjang maksimal 60.\n");
     }
     else{
-        for (int i = 0; i < CurrentWord.Length; i++) {
-            tampung[i] = CurrentWord.TabWord[i];
+        for (int i = 0; i < currentWord.Length; i++) {
+            tampung[i] = currentWord.TabWord[i];
         }       
-        int panjang = CurrentWord.Length;
+        int panjang = currentWord.Length;
         torna(tampung, panjang);
         Queue rna;
         CreateQueue(&rna);
@@ -228,12 +228,12 @@ void bioweapon(Queue * request){
         printf("Masukan kode rahasia: ");
         STARTWORD();
         boolean apakah_substring = false;
-        apakah_substring = cek(protein1, CurrentWord.TabWord, idx1, CurrentWord.Length);
+        apakah_substring = cek(protein1, currentWord.TabWord, idx1, currentWord.Length);
         if(!apakah_substring){
-            apakah_substring = cek(protein2, CurrentWord.TabWord, idx2, CurrentWord.Length);
+            apakah_substring = cek(protein2, currentWord.TabWord, idx2, currentWord.Length);
         }
         if(!apakah_substring){
-            apakah_substring = cek(protein3, CurrentWord.TabWord, idx3, CurrentWord.Length);
+            apakah_substring = cek(protein3, currentWord.TabWord, idx3, currentWord.Length);
         }
         if(apakah_substring){
             enqueuebarang(request, senjata);

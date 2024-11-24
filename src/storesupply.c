@@ -17,12 +17,12 @@ void storesupply(ArrayDin * barang, Queuebarang * request){
         }
         printf(": ");
         STARTWORD();
-        if(cekstring(CurrentWord.TabWord, "Terima", CurrentWord.Length, 6)){
+        if(cekstring(currentWord.TabWord, "Terima", currentWord.Length, 6)){
             printf("Harga barang: ");
             STARTWORD();
             int angka = 0;
-            for(int i =0; i<CurrentWord.Length; i++){
-                int digit = CurrentWord.TabWord[i] - '0';
+            for(int i =0; i<currentWord.Length; i++){
+                int digit = currentWord.TabWord[i] - '0';
                 angka = angka*10 + digit;
             }
             depan.price = angka;
@@ -37,7 +37,7 @@ void storesupply(ArrayDin * barang, Queuebarang * request){
             }
             printf(" dengan harga %d telah ditambahkan ke toko.\n", depan.price);
         }
-        else if (cekstring(CurrentWord.TabWord, "Tunda", CurrentWord.Length, 5)){
+        else if (cekstring(currentWord.TabWord, "Tunda", currentWord.Length, 5)){
             int idx = 0;
             while(depan.name[idx]!='\0'){
                 printf("%c", depan.name[idx]);
@@ -45,7 +45,7 @@ void storesupply(ArrayDin * barang, Queuebarang * request){
             }
             printf(" dikembalikan ke antrian.\n");
         }
-        else if (cekstring(CurrentWord.TabWord, "Tolak", CurrentWord.Length, 5)){
+        else if (cekstring(currentWord.TabWord, "Tolak", currentWord.Length, 5)){
             Barang buang;
             dequeuebarang(request, &buang);
             int idx = 0;
