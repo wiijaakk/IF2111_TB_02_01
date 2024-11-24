@@ -1,11 +1,9 @@
 #include "work.h"
 
 void work_timer(int second){
-    int ms = second * 1000;
     int i = 0;
     clock_t start = clock();
     while (i < second){
-        clock_t cr = clock();
         printf("%d/%d\n", i, second);
         i++;
         while (clock() < start + (i * 1000));

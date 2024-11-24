@@ -1,0 +1,49 @@
+
+COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
+              ../src/ADT/mesinkata/mesinkata.c \
+			  ../src/ADT/array/array.c \
+			  ../src/ADT/arraydin/arraydin.c \
+			  ../src/ADT/queue/queue.c \
+			  ../src/bioweapon.c \
+			  ../src/help.c \
+			  ../src/kebutuhanlog.c \
+			  ../src/load.c \
+			  ../src/login.c \
+			  ../src/logout.c \
+			  ../src/queuebarang.c \
+			  ../src/quit.c \
+			  ../src/register.c \
+			  ../src/save.c \
+			  ../src/start.c \
+			  ../src/storelist.c \
+			  ../src/storeremove.c \
+			  ../src/login.c \
+			  ../src/storesupply.c \
+              ../src/work.c \
+              ../src/workchallenge.c \
+              ../src/str.c \
+			  ../src/main.c \
+
+CC := C:/mingw64/bin/gcc
+ObjDir := ./obj
+BinDir := ./
+OUTPUTBIN := output.exe
+CFLAGS := 
+
+
+VPATH := $(dir $(COMMON_SRC))
+
+
+COMMON_OBJS := $(patsubst %.c, $(ObjDir)/%$(ARCH)$(DEBUG).o, $(notdir $(COMMON_SRC)))
+
+
+$(ObjDir)/%$(ARCH)$(DEBUG).o : %.c Makefile
+	@echo creating $@ ...
+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -c -o $@ $<
+
+
+$(BinDir)/$(OUTPUTBIN): $(COMMON_OBJS)
+	@echo building output ...
+	$(CC) -o $(BinDir)/$(OUTPUTBIN) $(COMMON_OBJS) $(LFLAGS)
+
+	

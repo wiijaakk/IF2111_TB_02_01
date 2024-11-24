@@ -8,7 +8,6 @@ int RNG(int min, int max){
 }
 
 int countWords(char *filename, char wordlist[WordCount__][6]) {
-    char word[6];
     int count = 0;
     StartFileWord(filename);
     while (!endOfFile) {
@@ -113,7 +112,7 @@ void _printDash(int count){
 }
 
 void wordl3(){
-    char *filename = "word.txt";
+    char *filename = "../save/word.txt";
     char wordlist[WordCount__][6];
     char word[6];
     char past[6][11];
