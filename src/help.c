@@ -1,10 +1,6 @@
-#include <stdio.h>
-#include "boolean.h"
+#include "help.h"
 
-boolean sessionStatus = false;
-boolean loginStatus = false;
-
-void help() {
+void help(boolean sessionStatus, boolean loginStatus) {
     if (sessionStatus == false) {
         printf("================= [Selamat datang di PURRMART] ==================\n");
         printf("| Berikut adalah Command yang dapat Anda lakukan:\t\t|\n");

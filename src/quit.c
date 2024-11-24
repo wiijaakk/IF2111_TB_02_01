@@ -1,7 +1,7 @@
-#include <stdio.h>
+#include "quit.h"
 #include "save.h"
 
-void quit() {
+void quit(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers) {
     char input;
 
     do {
@@ -13,7 +13,7 @@ void quit() {
     } while (input != 'Y' && input != 'N');
 
     if (input == 'Y') {
-        save(fileName);
+        save(filename.TabWord, arrayItems, arrayUsers);
         printf("Data sesi kali ini telah berhasil disimpan!\n\n");
     }
 
