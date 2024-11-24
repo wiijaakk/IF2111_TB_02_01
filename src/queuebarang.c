@@ -29,7 +29,7 @@ int lengthbarang(Queuebarang q){
     }
 }
 
-void enqueuebarang(Queuebarang *q, ElType val){
+void enqueuebarang(Queuebarang *q, elType val){
     if (isEmptybarang(*q)){
         IDX_HEAD(*q) = 0;
         IDX_TAIL(*q) = 0;
@@ -42,7 +42,7 @@ void enqueuebarang(Queuebarang *q, ElType val){
     }
 }
 
-void dequeuebarang(Queuebarang *q, ElType *val){
+void dequeuebarang(Queuebarang *q, elType *val){
     *val = HEAD(*q);
     if(lengthbarang(*q)==1){
         IDX_HEAD(*q) = IDX_UNDEF;

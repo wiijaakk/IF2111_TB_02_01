@@ -13,9 +13,9 @@
 /* Definisi elemen dan address */
 /* Definisi tipe elemen dan indeks pada Queue */
 
-typedef Barang ElType;
+typedef Barang elType;
 typedef struct {
-	ElType buffer[CAPACITY]; 
+	elType buffer[CAPACITY]; 
 	int idxHead;
 	int idxTail;
 } Queuebarang;
@@ -47,12 +47,12 @@ int lengthbarang(Queuebarang q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueuebarang(Queuebarang *q, ElType val);
+void enqueuebarang(Queuebarang *q, elType val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeuebarang(Queuebarang *q, ElType *val);
+void dequeuebarang(Queuebarang *q, elType *val);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
