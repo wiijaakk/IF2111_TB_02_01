@@ -5,40 +5,46 @@
 #include "start.h"
 #include "login.h"
 #include "logout.h"
-#include "storelist.h"
-#include "storeremove.h"
-#include "storerequest.h"
-#include "storesupply.h"
+//#include "storelist.h"
+//#include "storeremove.h"
+//#include "storerequest.h"
+//#include "storesupply.h"
 #include "str.h"
 #include "save.h"
 #include "register.h"
 #include "quit.h"
-#include "queuebarang.h"
+//#include "queuebarang.h"
 #include "load.h"
 #include "kebutuhanlog.h"
 #include "help.h"
-#include "bioweapon.h"
+//#include "bioweapon.h"
 #include "boolean.h"
+#include "work.h"
+#include "workchallenge.h"
+
 
 int main() {
     ArrayDin arrayItems;
     TabInt arrayUsers;
     arrayItems = MakeArrayDin();
     MakeEmpty(&arrayUsers);
-    Queuebarang barang;
-    CreateQueuebarang(&barang);
+    //Queuebarang barang;
+    //CreateQueuebarang(&barang);
     boolean sessionStatus = false;
     boolean loginStatus = false;
-    char filename = "config.txt";
+    char filename[] = "config.txt";
     
-    printf("Masukkan command: ");
-    STARTWORD();
+
     while (!sessionStatus && !loginStatus) {
+        printf("Masukkan command: ");
+        STARTWORD();
+        printf("%s %d\n", currentWord.TabWord, EndWord);
         if (compareWordToString(currentWord, "START")) {
             startStore(&arrayItems, &arrayUsers);
             sessionStatus = true;
         } else if (compareWordToString(currentWord, "LOAD")) {
-            ADVWORD();
+            STARTWORD();
+            printf("%s\n", currentWord.TabWord);
             load(currentWord, &arrayItems, &arrayUsers);
             sessionStatus = true;
         } else if (compareWordToString(currentWord, "HELP")) {
@@ -48,60 +54,57 @@ int main() {
             break;
         } else {
             printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
-            printf("Masukkan command: ");
-            STARTWORD();
         }
     }
 
-    printf("Masukkan command: ");
-    StartWordNewLine();
-    while (sessionStatus && !loginStatus) {
 
+    printf("==1\n");
+    while (sessionStatus && !loginStatus) {
+        printf("Masukkan command: ");
+        STARTWORD();
+        printf("%s %d\n", currentWord.TabWord, EndWord);
         if (compareWordToString(currentWord, "REGISTER")) {
-            register_User();
+            //register_User();
             loginStatus = true;
         } else if (compareWordToString(currentWord, "LOGIN")) {
-            login_User();
+            //login_User();
             loginStatus = true;
         } else if (compareWordToString(currentWord, "HELP")) {
             help(sessionStatus, loginStatus);
         } else if (compareWordToString(currentWord, "QUIT")) {
-            printf("Program berhasil dihentikan");
+            printf("Program berhasil dihentikan\n");
             break;
         } else {
             printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
-            printf("Masukkan command: ");
-            StartWordNewLine();
         }
     }
 
-    printf("Masukkan command: ");
-    StartWordNewLine();
+    printf("==2\n");
     while (sessionStatus && loginStatus && !compareWordToString(currentWord, "QUIT")) {
+        printf("Masukkan command: ");
+        STARTWORD();
         if (compareWordToString(currentWord, "WORK")) {
             work_();
         } else if (compareWordToString(currentWord, "WORK CHALLENGE")) {
             workChallenge();
         } else if (compareWordToString(currentWord, "STORE LIST")) {
-            storelist(arrayItems);
+            //storelist(arrayItems);
         } else if (compareWordToString(currentWord, "STORE REQUEST")) {
-            storerequest(arrayItems, &barang);
+            //storerequest(arrayItems, &barang);
         } else if (compareWordToString(currentWord, "STORE SUPPLY")) {
-            storesupply(&arrayItems, &barang);
+            //storesupply(&arrayItems, &barang);
         } else if (compareWordToString(currentWord, "STORE REMOVE")) {
-            storeremove(&arrayItems);
+            //storeremove(&arrayItems);
         } else if (compareWordToString(currentWord, "LOGOUT")) {
             logout_User();
         } else if (compareWordToString(currentWord, "SAVE")) {
             save(filename, &arrayItems, &arrayUsers);
         } else if (compareWordToString(currentWord, "QUIT")) {
-            quit(&arrayItems, &arrayUsers);
+            quit(filename, &arrayItems, &arrayUsers);
         } else if (compareWordToString(currentWord, "HELP")) {
             help(sessionStatus, loginStatus);
         } else {
             printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
-            printf("Masukkan command: ");
-            StartWordNewLine();
         }
     }
 }
