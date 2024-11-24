@@ -161,7 +161,7 @@ void torna(char * curr, int panjang){
     }
 }
 
-void bioweapon(Queue * request){
+void bioweapon(Queuebarang * request){
     printf("Masukan nama senjata biologis: ");
     STARTWORD();
     Barang senjata;

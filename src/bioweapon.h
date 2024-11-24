@@ -4,6 +4,7 @@
 #include "boolean.h"
 #include "ADT.h"
 #include "queuebarang.h"
+#include "queue.h"
 
 boolean cek(char * a, char * b, int panjang_a, int panjang_b);
 
@@ -11,6 +12,6 @@ Queue protein(int awal, Queue * Q);
 
 void torna(char * curr, int panjang);
 
-void bioweapon(Queue * request);
+void bioweapon(Queuebarang * request);
 
 #endif
