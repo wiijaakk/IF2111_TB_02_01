@@ -266,11 +266,11 @@ boolean compareWordToString(Word word, char* string) {
         if (word.TabWord[i] != ' '){    
             if (word.TabWord[i] >= 'a' && word.TabWord[i] <= 'z'){
                 temp[i] = word.TabWord[i] - 32;
+            }else {
+            temp[i] = word.TabWord[i];
             }
         }
-        else {
-            temp[i] = word.TabWord[i];
-        }
+        
     }
 
     if (word.Length == stringLength) {
