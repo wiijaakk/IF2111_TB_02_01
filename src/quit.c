@@ -3,7 +3,7 @@
 
 void quit(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers) {
     char input;
-
+    
     do {
         printf("Apakah kamu ingin menyimpan data sesi kali ini (Y/N)? ");
         scanf(" %c", &input);

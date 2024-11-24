@@ -38,7 +38,7 @@ void save(Word fileName, ArrayDin* arrayItems, TabInt* arrayUsers) {
     }
 
     fclose(file);
-    printf("Configuration saved successfully to %s\n", fullPath);
+    printf("File konfigurasi berhasil disimpan di %s\n", fullPath);
 }
 
 // int main() {

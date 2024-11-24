@@ -6,7 +6,7 @@
 
 #include "ADT.h"
 
-#define SAVE_FOLDER "save/"
+#define SAVE_FOLDER "../save/"
 
 void save(char fileName, ArrayDin* arrayItems, TabInt* arrayUsers);
 
