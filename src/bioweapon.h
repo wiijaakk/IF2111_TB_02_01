@@ -4,7 +4,6 @@
 #include "boolean.h"
 #include "ADT.h"
 #include "queuebarang.h"
-#include "queue.h"
 
 boolean cek(char * a, char * b, int panjang_a, int panjang_b);
 
