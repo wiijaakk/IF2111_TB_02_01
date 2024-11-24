@@ -52,7 +52,7 @@ void CopyWord()
               currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
               Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
     int i = 0;
-    while(GetCC()!=NEWLINE && i<NMax){
+    while(GetCC()!=NEWLINE && GetCC()!=BLANK && i<NMax){
         currentWord.TabWord[i] = GetCC();
         ADV();
         i++;
