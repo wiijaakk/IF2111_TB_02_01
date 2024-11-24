@@ -24,8 +24,8 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
               ../src/str.c \
 			  ../src/main.c \
 
-CC := C:/mingw64/bin/gcc
-ObjDir := ./obj
+CC := gcc
+ObjDir := ./
 BinDir := ./
 OUTPUTBIN := output.exe
 CFLAGS := 
