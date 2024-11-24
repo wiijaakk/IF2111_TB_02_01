@@ -165,26 +165,26 @@ void bioweapon(Queuebarang * request){
     printf("Masukan nama senjata biologis: ");
     STARTFRASA();
     Barang senjata;
-    for(int i = 0; i<currentWord.Length; i++){
-        senjata.name[i] = currentWord.TabWord[i];
+    for(int i = 0; i<CurrentFrasa.Length; i++){
+        senjata.name[i] = CurrentFrasa.TabWord[i];
     }
     printf("Masukan sekuens DNA: ");
     STARTFRASA();
     char tampung[60];
     boolean valid = true;
-    if(currentWord.Length<=60){
+    if(CurrentFrasa.Length<=60){
     }
     else{
         valid = false;
     }
-    if(currentWord.Length>60){
+    if(CurrentFrasa.Length>60){
         printf("Sekuens DNA yang kamu masukkan tidak valid. Pastikan sekuens DNA yang kamu masukkan memiliki panjang maksimal 60.\n");
     }
     else{
-        for (int i = 0; i < currentWord.Length; i++) {
-            tampung[i] = currentWord.TabWord[i];
+        for (int i = 0; i < CurrentFrasa.Length; i++) {
+            tampung[i] = CurrentFrasa.TabWord[i];
         }       
-        int panjang = currentWord.Length;
+        int panjang = CurrentFrasa.Length;
         torna(tampung, panjang);
         Queue rna;
         CreateQueue(&rna);
@@ -228,12 +228,12 @@ void bioweapon(Queuebarang * request){
         printf("Masukan kode rahasia: ");
         STARTFRASA();
         boolean apakah_substring = false;
-        apakah_substring = cek(protein1, currentWord.TabWord, idx1, currentWord.Length);
+        apakah_substring = cek(protein1, CurrentFrasa.TabWord, idx1, CurrentFrasa.Length);
         if(!apakah_substring){
-            apakah_substring = cek(protein2, currentWord.TabWord, idx2, currentWord.Length);
+            apakah_substring = cek(protein2, CurrentFrasa.TabWord, idx2, CurrentFrasa.Length);
         }
         if(!apakah_substring){
-            apakah_substring = cek(protein3, currentWord.TabWord, idx3, currentWord.Length);
+            apakah_substring = cek(protein3, CurrentFrasa.TabWord, idx3, CurrentFrasa.Length);
         }
         if(apakah_substring){
             enqueuebarang(request, senjata);
