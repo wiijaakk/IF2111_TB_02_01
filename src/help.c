@@ -1,5 +1,8 @@
 #include "help.h"
 
+boolean sessionStatus = true;
+boolean loginStatus = true;
+
 void help(boolean sessionStatus, boolean loginStatus) {
     if (sessionStatus == false) {
         printf("================= [Selamat datang di PURRMART] ==================\n");
@@ -32,15 +35,17 @@ void help(boolean sessionStatus, boolean loginStatus) {
         printf("|       Untuk melihat barang-barang di toko\t\t\t|\n");
         printf("|    4. STORE REQUEST\t\t\t\t\t\t|\n");
         printf("|       Untuk meminta penambahan barang\t\t\t\t|\n");
-        printf("|    5. STORE SUPPLY\t\t\t\t\t\t|\n");
+        printf("|    5. STORE REQUEST BIOWEAPON\t\t\t\t\t|\n");
+        printf("|       Untuk meminta penambahan senjata biologis\t\t|\n");
+        printf("|    6. STORE SUPPLY\t\t\t\t\t\t|\n");
         printf("|       Untuk menambahkan barang dari permintaan\t\t|\n");
-        printf("|    6. STORE REMOVE\t\t\t\t\t\t|\n");
+        printf("|    7. STORE REMOVE\t\t\t\t\t\t|\n");
         printf("|       Untuk menghapus barang\t\t\t\t\t|\n");
-        printf("|    7. LOGOUT\t\t\t\t\t\t\t|\n");
+        printf("|    8. LOGOUT\t\t\t\t\t\t\t|\n");
         printf("|       Untuk keluar dari sesi\t\t\t\t\t|\n");
-        printf("|    8. SAVE\t\t\t\t\t\t\t|\n");
+        printf("|    9. SAVE\t\t\t\t\t\t\t|\n");
         printf("|       Untuk menyimpan state ke dalam file\t\t\t|\n");
-        printf("|    9. QUIT\t\t\t\t\t\t\t|\n");
+        printf("|    10. QUIT\t\t\t\t\t\t\t|\n");
         printf("|       Untuk keluar dari program\t\t\t\t|\n");
         printf("=================================================================\n");
     }

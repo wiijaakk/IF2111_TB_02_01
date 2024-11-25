@@ -4,7 +4,7 @@
 
 void storelist(ArrayDin barang){
     if(IsEmpty(barang)){
-        printf("TOKO KOSONG");
+        printf("TOKO KOSONG\n");
     }
     else{
         int panjang = barang.Neff;

@@ -73,9 +73,9 @@ void tebakAngka(){
     }
     if (input == n)
     {
-        printf("Tebakanmu benar!");
+        printf("Tebakanmu benar!\n");
     }else{
-        printf("Failed");
+        printf("Failed\n");
     }
 }
 
