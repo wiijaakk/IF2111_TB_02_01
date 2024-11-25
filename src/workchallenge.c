@@ -104,7 +104,7 @@ void _printPast(char past[6][11], int count){
 
 void _printDash(int count){
     int i = 0;
-    while (i < 5 - count)
+    while (i < 6 - count)
     {
         printf("_ _ _ _ _\n");
         i++;
@@ -197,6 +197,7 @@ void workChallenge(){
     char input[50];
     STARTWORD();
     copyStr(currentWord.TabWord, input);
+    toupperstr(input);
 
     int selected = -1;
     int i = 0;

@@ -23,6 +23,7 @@ void work_(){
     char input[50];
     STARTWORD();
     copyStr(currentWord.TabWord, input);
+    toupperstr(input);
 
     int selected = -1;
     int i = 0;
