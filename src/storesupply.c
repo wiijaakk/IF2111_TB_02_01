@@ -15,7 +15,7 @@ void storesupply(ArrayDin * barang, Queuebarang * request){ // Fungsi untuk mena
             printf("%c", depan.name[idx]);
             idx++;
         }
-        printf(": ");
+        printf("(Terima/Tunda/Tolak): ");
         STARTWORD();
         if(cekstring(currentWord.TabWord, "Terima", currentWord.Length, 6)){ // Jika input user "Terima", akan diminta memasukkan harga, kemudian
             printf("Harga barang: ");                                        // item akan dimasukkan ke dalam store/toko
