@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "start.h"
 
-int main() {
+int main() { // Fungsi untuk mencoba fungsi START
     ArrayDin arrayItems;
     TabInt arrayUsers;
     arrayItems = MakeArrayDin();

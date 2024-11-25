@@ -23,19 +23,19 @@
 
 
 int main() {
-    char username[PANJANG_UNAME_MAX];
-    int username_idx = -1;
-    ArrayDin arrayItems;
-    TabInt arrayUsers;
+    char username[PANJANG_UNAME_MAX]; // Variabel menyimpan username yang sedang login di satu saat
+    int username_idx = -1; // Variabel menyimpan index username yang sedang login di satu saat -> Agar dapat diakses uang dari user
+    ArrayDin arrayItems; // Array dinamis untuk Barang
+    TabInt arrayUsers; // Array statis untuk User
     arrayItems = MakeArrayDin();
     MakeEmpty(&arrayUsers);
     Queuebarang barang;
     CreateQueuebarang(&barang);
-    boolean sessionStatus = false;
-    boolean loginStatus = false;
-    char filename[] = "config.txt";
+    boolean sessionStatus = false; // Variabel untuk mengecek apakah pengguna sudah START/LOAD
+    boolean loginStatus = false; // Variabel untuk mengecek apakah pengguna sudah LOGIN
+    char filename[] = "config.txt"; // Untuk kasus ketika pengguna ingin SAVE melalui QUIT, akan disimpan di config.txt
     
-    printf("\n");
+    printf("\n"); // Print banner judul ketika memulai program
     printf("                   -----------  W  E  L  C  O  M  E     T  O  ------------\n");
     printf("     __________                              _____       ____\n");
     printf("    /#|   ___  \\                            /$$|  \\     /    |\n");
@@ -50,35 +50,35 @@ int main() {
     printf("                      y o u r   w a r   w e a p o n s   s o l u t i o n\n");
     printf("*******************************************************************************************\n");
     printf("                     s e l e c t  << START >>  o r  << LOAD [file.txt] >>\n");
-    while (!compareFrasaToString(CurrentFrasa, "QUIT"))
+    while (!compareFrasaToString(CurrentFrasa, "QUIT")) // Program akan berjalan terus hingga user memasukkan input QUIT
     {
         // startStore(&arrayItems, &arrayUsers);
-        while (!sessionStatus && !loginStatus) {
+        while (!sessionStatus && !loginStatus) { // Loop untuk ketika pengguna belum memulai sesi (belum START atau LOAD)
             printf("Masukkan command: ");
-            STARTWORD();
+            STARTWORD(); // Menerima masukan berupa satu kata
             //printf("%s %d\n", currentWord.TabWord, EndWord);
             if (compareWordToString(currentWord, "START")) {
                 startStore(&arrayItems, &arrayUsers);
                 sessionStatus = true;
             } else if (compareWordToString(currentWord, "LOAD")) {
-                STARTWORD();
+                STARTWORD(); // Khusus untuk LOAD, jika masukan kata pertama berupa "LOAD", maka akan membaca masukan berikutnya yaitu filename
                 //printf("%s\n", currentWord.TabWord);
                 load(currentWord, &arrayItems, &arrayUsers, &sessionStatus);
             } else if (compareWordToString(currentWord, "HELP")) {
                 help(sessionStatus, loginStatus);
             } else if (compareWordToString(currentWord, "QUIT")) {
-                printf("Program berhasil dihentikan");
+                printf("Program berhasil dihentikan"); // Khusus QUIT pada fungsi ini tidak dapat melakukan SAVE, karena sesi belum dimulai
                 break;
-            } else {
+            } else { // Untuk kasus input invalid
                 printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
             }
         }
 
 
         //printf("==1\n");
-        while (sessionStatus && !loginStatus) {
+        while (sessionStatus && !loginStatus) { // Loop untuk ketika pengguna sudah memulai sesi namun belum login
             printf("Masukkan command: ");
-            STARTFRASA();
+            STARTFRASA(); // Menerima masukan berupa semua kata pada input hingga bertemu newline
             //printf("%s %d\n", CurrentFrasa.TabWord, EndWord);
             if (compareFrasaToString(CurrentFrasa, "REGISTER")) {
                 Register_User(&arrayUsers);
@@ -87,18 +87,18 @@ int main() {
             } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
                 help(sessionStatus, loginStatus);
             } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
-                printf("Program berhasil dihentikan\n");
+                quit(filename, &arrayItems, &arrayUsers); // Meskipun belum login, pengguna dapat melakukan SAVE melalui QUIT, untuk menyimpan data user baru (jika ada)
                 break;
-            } else {
+            } else { // Untuk kasus input invalid
                 printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
             }
         }
 
         //printf("==2\n");
-        while (sessionStatus && loginStatus && !compareFrasaToString(CurrentFrasa, "QUIT")) {
+        while (sessionStatus && loginStatus && !compareFrasaToString(CurrentFrasa, "QUIT")) { // Loop Main Menu (sudah memulai sesi dan sudah login)
             printf("Masukkan command: ");
-            STARTFRASA();
-            char forsave[50];
+            STARTFRASA(); // Menerima masukan berupa semua kata yang ada pada input hingga bertemu newline
+            char forsave[50]; // Khusus untuk fungsi SAVE
             copyStr(CurrentFrasa.TabWord, forsave);
             toupperstr(forsave);
             //printf("%s\n", CurrentFrasa.TabWord);
@@ -120,16 +120,16 @@ int main() {
                 logout_User(username, &username_idx);
                 loginStatus=false;
             } else if (check_str(forsave, "SAVE")) {
-                removeFirstnString(CurrentFrasa.TabWord, 5);
+                removeFirstnString(CurrentFrasa.TabWord, 5); // Khusus untuk SAVE, perlu dilakukan pemisahan antara command "SAVE" dengan masukan "<filename.txt>"
                 //printf("%s\n", CurrentFrasa.TabWord);
                 save(CurrentFrasa.TabWord, &arrayItems, &arrayUsers);
             } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
                 quit(filename, &arrayItems, &arrayUsers);
-            } else if (compareFrasaToString(CurrentFrasa, "LOGIN")){
+            } else if (compareFrasaToString(CurrentFrasa, "LOGIN")){ // Ini dibuat untuk mengatasi kasus ketika pengguna sudah login, kemudian mencoba login lagi
                 Login_User(arrayUsers, &loginStatus, username, &username_idx);
             } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
                 help(sessionStatus, loginStatus);
-            } else {
+            } else { // Untuk kasus ketika input tidak valid
                 printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
             }
         }

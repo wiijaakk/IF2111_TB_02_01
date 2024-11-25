@@ -68,9 +68,6 @@ void ADVNewLine(){
     // Membaca masukan hingga karakter NEWLINE
     retval = fscanf(pita, "%c", &currentChar);
     EOP = (currentChar == NEWLINE);
-    if (EOP) {
-        fclose(pita);
-    }
 }
 
 boolean isFileValid(char* input){

@@ -4,7 +4,7 @@
 #include "storesupply.h"
 #include "storeremove.h"
 
-int main(){
+int main(){ // Fungsi untuk mencoba semua fitur STORE
     ArrayDin woohoo = MakeArrayDin();
     Barang meh;
     copyString(meh.name, "Toto Odol Item Amazing");

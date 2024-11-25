@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include "storelist.h"
 
-void storelist(ArrayDin barang){
-    if(IsEmpty(barang)){
+void storelist(ArrayDin barang){ // Fungsi menampilkan semua item yang terdapat pada arrayItems
+    if(IsEmpty(barang)){ // Jika array kosong
         printf("TOKO KOSONG\n");
     }
-    else{
+    else{ // Jika array memiliki isi
         int panjang = barang.Neff;
         printf("List barang yang ada di toko :\n");
         for(int i = 0; i<panjang; i++){

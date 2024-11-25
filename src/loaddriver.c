@@ -13,6 +13,7 @@ int main() {
     ArrayDin arrayItems;
     TabInt arrayUsers;
     arrayItems = MakeArrayDin();
+    boolean SessionStatus;
     MakeEmpty(&arrayUsers);
     
     printf("Masukkan command: ");
@@ -20,7 +21,7 @@ int main() {
 
     if (compareWordToString(currentWord, "LOAD")) {
         ADVWordNewLine();
-        load(currentWord, &arrayItems, &arrayUsers);
+        load(currentWord, &arrayItems, &arrayUsers, SessionStatus);
         
         if (isFileValid && Length(arrayItems) > 0 && NbElmt(arrayUsers) > 0) {
             printf("Daftar Barang:\n");

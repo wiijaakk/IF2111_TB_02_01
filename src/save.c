@@ -1,6 +1,6 @@
 #include "save.h"
 
-void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) {
+void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk command SAVE
     char fullPath[200];
 
     snprintf(fullPath, sizeof(fullPath), "%s%s", SAVE_FOLDER, fileName); // Menggabungkan folder (../save/) dengan filename input user
