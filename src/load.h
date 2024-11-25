@@ -7,6 +7,6 @@
 #include "ADT.h"
 #define SAVE_FOLDER "../save/"
 
-void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers);
+void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * SessionStatus);
 
 #endif

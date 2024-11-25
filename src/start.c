@@ -8,7 +8,7 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) {
     User currentUser; // menyimpan user yg sedang diproses
 
     // Membuka file konfigurasi
-    StartFileWord("config.txt");
+    StartFileWord("../save/config.txt");
 
      // Membaca total barang yang tersimpan dalam file
     total = wordToInt(currentWord);

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "load.h"
 
-void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers) {
+void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * SessionStatus) {
     int total = 0;
     Barang currentBarang;
     User currentUser;
@@ -59,13 +59,15 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers) {
             }
             currentUser.password[currentWord.Length] = '\0';
 
-            SetEl(arrayUsers, i + 1, currentUser);
+            SetEl(arrayUsers, i, currentUser);
         }
+        arrayUsers->Neff = total;
 
         if (Length(*arrayItems) == 0 || NbElmt(*arrayUsers) == 0) {
             printf("File tidak memuat data yang sesuai. PURRMART gagal dijalankan.\n");
         }
         else {
+            *SessionStatus = true;
             printf("Save file berhasil dibaca. PURRMART berhasil dijalankan.\n");
         }
     }
