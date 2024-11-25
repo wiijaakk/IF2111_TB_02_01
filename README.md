@@ -21,14 +21,133 @@ PURRMART adalah sebuah aplikasi yang dapat mensimulasikan aktivitas beli barang 
 Sistem yang akan dibangun adalah sebuah program berbasis command line interface (CLI) yang dibuat dalam bahasa C. Program ini akan menggunakan sejumlah abstract data type (ADT) yang telah dipelajari di mata kuliah ini.
 
 ## Cara Kompilasi Program
-> To Be Updated
+> 1. **Instalasi Tool Make**
+>
+>    Make adalah tool command line interface untuk melakukan build executable code otomatis. Terdapat beberapa cara untuk melakukan instalasi, yakni:
+>    1) **Chocolatey**
+>       1. Buka command prompt
+>       2. Install Chocolatey dengan menjalankan :
+>
+>          ```powershell
+>          Set-ExecutionPolicy Bypass -Scope Process -Force;[System.Net.ServicePoint]::SecurityProtocol = [System.Net.ServicePoint]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+>       3. Install Make dengan menjalankan :
+>
+>          ```powershell
+>          choco install make
+>    2) **Windows Subsystem for Linux (WSL)**
+>       1. Buka command prompt
+>       2. Jalankan :
+>
+>          ```powershell
+>          wsl -- install
+>    3) **MinGW**
+>       1. Lakukan instalasi MinGW melalui https://mingw-w64.org/
+>       2. Tambahkan path ke bin MinGW ke PATH sistem komputer Anda
+> 2. **Lakukan git clone atau unduh kode melalui zip**
+> 3. **Masuk ke directory bin**
+> 4. **Jalankan :**
+>
+>    ```powershell
+>    make
 
 ## Cara Menjalankan Program
-> To Be Updated
+> **Masuk ke directory bin dan jalankan :**
+>
+> ```powershell
+> ./output.exe
 
 ## Struktur Program
 ```
 .
-└── README.md
+├── .gitginore
+├── README.md
+├── bin
+│   └─── Makefile     
+├── save
+│   ├─── config.txt 			    
+│   ├─── dummyfile.txt 			     
+│   ├─── invalid.txt				     
+│   └─── word.txt                     
+│ 
+└── src
+    ├─── boolean.h
+    ├─── ADT
+    │      ├─── array
+    │      │       ├─── array.h
+    │      │       ├─── array.c
+    │      │       └─── driver_array.c
+    │      │
+    │      ├─── arraydin
+    │      │       ├─── arraydin.h
+    │      │       ├─── arraydin.c
+    │      │       └─── driver_arraydin.c
+    │      │
+    │      ├─── mesinfrasa
+    │      │       ├─── mesinfrasa.h
+    │      │       ├─── mesinfrasa.c
+    │      │       └─── driver_mesinfrasa.c
+    │      │
+    │      ├─── mesinkarakter
+    │      │       ├─── mesinkarakter.h
+    │      │       ├─── mesinkarakter.c
+    │      │       └─── driver_mesinkarakter.c
+    │      │
+    │      ├─── mesinkata
+    │      │       ├─── mesinkata.h
+    │      │       ├─── mesinkata.c
+    │      │       └─── driver_mesinkata.c
+    │      │
+    │      └─── queue
+    │              ├─── queue.h
+    │              ├─── queue.c
+    │              └─── driver_queue.c
+    │
+    └─── ADT.h
+           ├─── banner.txt
+           ├─── users.txt
+           ├─── word.txt
+           ├─── bioweapon.c
+           ├─── bioweapon.h
+           ├─── dummylogin.c
+           ├─── dummylogin.h
+           ├─── help.c
+           ├─── help.h
+           ├─── kebutuhanlog.c
+           ├─── kebutuhanlog.h
+           ├─── load.c
+           ├─── load.h
+           ├─── loaddriver.c
+           ├─── login.c
+           ├─── login.h
+           ├─── logout.c
+           ├─── logout.h
+           ├─── main.c
+           ├─── queuebarang.c
+           ├─── queuebarang.h
+           ├─── quit.c
+           ├─── quit.h
+           ├─── register.c
+           ├─── register.h
+           ├─── save.c
+           ├─── save.h
+           ├─── start.c
+           ├─── start.h
+           ├─── startdriver.c
+           ├─── storedriver.c
+           ├─── storelist.c
+           ├─── storelist.h
+           ├─── storeremove.c
+           ├─── storeremove.h
+           ├─── storerequest.c
+           ├─── storerequest.h
+           ├─── storesupply.c
+           ├─── storesupply.h
+           ├─── str.c
+           ├─── str.h
+           ├─── work.c
+           ├─── work.h
+           ├─── workchallenge.c
+           ├─── workchallenge.h
+           └─── workdriver.c
  ```
 > To Be Updated
