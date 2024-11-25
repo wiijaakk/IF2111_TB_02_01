@@ -6,6 +6,7 @@ boolean EOP;
 boolean endOfFile;
 
 static FILE *pita;
+static FILE *filef;
 static int retval;
 
 void START() {
@@ -40,15 +41,17 @@ void StartReadFile(char* input){
     // Mesin siap dioperasikan. Pita disiapkan.
     // Input diambil dari file txt sesuai masukan pengguna
     // Pembacaan file dihentikan jika file input tidak tersedia atau isinya kosong
-    pita = fopen(input, "r");
+    endOfFile = false;
+    filef = fopen(input, "r");
     ADVFile();
 }
 
 void ADVFile() {
     // Pita dimajukan satu karakter.
     // Pembacaan file dihentikan jika telah mencapai karakter terakhir dalam file
-    retval = fscanf(pita, "%c", &currentChar);
+    retval = fscanf(filef, "%c", &currentChar);
     if (retval == EOF){
+        fclose(filef);
         endOfFile = true;
     }
 }
@@ -71,9 +74,9 @@ void ADVNewLine(){
 }
 
 boolean isFileValid(char* input){
-    FILE *file = fopen(input, "r");
-    if(file){
-        fclose(file);
+    FILE *ffile = fopen(input, "r");
+    if(ffile){
+        fclose(ffile);
         return true;
     }
     else{

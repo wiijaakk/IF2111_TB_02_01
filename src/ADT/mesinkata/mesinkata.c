@@ -15,6 +15,17 @@ void IgnoreBlanks()
     }
 }
 
+void IgnoreBlanksFile()
+{
+    /* Mengabaikan satu atau beberapa BLANK
+       I.S. : currentChar sembarang
+       F.S. : currentChar ≠ BLANK atau currentChar = NEWLINE */
+    while (currentChar == BLANK || currentChar == NEWLINE)
+    {
+        ADVFile();
+    }
+}
+
 void STARTWORD()
 {
     /* I.S. : currentChar sembarang
@@ -66,8 +77,10 @@ boolean isEndWord() {
 }
 
 void StartFileWord(char* input){
+    //printf("a");
     StartReadFile(input);
-    IgnoreBlanks();
+    //printf("b");
+    IgnoreBlanksFile();
     if (currentChar == BLANK || currentChar == NEWLINE)
     {
         EndWord = true;
@@ -81,7 +94,7 @@ void StartFileWord(char* input){
 
 void ADVFileWordSpace()
 {
-    IgnoreBlanks();
+    IgnoreBlanksFile();
     for(int i = 0; i < currentWord.Length; i++){
         currentWord.TabWord[i] = ' ';
     }
@@ -100,7 +113,7 @@ void ADVFileWordSpace()
 
 void ADVFileWordNewLine()
 {
-    IgnoreBlanks();
+    IgnoreBlanksFile();
     for(int i = 0; i < currentWord.Length; i++){
         currentWord.TabWord[i] = ' ';
     }
@@ -131,6 +144,7 @@ void CopyWordFileSpace()
             break;
     }
     currentWord.TabWord[currentWord.Length] = '\0';
+    //printf("==%s %d\n", currentWord.TabWord, currentWord.Length);
 }
 
 void CopyWordFileNewLine()
@@ -148,6 +162,7 @@ void CopyWordFileNewLine()
         }
     }
     currentWord.TabWord[currentWord.Length] = '\0';
+    //printf("==%s %d\n", currentWord.TabWord, currentWord.Length);
 }
 
 void StartWordNewLine(){
