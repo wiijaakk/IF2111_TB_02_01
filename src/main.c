@@ -3,7 +3,7 @@
 #include "ADT.h"
 
 #include "start.h"
-//#include "login.h"
+#include "loginwijak.h"
 #include "logout.h"
 #include "storelist.h"
 #include "storeremove.h"
@@ -24,6 +24,7 @@
 
 
 int main() {
+    char username[PANJANG_UNAME_MAX];
     ArrayDin arrayItems;
     TabInt arrayUsers;
     arrayItems = MakeArrayDin();
@@ -65,10 +66,8 @@ int main() {
         printf("%s %d\n", currentWord.TabWord, EndWord);
         if (compareWordToString(currentWord, "REGISTER")) {
             //register_User();
-            loginStatus = true;
         } else if (compareWordToString(currentWord, "LOGIN")) {
-            //login_User();
-            loginStatus = true;
+            Login_User(arrayUsers, &loginStatus, username);
         } else if (compareWordToString(currentWord, "HELP")) {
             help(sessionStatus, loginStatus);
         } else if (compareWordToString(currentWord, "QUIT")) {
