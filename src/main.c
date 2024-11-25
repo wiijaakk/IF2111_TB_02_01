@@ -62,7 +62,7 @@ int main() {
                 sessionStatus = true;
             } else if (compareWordToString(currentWord, "LOAD")) {
                 STARTWORD();
-                printf("%s\n", currentWord.TabWord);
+                //printf("%s\n", currentWord.TabWord);
                 load(currentWord, &arrayItems, &arrayUsers, &sessionStatus);
             } else if (compareWordToString(currentWord, "HELP")) {
                 help(sessionStatus, loginStatus);
@@ -121,7 +121,7 @@ int main() {
                 loginStatus=false;
             } else if (check_str(forsave, "SAVE")) {
                 removeFirstnString(CurrentFrasa.TabWord, 5);
-                printf("%s\n", CurrentFrasa.TabWord);
+                //printf("%s\n", CurrentFrasa.TabWord);
                 save(CurrentFrasa.TabWord, &arrayItems, &arrayUsers);
             } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
                 quit(filename, &arrayItems, &arrayUsers);

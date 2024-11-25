@@ -193,7 +193,7 @@ void wordl3(TabInt *arruser, int useridx){
 
 void workChallenge(TabInt *arruser, int useridx){
     chal c[chal_count] = {{chal1}, {chal2}};
-    printf("Daftar pekerjaan:\n");
+    printf("Daftar Challenge:\n");
     for (int i = 0; i < chal_count; i++)
     {
         printf("    %d. %s (biaya=%d)\n", i+1, c[i].name, c[i].biaya);
