@@ -9,14 +9,17 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers) {
     boolean exists;
 
     char filenameStr[50];
+    char fullPath[200];
     for (int i = 0; i < filename.Length; i++) {
         filenameStr[i] = filename.TabWord[i];
     }
     filenameStr[filename.Length] = '\0';
+    snprintf(fullPath, sizeof(fullPath), "%s%s", SAVE_FOLDER, filenameStr); // Menggabungkan folder (../save/) dengan filename input user
 
-    if (isFileValid(filenameStr)) {   
+
+    if (isFileValid(fullPath)) {   
         // Membuka file
-        StartFileWord(filenameStr);
+        StartFileWord(fullPath);
 
         // Membaca total barang yang tersimpan dalam file
         total = wordToInt(currentWord);

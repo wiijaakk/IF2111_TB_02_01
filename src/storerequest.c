@@ -25,9 +25,9 @@ boolean cekstring(char *a, char *b, int panjang_a, int panjang_b){
 
 }
 
-void storerequest(ArrayDin barang, Queuebarang * request){
+void storerequest(ArrayDin barang, Queuebarang * request){ // Fungsi untuk memasukkan sebuah item/barang ke queue/antrian request
     printf("Nama barang yang diminta: ");
-    STARTFRASA();
+    STARTFRASA(); // Meminta input user
     if(IsEmpty(barang)){
         if(isEmptybarang(*request)){
             Barang baru;
@@ -45,13 +45,13 @@ void storerequest(ArrayDin barang, Queuebarang * request){
                 while(wait.name[idx]!='\0'){
                     idx++;
                 }
-                if(cekstring(wait.name, CurrentFrasa.TabWord, idx, CurrentFrasa.Length)){
+                if(cekstring(wait.name, CurrentFrasa.TabWord, idx, CurrentFrasa.Length)){ // Untuk kasus ketika barang sudah ada di antrian
                     sama = true;
                     printf("Barang dengan nama yang sama sudah ada di antrian!\n");
                     break;
                 }
             }
-            if (sama == false){
+            if (sama == false){ // Jika barang belum ada pada antrian
                 Barang baru;
                 copyString(baru.name, CurrentFrasa.TabWord);
                 baru.price = 0;
@@ -69,7 +69,7 @@ void storerequest(ArrayDin barang, Queuebarang * request){
             while(curr.name[idx]!='\0'){
                 idx++;
             }
-            if(cekstring(curr.name,CurrentFrasa.TabWord, idx, CurrentFrasa.Length)){
+            if(cekstring(curr.name,CurrentFrasa.TabWord, idx, CurrentFrasa.Length)){ // Untuk kasus ketika barang sudah ada pada toko/store
                 same = true;
                 printf("Barang dengan nama yang sama sudah ada di toko!\n");
                 break;

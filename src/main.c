@@ -31,8 +31,8 @@ int main() {
     MakeEmpty(&arrayUsers);
     Queuebarang barang;
     CreateQueuebarang(&barang);
-    boolean sessionStatus = true;
-    boolean loginStatus = true;
+    boolean sessionStatus = false;
+    boolean loginStatus = false;
     char filename[] = "config.txt";
     
     startStore(&arrayItems, &arrayUsers);
@@ -47,7 +47,6 @@ int main() {
             STARTWORD();
             printf("%s\n", currentWord.TabWord);
             load(currentWord, &arrayItems, &arrayUsers);
-            sessionStatus = true;
         } else if (compareWordToString(currentWord, "HELP")) {
             help(sessionStatus, loginStatus);
         } else if (compareWordToString(currentWord, "QUIT")) {
@@ -62,15 +61,15 @@ int main() {
     printf("==1\n");
     while (sessionStatus && !loginStatus) {
         printf("Masukkan command: ");
-        STARTWORD();
-        printf("%s %d\n", currentWord.TabWord, EndWord);
-        if (compareWordToString(currentWord, "REGISTER")) {
+        STARTFRASA();
+        printf("%s %d\n", CurrentFrasa.TabWord, EndWord);
+        if (compareFrasaToString(CurrentFrasa, "REGISTER")) {
             //register_User();
-        } else if (compareWordToString(currentWord, "LOGIN")) {
+        } else if (compareFrasaToString(CurrentFrasa, "LOGIN")) {
             Login_User(arrayUsers, &loginStatus, username);
-        } else if (compareWordToString(currentWord, "HELP")) {
+        } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
             help(sessionStatus, loginStatus);
-        } else if (compareWordToString(currentWord, "QUIT")) {
+        } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
             printf("Program berhasil dihentikan\n");
             break;
         } else {

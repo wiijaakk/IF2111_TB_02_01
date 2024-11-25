@@ -1,8 +1,8 @@
 #ifndef LOGINWIJAK_H
 #define LOGINWIJAK_H
 
-#include "mesinkarakter.h"
-#include "mesinkata.h"
+// #include "mesinkarakter.h"
+// #include "mesinkata.h"
 #include "ADT.h"
 
 #define PANJANG_UNAME_MAX 50

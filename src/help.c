@@ -4,7 +4,7 @@ boolean sessionStatus = true;
 boolean loginStatus = true;
 
 void help(boolean sessionStatus, boolean loginStatus) {
-    if (sessionStatus == false) {
+    if (sessionStatus == false) { // Menampilkan menu untuk kondisi ketika program baru saja dimulai
         printf("================= [Selamat datang di PURRMART] ==================\n");
         printf("| Berikut adalah Command yang dapat Anda lakukan:\t\t|\n");
         printf("|    1. START\t\t\t\t\t\t\t|\n");
@@ -14,7 +14,7 @@ void help(boolean sessionStatus, boolean loginStatus) {
         printf("|    3. QUIT\t\t\t\t\t\t\t|\n");
         printf("|       Untuk keluar dari program\t\t\t\t|\n");
         printf("=================================================================\n");
-    } else if (sessionStatus == true && loginStatus == false) {
+    } else if (sessionStatus == true && loginStatus == false) { // Menampilkan menu ketika user sudah me-load file dan memulai sesi
         printf("================== [Login Menu Help PURRMART] ===================\n");
         printf("| Berikut adalah Command yang dapat Anda lakukan:\t\t|\n");
         printf("|    1. REGISTER\t\t\t\t\t\t|\n");
@@ -24,7 +24,7 @@ void help(boolean sessionStatus, boolean loginStatus) {
         printf("|    3. QUIT\t\t\t\t\t\t\t|\n");
         printf("|       Untuk keluar dari program\t\t\t\t|\n");
         printf("=================================================================\n");
-    } else if (sessionStatus == true && loginStatus == true) {
+    } else if (sessionStatus == true && loginStatus == true) { // Menampilkan menu ketika user sudah melakukan login/register
         printf("================== [Main Menu Help PURRMART] ====================\n");
         printf("| Berikut adalah Command yang dapat Anda lakukan:\t\t|\n");
         printf("|    1. WORK\t\t\t\t\t\t\t|\n");

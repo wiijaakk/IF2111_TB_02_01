@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "storeremove.h"
 
-void storeremove(ArrayDin * barang){
-    printf("Nama barang yang akan dihapus: ");
+void storeremove(ArrayDin * barang){ // Fungsi untuk menghapus sebuah item/barang dari toko/store
+    printf("Nama barang yang akan dihapus: "); // Meminta input user
     STARTFRASA();
     int panjang = barang->Neff;
     boolean sama = false;
@@ -19,7 +19,7 @@ void storeremove(ArrayDin * barang){
             break;
         }
     }
-    if (sama){
+    if (sama){ // Jika barang ada, maka akan dihapus
         int idx = 0;
         while(CurrentFrasa.TabWord[idx]!='\0'){
             printf("%c", CurrentFrasa.TabWord[idx]);
@@ -27,7 +27,7 @@ void storeremove(ArrayDin * barang){
         }
         printf(" telah berhasil dihapus.\n");
     }
-    else{
+    else{ // Jika barang tidak ada pada toko
         printf("Toko tidak menjual ");
         int idx = 0;
         while(idx<CurrentFrasa.Length){
