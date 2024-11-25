@@ -12,6 +12,7 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
 			  ../src/queuebarang.c \
 			  ../src/logout.c \
 			  ../src/login.c \
+			  ../src/loginwijak.c \
 			  ../src/quit.c \
 			  ../src/register.c \
 			  ../src/save.c \
