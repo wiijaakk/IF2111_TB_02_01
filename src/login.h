@@ -1,19 +1,15 @@
-#ifndef REGISTER_H
-#define REGISTER_H
+#ifndef LOGIN_H
+#define LOGIN_H
+
+// #include "mesinkarakter.h"
+// #include "mesinkata.h"
+#include "ADT.h"
 
 #define PANJANG_UNAME_MAX 50
 #define PANJANG_PASS_MAX 50
-#define FILE_NAME "users.txt"
 
-// Fungsi buat login pengguna
-void login_User();
+boolean apavalid(User users, char username[], char password[]);
 
-// Fungsi buat ngecek validasi data yang dimasukkan sudah sesuai atau beloom
-int ngecek_login(const char *username, const char *password);
+void Login_User(TabInt arrayUsers, boolean * loginStatus, char username_sekarang[]);
 
-// Fungsi buat memperbarui status pengguna dalam file
-// Status login = ON
-// Status ga login = OFF
-void update_status(const char *username, const char *status_baru);
-
-#endif 
+#endif
