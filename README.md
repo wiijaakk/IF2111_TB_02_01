@@ -67,31 +67,38 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
     ├─── ADT
     │      ├─── array
     │      │       ├─── array.h
-    │      │       └─── array.c
+    │      │       ├─── array.c    
+    │      │       └─── arraydriver.c
     │      │
     │      ├─── arraydin
     │      │       ├─── arraydin.h
-    │      │       └─── arraydin.c
+    │      │       ├─── arraydin.c
+    │      │       └─── arraydindriver.c
     │      │
     │      ├─── mesinfrasa
     │      │       ├─── mesinfrasa.h
-    │      │       └─── mesinfrasa.c
+    │      │       ├─── mesinfrasa.c
+    │      │       └─── mesinfrasadriver.c
     │      │
     │      ├─── mesinkarakter
     │      │       ├─── mesinkarakter.h
-    │      │       └─── mesinkarakter.c
+    │      │       ├─── mesinkarakter.c
+    │      │       └─── mesinkarakterdriver.c
     │      │
     │      ├─── mesinkata
     │      │       ├─── mesinkata.h
-    │      │       └─── mesinkata.c
+    │      │       ├─── mesinkata.c
+    │      │       └─── mesinkatadriver.c
     │      │
     │      ├─── queue
     │      │       ├─── queue.h
-    │      │       └─── queue.c
+    │      │       ├─── queue.c
+    │      │       └─── queuedriver.c
     │      │
     │      └─── queuebarang
     │              ├─── queuebarang.h
-    │              └─── queuebarang.c
+    │              ├─── queuebarang.c
+    │              └─── queuebarangdriver.c
     │
     └─── ADT.h
            ├─── banner.txt
