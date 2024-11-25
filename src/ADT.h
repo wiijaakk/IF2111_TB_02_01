@@ -7,6 +7,7 @@
 #include "ADT/array/array.h"
 #include "ADT/arraydin/arraydin.h"
 #include "ADT/queue/queue.h"
+#include "ADT/queuebarang/queuebarang.h"
 #include "ADT/mesinfrasa/mesinfrasa.h"
 
 #endif

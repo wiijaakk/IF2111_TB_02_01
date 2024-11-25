@@ -2,7 +2,6 @@
 #define STOREREQUEST_H
 
 #include "boolean.h"
-#include "queuebarang.h"
 #include "ADT.h"
 
 void copyString(char *dest, const char *src);

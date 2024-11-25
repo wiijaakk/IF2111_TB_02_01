@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "boolean.h"
 #include "queuebarang.h"
 
 void CreateQueuebarang(Queuebarang *q){

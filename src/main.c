@@ -13,7 +13,6 @@
 #include "save.h"
 #include "register.h"
 #include "quit.h"
-#include "queuebarang.h"
 #include "load.h"
 #include "kebutuhanlog.h"
 #include "help.h"

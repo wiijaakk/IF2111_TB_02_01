@@ -5,11 +5,11 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
 			  ../src/ADT/array/array.c \
 			  ../src/ADT/arraydin/arraydin.c \
 			  ../src/ADT/queue/queue.c \
+			  ../src/ADT/queuebarang/queuebarang.c \
 			  ../src/bioweapon.c \
 			  ../src/help.c \
 			  ../src/kebutuhanlog.c \
 			  ../src/load.c \
-			  ../src/queuebarang.c \
 			  ../src/logout.c \
 			  ../src/login.c \
 			  ../src/quit.c \
