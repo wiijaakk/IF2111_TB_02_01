@@ -161,7 +161,7 @@ void torna(char * curr, int panjang){
     }
 }
 
-void bioweapon(Queuebarang * request){
+void bioweapon(Queuebarang * request, ArrayDin arrayItems){
     printf("Masukan nama senjata biologis: ");
     STARTFRASA();
     Barang senjata;
@@ -171,6 +171,42 @@ void bioweapon(Queuebarang * request){
         i++;
     }
     senjata.name[i] = '\0';
+    boolean ada = false;
+    for(int j =0; j<arrayItems.Neff;j++){
+        int idx = 0;
+        while(arrayItems.A[j].name[idx]!='\0'){
+            idx++;
+        }
+        ada = cekstring(senjata.name, arrayItems.A[j].name, i, idx);
+        if(ada){
+            break;
+        }
+    }
+    if(!ada){
+        Queuebarang sementara;
+        CreateQueuebarang(&sementara);
+        sementara = *request;
+        while(!isEmptybarang(sementara)){
+            Barang tampung;
+            dequeuebarang(&sementara, &tampung);
+            int idx = 0;
+            while(tampung.name[idx]!='\0'){
+                idx++;
+            }
+            ada = cekstring(tampung.name, senjata.name, idx, i);
+            if(ada){
+                break;
+            }
+        }
+    }
+    else{
+        printf("Barang dengan nama yang sama sudah ada di toko!\n");
+        return;
+    }
+    if(ada){
+        printf("Barang dengan nama yang sama sudah ada di antrian!\n");
+        return;
+    }
     printf("Masukan sekuens DNA: ");
     STARTFRASA();
     char tampung[60];
