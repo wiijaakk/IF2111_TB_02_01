@@ -10,10 +10,10 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
 			  ../src/kebutuhanlog.c \
 			  ../src/load.c \
 			  ../src/queuebarang.c \
-			  ../src/logoutwijak.c \
-			  ../src/loginwijak.c \
+			  ../src/logout.c \
+			  ../src/login.c \
 			  ../src/quit.c \
-			  ../src/registerwijak.c \
+			  ../src/register.c \
 			  ../src/save.c \
 			  ../src/start.c \
 			  ../src/storelist.c \
