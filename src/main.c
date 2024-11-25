@@ -35,6 +35,22 @@ int main() {
     boolean loginStatus = false;
     char filename[] = "config.txt";
     
+    printf("\n");
+    printf("                   -----------  W  E  L  C  O  M  E     T  O  ------------\n");
+    printf("     __________                              _____       ____\n");
+    printf("    /#|   ___  \\                            /$$|  \\     /    |\n");
+    printf("   |##|  /   \\  |                           |$$|   \\   /     |\n");
+    printf("   |##|  \\___/  |                           |$$|    \\_/      |                     __\n");
+    printf("   |##|        / ___   __  __ ____  __ ____ |$$|  \\          | ______  __ ____  __|**|__\n");
+    printf("   |##|   ----  |**|  |  |(# |  __)(# |  __)|$$|   \\___/|    ||___ **|(# |  __)(__ ***__)\n");
+    printf("   |##|  |      |**|  |  ||#  .\"   |#  .\"   |$$|   |    |    |.---' *||#  .\"      | *| \n");
+    printf("   |##|  |      |* '--'  ||# |     |# |     |$$|   |    |    || |##| ||# |        | *|\n");
+    printf("   |##|__|      \".______.\"|__|     |__|     |$$|___|    |____|\".____.\"|__|        |__|\n");
+    printf("\n");
+    printf("                      y o u r   w a r   w e a p o n s   s o l u t i o n\n");
+    printf("*******************************************************************************************\n");
+    printf("                     s e l e c t  << START >>  o r  << LOAD [file.txt] >>\n");
+
     // startStore(&arrayItems, &arrayUsers);
     while (!sessionStatus && !loginStatus) {
         printf("Masukkan command: ");
@@ -86,9 +102,9 @@ int main() {
         toupperstr(forsave);
         printf("%s\n", CurrentFrasa.TabWord);
         if (compareFrasaToString(CurrentFrasa, "WORK")) {
-            work_(&arrayUsers, username_idx);
+            work_();
         } else if (compareFrasaToString(CurrentFrasa, "WORK CHALLENGE")) {
-            workChallenge(&arrayUsers, username_idx);
+            workChallenge();
         } else if (compareFrasaToString(CurrentFrasa, "STORE LIST")) {
             storelist(arrayItems);
         } else if (compareFrasaToString(CurrentFrasa, "STORE REQUEST")) {
