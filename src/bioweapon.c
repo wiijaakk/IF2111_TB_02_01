@@ -170,6 +170,7 @@ void bioweapon(Queuebarang * request){
         senjata.name[i] = CurrentFrasa.TabWord[i];
         i++;
     }
+    senjata.name[i] = '\0';
     printf("Masukan sekuens DNA: ");
     STARTFRASA();
     char tampung[60];
