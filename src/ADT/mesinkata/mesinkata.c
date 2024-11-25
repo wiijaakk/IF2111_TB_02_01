@@ -57,6 +57,7 @@ void CopyWord()
         ADV();
         i++;
     }
+    currentWord.TabWord[i] = '\0';
     currentWord.Length = i;
 }
 

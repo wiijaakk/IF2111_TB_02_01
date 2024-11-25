@@ -81,6 +81,9 @@ int main() {
     while (sessionStatus && loginStatus && !compareFrasaToString(CurrentFrasa, "QUIT")) {
         printf("Masukkan command: ");
         STARTFRASA();
+        char forsave[50];
+        copyStr(CurrentFrasa.TabWord, forsave);
+        toupperstr(forsave);
         printf("%s\n", CurrentFrasa.TabWord);
         if (compareFrasaToString(CurrentFrasa, "WORK")) {
             work_();
@@ -98,8 +101,10 @@ int main() {
             storeremove(&arrayItems);
         } else if (compareFrasaToString(CurrentFrasa, "LOGOUT")) {
             logout_User();
-        } else if (compareFrasaToString(CurrentFrasa, "SAVE")) {
-            save(filename, &arrayItems, &arrayUsers);
+        } else if (check_str(forsave, "SAVE")) {
+            removeFirstnString(CurrentFrasa.TabWord, 5);
+            printf("%s\n", CurrentFrasa.TabWord);
+            save(CurrentFrasa.TabWord, &arrayItems, &arrayUsers);
         } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
             quit(filename, &arrayItems, &arrayUsers);
         } else if (compareFrasaToString(CurrentFrasa, "HELP")) {

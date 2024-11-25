@@ -9,4 +9,6 @@ int check_str(char str1[], char str2[]);
 
 void toupperstr(char str[]);
 
+void removeFirstnString(char str[], int offset);
+
 #endif

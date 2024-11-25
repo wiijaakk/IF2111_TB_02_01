@@ -46,3 +46,13 @@ void toupperstr(char str[]) {
         i++;
     }
 }
+
+void removeFirstnString(char str[], int offset){
+    int i = 0;
+    while (str[i+offset] != '\0')
+    {
+        str[i] = str[i+offset];
+        i++;
+    }
+    str[i] = '\0';
+}
