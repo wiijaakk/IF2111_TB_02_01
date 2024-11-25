@@ -9,7 +9,7 @@ void help(boolean sessionStatus, boolean loginStatus) {
         printf("| Berikut adalah Command yang dapat Anda lakukan:\t\t|\n");
         printf("|    1. START\t\t\t\t\t\t\t|\n");
         printf("|       Untuk masuk sesi baru\t\t\t\t\t|\n");
-        printf("|    2. LOAD\t\t\t\t\t\t\t|\n");
+        printf("|    2. LOAD <filename.txt>\t\t\t\t\t|\n");
         printf("|       Untuk memulai sesi berdasarkan suatu file konfigurasi\t|\n");
         printf("|    3. QUIT\t\t\t\t\t\t\t|\n");
         printf("|       Untuk keluar dari program\t\t\t\t|\n");
@@ -43,7 +43,7 @@ void help(boolean sessionStatus, boolean loginStatus) {
         printf("|       Untuk menghapus barang\t\t\t\t\t|\n");
         printf("|    8. LOGOUT\t\t\t\t\t\t\t|\n");
         printf("|       Untuk keluar dari sesi\t\t\t\t\t|\n");
-        printf("|    9. SAVE\t\t\t\t\t\t\t|\n");
+        printf("|    9. SAVE <filename.txt>\t\t\t\t\t|\n");
         printf("|       Untuk menyimpan state ke dalam file\t\t\t|\n");
         printf("|    10. QUIT\t\t\t\t\t\t\t|\n");
         printf("|       Untuk keluar dari program\t\t\t\t|\n");
