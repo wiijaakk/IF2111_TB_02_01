@@ -56,7 +56,7 @@ int main() {
         while (!sessionStatus && !loginStatus) {
             printf("Masukkan command: ");
             STARTWORD();
-            printf("%s %d\n", currentWord.TabWord, EndWord);
+            //printf("%s %d\n", currentWord.TabWord, EndWord);
             if (compareWordToString(currentWord, "START")) {
                 startStore(&arrayItems, &arrayUsers);
                 sessionStatus = true;
@@ -75,11 +75,11 @@ int main() {
         }
 
 
-        printf("==1\n");
+        //printf("==1\n");
         while (sessionStatus && !loginStatus) {
             printf("Masukkan command: ");
             STARTFRASA();
-            printf("%s %d\n", CurrentFrasa.TabWord, EndWord);
+            //printf("%s %d\n", CurrentFrasa.TabWord, EndWord);
             if (compareFrasaToString(CurrentFrasa, "REGISTER")) {
                 Register_User(&arrayUsers);
             } else if (compareFrasaToString(CurrentFrasa, "LOGIN")) {
@@ -94,14 +94,14 @@ int main() {
             }
         }
 
-        printf("==2\n");
+        //printf("==2\n");
         while (sessionStatus && loginStatus && !compareFrasaToString(CurrentFrasa, "QUIT")) {
             printf("Masukkan command: ");
             STARTFRASA();
             char forsave[50];
             copyStr(CurrentFrasa.TabWord, forsave);
             toupperstr(forsave);
-            printf("%s\n", CurrentFrasa.TabWord);
+            //printf("%s\n", CurrentFrasa.TabWord);
             if (compareFrasaToString(CurrentFrasa, "WORK")) {
                 work_(&arrayUsers, username_idx);
             } else if (compareFrasaToString(CurrentFrasa, "WORK CHALLENGE")) {
