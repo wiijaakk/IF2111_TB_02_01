@@ -23,12 +23,13 @@ void work_(){
     char input[50];
     STARTWORD();
     copyStr(currentWord.TabWord, input);
+    toupperstr(input);
 
     int selected = -1;
     int i = 0;
     while (i < work_count && selected == -1)
     {
-        if (check_str(input, w[i].name))
+        if (check_strV2(input, w[i].name))
         {
             selected = i;
         }

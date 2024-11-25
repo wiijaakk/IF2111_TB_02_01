@@ -26,7 +26,7 @@ int isWord(char wordlist[WordCount__][6], char word[6], int count){
     int i = 0;
     while (i < count && !exist)
     {
-        if (check_str(wordlist[i], word))
+        if (check_strV2(wordlist[i], word))
         {
             exist = 1;
         }
@@ -104,7 +104,7 @@ void _printPast(char past[6][11], int count){
 
 void _printDash(int count){
     int i = 0;
-    while (i < 5 - count)
+    while (i < 6 - count)
     {
         printf("_ _ _ _ _\n");
         i++;
@@ -197,12 +197,13 @@ void workChallenge(){
     char input[50];
     STARTWORD();
     copyStr(currentWord.TabWord, input);
+    toupperstr(input);
 
     int selected = -1;
     int i = 0;
     while (i < chal_count && selected == -1)
     {
-        if (check_str(input, c[i].name))
+        if (check_strV2(input, c[i].name))
         {
             selected = i;
         }
