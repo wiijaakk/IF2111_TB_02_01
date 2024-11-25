@@ -165,8 +165,10 @@ void bioweapon(Queuebarang * request){
     printf("Masukan nama senjata biologis: ");
     STARTFRASA();
     Barang senjata;
-    for(int i = 0; i<CurrentFrasa.Length; i++){
+    int i = 0;
+    while(CurrentFrasa.TabWord[i]!='\0'){
         senjata.name[i] = CurrentFrasa.TabWord[i];
+        i++;
     }
     printf("Masukan sekuens DNA: ");
     STARTFRASA();
