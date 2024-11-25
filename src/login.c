@@ -46,7 +46,6 @@ void Login_User(TabInt arrayUsers, boolean * loginStatus, char username_sekarang
     else{
         for(int i = 0; i<arrayUsers.Neff; i++){
             int j = 0;
-            printf("\n");
             *loginStatus = apavalid(arrayUsers.TI[i], username, password);
             if(*loginStatus){
                 int idx = 0;
