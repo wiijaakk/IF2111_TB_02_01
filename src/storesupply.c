@@ -43,6 +43,9 @@ void storesupply(ArrayDin * barang, Queuebarang * request){ // Fungsi untuk mena
                 printf("%c", depan.name[idx]);
                 idx++;
             }
+            Barang buang;
+            dequeuebarang(request, &buang);
+            enqueuebarang(request, buang);
             printf(" dikembalikan ke antrian.\n");
         }
         else if (cekstring(currentWord.TabWord, "Tolak", currentWord.Length, 5)){ // Jika input user "Tolak", item akan dihapus dari queue request
