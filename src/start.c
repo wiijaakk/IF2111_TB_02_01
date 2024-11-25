@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "start.h"
 
-void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) {
+void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk command START
     int total = 0; // representasi jumlah barang atau user yang tercatat
     Barang currentBarang; // menyimpan barang yg sedang diproses
     User currentUser; // menyimpan user yg sedang diproses
