@@ -26,7 +26,7 @@ int isWord(char wordlist[WordCount__][6], char word[6], int count){
     int i = 0;
     while (i < count && !exist)
     {
-        if (check_str(wordlist[i], word))
+        if (check_strV2(wordlist[i], word))
         {
             exist = 1;
         }
@@ -202,7 +202,7 @@ void workChallenge(){
     int i = 0;
     while (i < chal_count && selected == -1)
     {
-        if (check_str(input, c[i].name))
+        if (check_strV2(input, c[i].name))
         {
             selected = i;
         }
