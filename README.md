@@ -55,7 +55,13 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
 ├── .gitginore
 ├── README.md
 ├── bin
-│   └─── Makefile     
+│   └─── Makefile  
+├── docs
+│   ├─── IF2111_Form Asistensi Tugas Besar 01.pdf			    
+│   ├─── IF2111_TB_02_01.pdf		     
+│   └─── Spesifikasi Tugas Besar 1 IF2111 2024_2025.pdf				     
+│                    
+│    
 ├── save
 │   ├─── config.txt 			    
 │   ├─── dummyfile.txt 			     
