@@ -8,8 +8,8 @@
 #define PANJANG_UNAME_MAX 50
 #define PANJANG_PASS_MAX 50
 
-boolean apavalid(User users, char * username, char * password);
+boolean apavalid(User users, char username[], char password[]);
 
-void Login_User(TabInt arrayUsers, boolean * loginStatus, char * username_sekarang);
+void Login_User(TabInt arrayUsers, boolean * loginStatus, char username_sekarang[]);
 
 #endif

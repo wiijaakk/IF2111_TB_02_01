@@ -4,14 +4,14 @@
 
 #include "start.h"
 #include "loginwijak.h"
-#include "logout.h"
+#include "logoutwijak.h"
 #include "storelist.h"
 #include "storeremove.h"
 #include "storerequest.h"
 #include "storesupply.h"
 #include "str.h"
 #include "save.h"
-#include "register.h"
+#include "registerwijak.h"
 #include "quit.h"
 #include "queuebarang.h"
 #include "load.h"
@@ -35,7 +35,7 @@ int main() {
     boolean loginStatus = false;
     char filename[] = "config.txt";
     
-    startStore(&arrayItems, &arrayUsers);
+    // startStore(&arrayItems, &arrayUsers);
     while (!sessionStatus && !loginStatus) {
         printf("Masukkan command: ");
         STARTWORD();
@@ -46,7 +46,7 @@ int main() {
         } else if (compareWordToString(currentWord, "LOAD")) {
             STARTWORD();
             printf("%s\n", currentWord.TabWord);
-            load(currentWord, &arrayItems, &arrayUsers);
+            load(currentWord, &arrayItems, &arrayUsers, &sessionStatus);
         } else if (compareWordToString(currentWord, "HELP")) {
             help(sessionStatus, loginStatus);
         } else if (compareWordToString(currentWord, "QUIT")) {
@@ -64,7 +64,7 @@ int main() {
         STARTFRASA();
         printf("%s %d\n", CurrentFrasa.TabWord, EndWord);
         if (compareFrasaToString(CurrentFrasa, "REGISTER")) {
-            //register_User();
+            Register_User(&arrayUsers);
         } else if (compareFrasaToString(CurrentFrasa, "LOGIN")) {
             Login_User(arrayUsers, &loginStatus, username);
         } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
@@ -100,7 +100,8 @@ int main() {
         } else if (compareFrasaToString(CurrentFrasa, "STORE REMOVE")) {
             storeremove(&arrayItems);
         } else if (compareFrasaToString(CurrentFrasa, "LOGOUT")) {
-            logout_User();
+            logout_User(username);
+            loginStatus=false;
         } else if (check_str(forsave, "SAVE")) {
             removeFirstnString(CurrentFrasa.TabWord, 5);
             printf("%s\n", CurrentFrasa.TabWord);
