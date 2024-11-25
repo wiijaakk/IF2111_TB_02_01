@@ -10,6 +10,6 @@
 
 boolean apavalid(User users, char username[], char password[]);
 
-void Login_User(TabInt arrayUsers, boolean * loginStatus, char username_sekarang[]);
+void Login_User(TabInt arrayUsers, boolean * loginStatus, char username_sekarang[], int * username_idx);
 
 #endif

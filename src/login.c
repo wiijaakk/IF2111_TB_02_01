@@ -19,7 +19,7 @@ boolean apavalid(User users, char username[], char password[]){
     return true;
 }
 
-void Login_User(TabInt arrayUsers, boolean * loginStatus, char username_sekarang[]){
+void Login_User(TabInt arrayUsers, boolean * loginStatus, char username_sekarang[], int * username_idx){
     char username[PANJANG_UNAME_MAX];
     char password[PANJANG_PASS_MAX];
     printf("Username: ");
@@ -41,6 +41,7 @@ void Login_User(TabInt arrayUsers, boolean * loginStatus, char username_sekarang
             printf("%c", username_sekarang[idx]);
             idx++;
         }
+        printf(". Silakan LOGOUT terlebih dahulu.\n");
     }
     else{
         for(int i = 0; i<arrayUsers.Neff; i++){
@@ -53,6 +54,7 @@ void Login_User(TabInt arrayUsers, boolean * loginStatus, char username_sekarang
                     username_sekarang[idx] = username[idx];
                     idx++;
                 }
+                *username_idx = i;
                 break;
             }
         }

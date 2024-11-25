@@ -25,6 +25,7 @@
 
 int main() {
     char username[PANJANG_UNAME_MAX];
+    int username_idx = -1;
     ArrayDin arrayItems;
     TabInt arrayUsers;
     arrayItems = MakeArrayDin();
@@ -66,7 +67,7 @@ int main() {
         if (compareFrasaToString(CurrentFrasa, "REGISTER")) {
             Register_User(&arrayUsers);
         } else if (compareFrasaToString(CurrentFrasa, "LOGIN")) {
-            Login_User(arrayUsers, &loginStatus, username);
+            Login_User(arrayUsers, &loginStatus, username, &username_idx);
         } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
             help(sessionStatus, loginStatus);
         } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
@@ -100,7 +101,7 @@ int main() {
         } else if (compareFrasaToString(CurrentFrasa, "STORE REMOVE")) {
             storeremove(&arrayItems);
         } else if (compareFrasaToString(CurrentFrasa, "LOGOUT")) {
-            logout_User(username);
+            logout_User(username, &username_idx);
             loginStatus=false;
         } else if (check_str(forsave, "SAVE")) {
             removeFirstnString(CurrentFrasa.TabWord, 5);
@@ -108,6 +109,8 @@ int main() {
             save(CurrentFrasa.TabWord, &arrayItems, &arrayUsers);
         } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
             quit(filename, &arrayItems, &arrayUsers);
+        } else if (compareFrasaToString(CurrentFrasa, "LOGIN")){
+            Login_User(arrayUsers, &loginStatus, username, &username_idx);
         } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
             help(sessionStatus, loginStatus);
         } else {
