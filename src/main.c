@@ -49,7 +49,7 @@ int main() {
     printf("\n");
     printf("                      y o u r   w a r   w e a p o n s   s o l u t i o n\n");
     printf("*******************************************************************************************\n");
-    printf("                     s e l e c t  << START >>  o r  << LOAD [file.txt] >>\n");
+    printf("             s e l e c t  << START >>  o r  << LOAD [file.txt] >>  o r  << HELP >>\n");
     while (!compareFrasaToString(CurrentFrasa, "QUIT")) // Program akan berjalan terus hingga user memasukkan input QUIT
     {
         // startStore(&arrayItems, &arrayUsers);
