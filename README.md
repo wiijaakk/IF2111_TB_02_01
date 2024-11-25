@@ -23,29 +23,9 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
 ## Cara Kompilasi Program
 > 1. **Instalasi Tool Make**
 >
->    Make adalah tool command line interface untuk melakukan build executable code otomatis. Terdapat beberapa cara untuk melakukan instalasi, yakni:
->    1) **Chocolatey**
->       1. Buka command prompt
->       2. Install Chocolatey dengan menjalankan :
->
->          ```powershell
->          Set-ExecutionPolicy Bypass -Scope Process -Force;[System.Net.ServicePoint]::SecurityProtocol = [System.Net.ServicePoint]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
->          ```
->       3. Install Make dengan menjalankan :
->
->          ```powershell
->          choco install make
->          ```
->    2) **Windows Subsystem for Linux (WSL)**
->       1. Buka command prompt
->       2. Jalankan :
->
->          ```powershell
->          wsl -- install
->          ```
->    3) **MinGW**
->       1. Lakukan instalasi MinGW melalui https://mingw-w64.org/
->       2. Tambahkan path ke bin MinGW ke PATH sistem komputer Anda
+>    Make adalah tool command line interface untuk melakukan build executable code otomatis. Terdapat beberapa cara untuk melakukan instalasi, dengan cara :
+> 1. **Lakukan instalasi MinGW melalui** https://mingw-w64.org/
+> 2. **Tambahkan path ke bin MinGW ke PATH sistem komputer Anda**
 > 2. **Lakukan git clone atau unduh kode melalui zip**
 > 3. **Masuk ke directory bin**
 > 4. **Jalankan :**
