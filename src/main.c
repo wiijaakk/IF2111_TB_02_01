@@ -111,7 +111,7 @@ int main() {
             } else if (compareFrasaToString(CurrentFrasa, "STORE REQUEST")) {
                 storerequest(arrayItems, &barang);
             } else if (compareFrasaToString(CurrentFrasa, "STORE REQUEST BIOWEAPON")) {
-                bioweapon(&barang);
+                bioweapon(&barang, arrayItems);
             } else if (compareFrasaToString(CurrentFrasa, "STORE SUPPLY")) {
                 storesupply(&arrayItems, &barang);
             } else if (compareFrasaToString(CurrentFrasa, "STORE REMOVE")) {
