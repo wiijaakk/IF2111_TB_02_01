@@ -13,7 +13,7 @@ void work_timer(int second){
 
 void work_(TabInt *arruser, int useridx){
     work w[work_count] = {{work1}, {work2}, {work3}, {work4}, {work5}};
-    printf("Daftar pekerjaan:\n");
+    printf("Daftar Pekerjaan:\n");
     for (int i = 0; i < work_count; i++)
     {
         printf("    %d. %s (pendapatan=%d, durasi=%d)\n", i+1, w[i].name, w[i].salary, w[i].duration);
