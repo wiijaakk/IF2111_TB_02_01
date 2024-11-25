@@ -11,4 +11,4 @@
 
                       y o u r   w a r   w e a p o n s   s o l u t i o n
 *******************************************************************************************
-                     s e l e c t  << START >>  o r  << LOAD [file.txt] >>
+            s e l e c t  << START >>  o r  << LOAD [file.txt] >>  or  << HELP >>

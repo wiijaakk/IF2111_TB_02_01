@@ -119,8 +119,6 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
            ├─── word.txt
            ├─── bioweapon.c
            ├─── bioweapon.h
-           ├─── dummylogin.c
-           ├─── dummylogin.h
            ├─── help.c
            ├─── help.h
            ├─── kebutuhanlog.c
