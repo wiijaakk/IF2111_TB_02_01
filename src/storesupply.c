@@ -20,6 +20,16 @@ void storesupply(ArrayDin * barang, Queuebarang * request){ // Fungsi untuk mena
         if(cekstring(currentWord.TabWord, "Terima", currentWord.Length, 6)){ // Jika input user "Terima", akan diminta memasukkan harga, kemudian
             printf("Harga barang: ");                                        // item akan dimasukkan ke dalam store/toko
             STARTWORD();
+            boolean isangka = true;
+            for(int i=0; i<currentWord.Length; i++){
+                if(currentWord.TabWord[i]<'0' || currentWord.TabWord[i]>'9'){
+                    isangka = false;
+                }
+                if(!isangka){
+                    printf("Angka yang kamu masukkan tidak valid.\n");
+                    return;
+                }
+            }
             int angka = 0;
             for(int i =0; i<currentWord.Length; i++){
                 int digit = currentWord.TabWord[i] - '0';
