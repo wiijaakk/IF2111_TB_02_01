@@ -61,4 +61,16 @@ register: register.o kebutuhanlog.o
 
 logout: logout.o kebutuhanlog.o
 	gcc logout.o kebutuhanlog.o -o logout
+
+array: array.o arraydriver.o
+	gcc array.o arraydriver.o -o array
+
+arraydriver.o: arraydriver.c
+	gcc -c ../src/ADT/array/arraydriver.c
+
+arraydin: arraydin.o arraydindriver.o
+	gcc arraydin.o arraydindriver.o -o arraydin
+
+arraydindriver.o: arraydindriver.c
+	gcc -c ../src/ADT/arraydin/arraydindriver.c
 	
