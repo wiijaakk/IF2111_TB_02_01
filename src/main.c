@@ -102,9 +102,9 @@ int main() {
         toupperstr(forsave);
         printf("%s\n", CurrentFrasa.TabWord);
         if (compareFrasaToString(CurrentFrasa, "WORK")) {
-            work_();
+            work_(&arrayUsers, username_idx);
         } else if (compareFrasaToString(CurrentFrasa, "WORK CHALLENGE")) {
-            workChallenge();
+            workChallenge(&arrayUsers, username_idx);
         } else if (compareFrasaToString(CurrentFrasa, "STORE LIST")) {
             storelist(arrayItems);
         } else if (compareFrasaToString(CurrentFrasa, "STORE REQUEST")) {
