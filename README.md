@@ -30,16 +30,19 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
 >
 >          ```powershell
 >          Set-ExecutionPolicy Bypass -Scope Process -Force;[System.Net.ServicePoint]::SecurityProtocol = [System.Net.ServicePoint]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+>          ```
 >       3. Install Make dengan menjalankan :
 >
 >          ```powershell
 >          choco install make
+>          ```
 >    2) **Windows Subsystem for Linux (WSL)**
 >       1. Buka command prompt
 >       2. Jalankan :
 >
 >          ```powershell
 >          wsl -- install
+>          ```
 >    3) **MinGW**
 >       1. Lakukan instalasi MinGW melalui https://mingw-w64.org/
 >       2. Tambahkan path ke bin MinGW ke PATH sistem komputer Anda
@@ -49,12 +52,22 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
 >
 >    ```powershell
 >    make
+>    ```
+>    atau
+>    ```powershell
+>    mingw32-make
+>    ```
+>    atau
+>    ```powershell
+>    mingw32-make -f makefile
+>    ```
 
 ## Cara Menjalankan Program
 > **Masuk ke directory bin dan jalankan :**
 >
 > ```powershell
 > ./output.exe
+> ```
 
 ## Struktur Program
 ```
@@ -74,33 +87,31 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
     ├─── ADT
     │      ├─── array
     │      │       ├─── array.h
-    │      │       ├─── array.c
-    │      │       └─── driver_array.c
+    │      │       └─── array.c
     │      │
     │      ├─── arraydin
     │      │       ├─── arraydin.h
-    │      │       ├─── arraydin.c
-    │      │       └─── driver_arraydin.c
+    │      │       └─── arraydin.c
     │      │
     │      ├─── mesinfrasa
     │      │       ├─── mesinfrasa.h
-    │      │       ├─── mesinfrasa.c
-    │      │       └─── driver_mesinfrasa.c
+    │      │       └─── mesinfrasa.c
     │      │
     │      ├─── mesinkarakter
     │      │       ├─── mesinkarakter.h
-    │      │       ├─── mesinkarakter.c
-    │      │       └─── driver_mesinkarakter.c
+    │      │       └─── mesinkarakter.c
     │      │
     │      ├─── mesinkata
     │      │       ├─── mesinkata.h
-    │      │       ├─── mesinkata.c
-    │      │       └─── driver_mesinkata.c
+    │      │       └─── mesinkata.c
     │      │
-    │      └─── queue
-    │              ├─── queue.h
-    │              ├─── queue.c
-    │              └─── driver_queue.c
+    │      ├─── queue
+    │      │       ├─── queue.h
+    │      │       └─── queue.c
+    │      │
+    │      └─── queuebarang
+    │              ├─── queuebarang.h
+    │              └─── queuebarang.c
     │
     └─── ADT.h
            ├─── banner.txt
