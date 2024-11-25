@@ -4,17 +4,16 @@ int RNG(int min, int max){
     srand(time(NULL));
     int v1 = rand();
     srand(v1);
-    return (rand() * v1) % (max - min + 1) + min;
+    return (rand() * v1) % (max - min + 1) + min; // Mengalikan 2 angka random agar hasil bisa merupakan angka besar
 }
 
 int countWords(char *filename, char wordlist[WordCount__][6]) {
     int count = 0;
     StartFileWord(filename);
-    while (!endOfFile) {
+    while (!endOfFile) { // Membaca semua list word
         toupperstr(currentWord.TabWord);
         copyStr(currentWord.TabWord, wordlist[count]);
         ADVFileWordNewLine();
-        //printf("%s\n", currentWord.TabWord);
         count++;
     }
 
@@ -46,7 +45,7 @@ void tebakAngka(TabInt *arruser, int useridx){
     
     int input = 0;
     STARTWORD();
-    for (int i = 0; i < currentWord.Length; i++) {
+    for (int i = 0; i < currentWord.Length; i++) { // Mengubah string menjadi int
         input = input * 10 + (currentWord.TabWord[i] - '0');
     }
     int i = 1;
@@ -66,7 +65,7 @@ void tebakAngka(TabInt *arruser, int useridx){
     
         STARTWORD();
         input = 0;
-        for (int i = 0; i < currentWord.Length; i++) {
+        for (int i = 0; i < currentWord.Length; i++) { // Mengubah string menjadi int
             input = input * 10 + (currentWord.TabWord[i] - '0');
         }
         i++;
@@ -74,9 +73,8 @@ void tebakAngka(TabInt *arruser, int useridx){
     if (input == n)
     {
         printf("Tebakanmu benar!\n");
-        arruser->TI[useridx].money += 500;
+        arruser->TI[useridx].money += 500; // Tambah uang user
         printf("+%d rupiah telah ditambahkan ke akun Anda.(Uang Sekarang = %d)\n", 500, arruser->TI[useridx].money);
-        //tambah uang user
     }else{
         printf("Failed\n");
     }
@@ -116,15 +114,15 @@ void _printDash(int count){
 
 void wordl3(TabInt *arruser, int useridx){
     char *filename = "../save/word.txt";
-    char wordlist[WordCount__][6];
+    char wordlist[WordCount__][6]; // Menyimpan list kata
     char word[6];
-    char past[6][11];
+    char past[6][11]; // Menyimpan tebakan sebelumnya
     char input[20];
-    int count = 0;
-    int found = 0;
-    int wordnum = countWords(filename, wordlist);
-    randomWord(wordlist, RNG(0, wordnum), word);
-    //printf("%s %d %d\n", word, count, found);
+    int count = 0; // Menandakan berapa try yang digunakan
+    int found = 0; // Menandakan berapa huruf yang ditemukan
+    int wordnum = countWords(filename, wordlist); // Menghitung ada berapa kata yang mungkin
+    randomWord(wordlist, RNG(0, wordnum), word); // Mendapatkan kata jawaban random
+    //printf("%s %d %d\n", word, count, found); // Untuk debug
     while (count < 6 && found < 5)
     {
         found = 0;
@@ -134,8 +132,8 @@ void wordl3(TabInt *arruser, int useridx){
         {
             printf("Hasil:\n");
         }
-        _printPast(past, count);
-        _printDash(count);
+        _printPast(past, count); // Output tebakan sebelumnya
+        _printDash(count); // Menandakan try yang tersisia
         printf("\n");
         while (!aword)
         {
@@ -143,7 +141,7 @@ void wordl3(TabInt *arruser, int useridx){
             STARTWORD();
             toupperstr(currentWord.TabWord);
             copyStr(currentWord.TabWord, input);
-            aword = isWord(wordlist, input, wordnum);
+            aword = isWord(wordlist, input, wordnum); // Validasi apakah tebakan merupakan kata
             if (!aword)
             {
                 printf("Tebakan Bukan Kata Valid\n");
@@ -154,18 +152,15 @@ void wordl3(TabInt *arruser, int useridx){
         i = 0;
         while (i < 5)
         {
-            if (input[i] == word[i])
+            if (input[i] == word[i]) // Case ketika posisi huruf benar
             {
-                //printf("%c ", input[i]);
                 past[count][(i*2)] = input[i];
                 past[count][(i*2)+1] = ' ';
                 found++;
-            }else if(isIn(input[i], word)){
-                //printf("%c* ", input[i]);
+            }else if(isIn(input[i], word)){ // Case ketika ada huruf pada kata jawaban
                 past[count][(i*2)] = input[i];
                 past[count][(i*2)+1] = '*';
-            }else{
-                //printf("%c%% ", input[i]);
+            }else{ // Case ketika tidak ada huruf pada kata jawaban
                 past[count][(i*2)] = input[i];
                 past[count][(i*2)+1] = '%';
             }
@@ -175,14 +170,13 @@ void wordl3(TabInt *arruser, int useridx){
         count++;
     }
     printf("Hasil:\n");
-    _printPast(past, count);
+    _printPast(past, count); // Output ketika kesempatan sudah habis atau sudah mendapat jawaban
     _printDash(count);
     if (found == 5)
     {
         printf("Menang!!\n");
-        arruser->TI[useridx].money += 1500;
+        arruser->TI[useridx].money += 1500; // Tambah uang user
         printf("+%d rupiah telah ditambahkan ke akun Anda.(Uang Sekarang = %d)\n", 1500, arruser->TI[useridx].money);
-        //tambah uang user
     }else{
         printf("Kalah\n");
         printf("Jawaban: %s\n", word);
@@ -194,7 +188,7 @@ void wordl3(TabInt *arruser, int useridx){
 void workChallenge(TabInt *arruser, int useridx){
     chal c[chal_count] = {{chal1}, {chal2}};
     printf("Daftar Challenge:\n");
-    for (int i = 0; i < chal_count; i++)
+    for (int i = 0; i < chal_count; i++) // Display semua challenge yang ada
     {
         printf("    %d. %s (biaya=%d)\n", i+1, c[i].name, c[i].biaya);
     }
@@ -207,13 +201,14 @@ void workChallenge(TabInt *arruser, int useridx){
 
     int selected = -1;
     int i = 0;
-    while (i < chal_count && selected == -1)
+    while (i < chal_count && selected == -1) // Cek challenge apa yang dipilih
     {
-        if (check_strV2(input, c[i].name))
+        toupperstr(c[i].name);
+        if (check_strV2(input, c[i].name))// Cek input kata
         {
             selected = i;
         }
-        if (input[0] - '0' - 1 == i)
+        if (input[0] - '0' - 1 == i) // Cek input angka
         {
             selected = i;
         }
@@ -221,25 +216,23 @@ void workChallenge(TabInt *arruser, int useridx){
     }
     switch (selected)
     {
-    case 0:
-        //kurangi uang user
-        if (arruser->TI[useridx].money < c[selected].biaya)
+    case 0: // Case memilih Challenge TebakAngka
+        if (arruser->TI[useridx].money < c[selected].biaya) // Cek apakah uang user cukup
         {
             printf("Uang Anda Tidak Cukup (Uang Sekarang = %d)\n", arruser->TI[useridx].money);
             break;
         }
-        arruser->TI[useridx].money -= c[selected].biaya;
+        arruser->TI[useridx].money -= c[selected].biaya; // Kurangi uang user
         printf("Uang Berkurang %d (Uang Sekarang = %d)\n", c[selected].biaya, arruser->TI[useridx].money);
         tebakAngka(arruser, useridx);
         break;
-    case 1:
-        //kurangi uang user
-        if (arruser->TI[useridx].money < c[selected].biaya)
+    case 1: // Case memilih Challenge TebakAngka
+        if (arruser->TI[useridx].money < c[selected].biaya) // Cek apakah uang user cukup
         {
             printf("Uang Anda Tidak Cukup (Uang Sekarang = %d)\n", arruser->TI[useridx].money);
             break;
         }
-        arruser->TI[useridx].money -= c[selected].biaya;
+        arruser->TI[useridx].money -= c[selected].biaya; // Kurangi uang user
         printf("Uang Berkurang %d (Uang Sekarang = %d)\n", c[selected].biaya, arruser->TI[useridx].money);
         wordl3(arruser, useridx);
         break;
