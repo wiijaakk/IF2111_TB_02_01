@@ -39,7 +39,7 @@ void randomWord(char wordlist[WordCount__][6], int index, char *result) {
     copyStr(wordlist[index], result);
 }
 
-void tebakAngka(){
+void tebakAngka(TabInt *arruser, int useridx){
     int n = RNG(0, 100);
     //printf("%d\n", n);
     printf("Tebak Angka: ");
@@ -74,6 +74,9 @@ void tebakAngka(){
     if (input == n)
     {
         printf("Tebakanmu benar!\n");
+        arruser->TI[useridx].money += 500;
+        printf("+%d rupiah telah ditambahkan ke akun Anda.(Uang Sekarang = %d)\n", 500, arruser->TI[useridx].money);
+        //tambah uang user
     }else{
         printf("Failed\n");
     }
@@ -111,7 +114,7 @@ void _printDash(int count){
     }    
 }
 
-void wordl3(){
+void wordl3(TabInt *arruser, int useridx){
     char *filename = "../save/word.txt";
     char wordlist[WordCount__][6];
     char word[6];
@@ -176,7 +179,10 @@ void wordl3(){
     _printDash(count);
     if (found == 5)
     {
-        printf("Menang\n");
+        printf("Menang!!\n");
+        arruser->TI[useridx].money += 1500;
+        printf("+%d rupiah telah ditambahkan ke akun Anda.(Uang Sekarang = %d)\n", 1500, arruser->TI[useridx].money);
+        //tambah uang user
     }else{
         printf("Kalah\n");
         printf("Jawaban: %s\n", word);
@@ -185,7 +191,7 @@ void wordl3(){
 }
 
 
-void workChallenge(){
+void workChallenge(TabInt *arruser, int useridx){
     chal c[chal_count] = {{chal1}, {chal2}};
     printf("Daftar pekerjaan:\n");
     for (int i = 0; i < chal_count; i++)
@@ -216,12 +222,29 @@ void workChallenge(){
     switch (selected)
     {
     case 0:
-        tebakAngka();
+        //kurangi uang user
+        if (arruser->TI[useridx].money < c[selected].biaya)
+        {
+            printf("Uang Anda Tidak Cukup (Uang Sekarang = %d)\n", arruser->TI[useridx].money);
+            break;
+        }
+        arruser->TI[useridx].money -= c[selected].biaya;
+        printf("Uang Berkurang %d (Uang Sekarang = %d)\n", c[selected].biaya, arruser->TI[useridx].money);
+        tebakAngka(arruser, useridx);
         break;
     case 1:
-        wordl3();
+        //kurangi uang user
+        if (arruser->TI[useridx].money < c[selected].biaya)
+        {
+            printf("Uang Anda Tidak Cukup (Uang Sekarang = %d)\n", arruser->TI[useridx].money);
+            break;
+        }
+        arruser->TI[useridx].money -= c[selected].biaya;
+        printf("Uang Berkurang %d (Uang Sekarang = %d)\n", c[selected].biaya, arruser->TI[useridx].money);
+        wordl3(arruser, useridx);
         break;
     default:
+        printf("Challenge Yang Dipilih Tidak Valid\n");
         break;
     }
 }

@@ -11,7 +11,7 @@ void work_timer(int second){
     printf("%d/%d out\n", i, second);
 }
 
-void work_(){
+void work_(TabInt *arruser, int useridx){
     work w[work_count] = {{work1}, {work2}, {work3}, {work4}, {work5}};
     printf("Daftar pekerjaan:\n");
     for (int i = 0; i < work_count; i++)
@@ -29,6 +29,7 @@ void work_(){
     int i = 0;
     while (i < work_count && selected == -1)
     {
+        toupperstr(w[i].name);
         if (check_strV2(input, w[i].name))
         {
             selected = i;
@@ -39,6 +40,17 @@ void work_(){
         }
         i++;
     }
-    printf("%d %d\n", selected, w[selected].duration);
-    work_timer(w[selected].duration);
+    if (selected != -1)
+    {
+        //printf("%d %d\n", selected, w[selected].duration);
+        printf("Anda sedang bekerja sebagai %s... harap tunggu.\n", w[selected].name);
+        work_timer(w[selected].duration);
+        arruser->TI[useridx].money += w[selected].salary;
+        printf("Pekerjaan selesai, +%d rupiah telah ditambahkan ke akun Anda.(Uang Sekarang = %d)\n", w[selected].salary, arruser->TI[useridx].money);
+        //tambah uang user
+    }else{
+        printf("Pekerjaan Yang Dipilih Tidak Valid\n");
+    }
+    
+
 }

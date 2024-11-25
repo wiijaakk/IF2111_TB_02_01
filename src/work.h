@@ -8,12 +8,12 @@
 
 #define work_count 5
 //List Work
-//             Name         Salary      Duration
-#define work1 "work1",      10,         10
-#define work2 "work2",      15,         15
-#define work3 "work3",      20,         20
-#define work4 "work4",      25,         25
-#define work5 "work5",      30,         30
+//             Name                          Salary    Duration
+#define work1 "Evil Lab Assistant",          100,      14
+#define work2 "OWCA Hiring Manager",         4200,     21
+#define work3 "Cikapundunginator Caretaker", 7000,     30
+#define work4 "Mewing Specialist",           1000,     22
+#define work5 "Inator Connoisseur",          997,      15
 
 typedef struct {
   char name[50];
@@ -21,6 +21,6 @@ typedef struct {
   int duration;
 } work;
 
-void work_();
+void work_(TabInt *arruser, int useridx);
 
 #endif

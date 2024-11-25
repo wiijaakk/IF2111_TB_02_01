@@ -12,13 +12,13 @@
 //List Chal
 //             Name             Biaya
 #define chal1 "TebakAngka",    200
-#define chal2 "WORDL3",         500
+#define chal2 "WORDL399",         500
 
 typedef struct {
   char name[50];
   int biaya;
 } chal;
 
-void workChallenge();
+void workChallenge(TabInt *arruser ,int useridx);
 
 #endif
