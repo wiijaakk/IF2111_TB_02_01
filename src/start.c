@@ -48,8 +48,9 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) {
         }
         currentUser.password[currentWord.Length] = '\0';
 
-        SetEl(arrayUsers, i + 1, currentUser);
+        SetEl(arrayUsers, i , currentUser);
     }
+    arrayUsers->Neff = total;
 
     printf("File konfigurasi berhasil dibaca. PURRMART berhasil dijalankan.\n");
 }

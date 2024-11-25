@@ -1,21 +1,5 @@
 #include "save.h"
 
-// typedef struct {
-//   char name[100];
-//   char password[100];
-//   int money;
-// } User;
-
-// typedef struct {
-//   char name[100];
-//   int price;
-// } Barang;
-
-// User arrayUsers[100];
-// Barang arrayItems[100];
-// int itemCount;
-// int userCount;
-
 void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) {
     char fullPath[200];
 
@@ -29,19 +13,14 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) {
 
     fprintf(file, "%d\n", Length(*arrayItems)); // Memasukkan baris pertama: Total Items
     for (int i = 0; i < Length(*arrayItems); i++) { // Memasukkan baris-baris yang menjabarkan Item yang ada dari arrayItems
-        fprintf(file, "%d %s\n", arrayItems[i].A->price, arrayItems[i].A->name);
+        fprintf(file, "%d %s\n", arrayItems->A[i].price, arrayItems->A[i].name);
     }
 
     fprintf(file, "%d\n", NbElmt(*arrayUsers)); // Memasukkan baris Total Users
     for (int i = 0; i < NbElmt(*arrayUsers); i++) { // Memasukkan baris-baris yang menjabarkan User-User yang terdaftar dari arrayUsers
-        fprintf(file, "%d %s %s\n", arrayUsers[i].TI->money, arrayUsers[i].TI->name, arrayUsers[i].TI->password);
+        fprintf(file, "%d %s %s\n", arrayUsers->TI[i].money, arrayUsers->TI[i].name, arrayUsers->TI[i].password);
     }
 
     fclose(file); // Menutup file .txt
     printf("File konfigurasi berhasil disimpan di %s\n", fullPath);
 }
-
-// int main() {
-//     loadConfiguration();
-//     saveConfiguration();
-// }
