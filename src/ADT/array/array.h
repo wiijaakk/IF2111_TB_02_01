@@ -1,4 +1,5 @@
 #include "../../boolean.h"
+#include "../ADT/user.h"
 
 #ifndef ARRAY_H
 #define ARRAY_H
@@ -12,11 +13,6 @@
 
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
-typedef struct {
-  char name[MAX_LEN];
-  char password[MAX_LEN];
-  int money;
-} User;
 
 typedef struct
 {
