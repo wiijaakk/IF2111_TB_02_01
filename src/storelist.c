@@ -17,6 +17,7 @@ void storelist(ArrayDin barang){ // Fungsi menampilkan semua item yang terdapat 
                 printf("%c", curr.name[idx]);
                 idx++;
             }
+            printf(" - Harga: %d", curr.price);
             printf("\n");
         }
     }
