@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include "listlinier.h"
 
-boolean IsEmpty (List L){
+boolean IsEmptyListLinier(List L){
     return First(L) == Nuh;
 }
 
-void CreateEmpty (List *L){
+void CreateEmptyListLinier(List *L){
     L->First = Nuh;
 }
 
-address Alokasi (infotype X){
+address AlokasiListLinier(infotype X){
      address P = (address) malloc (sizeof(ElmtList));
      if (P!=NULL){
         copyString(P->info, X);
@@ -22,11 +22,11 @@ address Alokasi (infotype X){
      }
 }
 
-void Dealokasi (address *P){
+void DealokasiListLinier(address *P){
     free(*P);
 }
 
-address Search (List L, infotype X){
+address SearchListLinier(List L, infotype X){
     address now = First(L);
     while(now->next!=Nuh){
         if(now->info!=X){
@@ -42,10 +42,10 @@ address Search (List L, infotype X){
     return Nuh;
 }
 
-void InsVFirst (List *L, infotype X){
+void InsVFirst(List *L, infotype X){
     address P = Alokasi(X);
     if(P!=Nuh){
-        if(IsEmpty(*L)){
+        if(IsEmptyListLinier(*L)){
             L->First = P;
         }
         else{
@@ -87,7 +87,7 @@ void InsertAfter (List *L, address P, address Prec){
 }
 
 void InsertLast (List *L, address P){
-    if(IsEmpty(*L)){
+    if(IsEmptyListLinier(*L)){
         InsertFirst(L, P);
     }
     else{
@@ -146,9 +146,9 @@ void DelAfter (List *L, address *Pdel, address Prec){
     }
 }
 
-void PrintInfo (List L){
+void PrintInfoListLinier(List L){
     printf("[");
-    if(!IsEmpty(L)){
+    if(!IsEmptyListLinier(L)){
         address W = First(L);
         while(W->next!=Nuh){
             printf("%d,", W->info);
@@ -159,8 +159,8 @@ void PrintInfo (List L){
     printf("]\n");
 }
 
-int NbElmt (List L){
-    if(IsEmpty(L)){
+int NbElmtListLinier(List L){
+    if(IsEmptyListLinier(L)){
         return 0;
     }
     else{
@@ -174,8 +174,8 @@ int NbElmt (List L){
     }
 }
 
-void InversList (List *L){
-   if(!IsEmpty(*L)){
+void InversListLinier(List *L){
+   if(!IsEmptyListLinier(*L)){
         address W =First(*L);
         address sebelah = W->next;
         while(sebelah!=Nuh){
@@ -187,9 +187,9 @@ void InversList (List *L){
    }
 }
 
-void Konkat1 (List *L1, List *L2, List *L3){
-    CreateEmpty(L3);
-    if(IsEmpty(*L1)){
+void KonkatListLinier(List *L1, List *L2, List *L3){
+    CreateEmptyListLinier(L3);
+    if(IsEmptyListLinier(*L1)){
         First(*L3) = First(*L2);
     }
     else{
@@ -200,6 +200,6 @@ void Konkat1 (List *L1, List *L2, List *L3){
         }
         W->next = First(*L2);
     }
-    CreateEmpty(L2);
-    CreateEmpty(L1);
+    CreateEmptyListLinier(L2);
+    CreateEmptyListLinier(L1);
 }

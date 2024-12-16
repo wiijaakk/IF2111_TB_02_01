@@ -23,20 +23,20 @@ int compareStrings(const char *key1, const char *key2) {
 }
 
 
-void CreateEmpty(Map *M){
+void CreateEmptyMap(Map *M){
     M->Count = Nil;
 }
 
-boolean IsEmpty(Map M){
+boolean IsEmptyMap(Map M){
     return (M.Count == Nil);
 }
 
-boolean IsFull(Map M){
+boolean IsFullMap(Map M){
     return (M.Count == MaxEl);
 }
 
-valuetype Value(Map M, keytype k){
-    if(IsMember(M, k)){
+valuetype ValueMap(Map M, keytype k){
+    if(IsMemberMap(M, k)){
         for(int i = 0; i<M.Count; i++){
         if(M.Elements[i].Key == k){
             return M.Elements[i].Value;
@@ -49,9 +49,9 @@ valuetype Value(Map M, keytype k){
     }
 }
 
-void Insert(Map *M, keytype k, valuetype v){
-    if(!IsMember(*M,k)){
-        if(IsEmpty(*M)){
+void InsertMap(Map *M, keytype k, valuetype v){
+    if(!IsMemberMap(*M,k)){
+        if(IsEmptyMap(*M)){
             M->Count = 1;
             copyString(M->Elements[0].Key, k);
             M->Elements[0].Value = v;
@@ -64,14 +64,14 @@ void Insert(Map *M, keytype k, valuetype v){
         }
     }
     else{
-        int idx = IdxMember(*M, k);
+        int idx = IdxMemberMap(*M, k);
         M->Elements[idx].Value+=v;
     }
 }
 
-void Delete(Map *M, keytype k, valuetype v){
-    if(IsMember(*M, k)){
-        int idx = IdxMember(*M, k);
+void DeleteMap(Map *M, keytype k, valuetype v){
+    if(IsMemberMap(*M, k)){
+        int idx = IdxMemberMap(*M, k);
         if(M->Elements[idx].Value-v<=0){
             M->Elements[idx].Value = 0;
             if(M->Count==1){
@@ -90,7 +90,7 @@ void Delete(Map *M, keytype k, valuetype v){
     }
 }
 
-boolean IsMember(Map M, keytype k){
+boolean IsMemberMap(Map M, keytype k){
     boolean ada = false;
     for(int i = 0; i<M.Count; i++){
         if(compareStrings(M.Elements[i].Key, k)==0){
@@ -101,8 +101,8 @@ boolean IsMember(Map M, keytype k){
     return ada;
 }
 
-int IdxMember(Map M, keytype k){
-    if(IsMember(M, k)){
+int IdxMemberMap(Map M, keytype k){
+    if(IsMemberMap(M, k)){
         for(int i = 0; i<M.Count; i++){
             if(compareStrings(M.Elements[i].Key, k)==0){
                 return i;

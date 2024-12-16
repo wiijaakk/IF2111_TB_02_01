@@ -27,27 +27,27 @@ typedef struct {
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (List L);
+boolean IsEmptyListLinier(List L);
 /* Mengirim true jika list kosong */
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty (List *L);
+void CreateEmptyListLinier(List *L);
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-address Alokasi (infotype X);
+address AlokasiListLinier(infotype X);
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
 /* menghasilkan P, maka info(P)=X, Next(P)=Nil */
 /* Jika alokasi gagal, mengirimkan Nil */
-void Dealokasi (address *P);
+void DealokasiListLinier(address *P);
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
 /* Melakukan dealokasi/pengembalian address P */
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search (List L, infotype X);
+address SearchListLinier(List L, infotype X);
 /* Mencari apakah ada elemen list dengan info(P)= X */
 /* Jika ada, mengirimkan address elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
@@ -111,24 +111,24 @@ void DelAfter (List *L, address *Pdel, address Prec);
 /*      Pdel adalah alamat elemen list yang dihapus  */
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
-void PrintInfo (List L);
+void PrintInfoListLinier(List L);
 /* I.S. List mungkin kosong */
 /* F.S. Jika list tidak kosong, isi list dicetak ke kanan: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah terkecuali untuk newline di akhir output */
-int NbElmt (List L);
+int NbElmtListLinier(List L);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
 /****************** PROSES TERHADAP LIST ******************/
 
-void InversList (List *L);
+void InversListLinier(List *L);
 /* I.S. sembarang. */
 /* F.S. elemen list dibalik : */
 /* Elemen terakhir menjadi elemen pertama, dan seterusnya. */
 /* Membalik elemen list, tanpa melakukan alokasi/dealokasi. */
 
-void Konkat1 (List *L1, List *L2, List *L3);
+void KonkatListLinier(List *L1, List *L2, List *L3);
 /* I.S. L1 dan L2 sembarang */
 /* F.S. L1 dan L2 kosong, L3 adalah hasil konkatenasi L1 & L2 */
 /* Konkatenasi dua buah list : L1 dan L2    */
