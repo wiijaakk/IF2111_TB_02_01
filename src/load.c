@@ -3,9 +3,10 @@
 #include "load.h"
 
 void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * SessionStatus) {
-    int total = 0;
-    Barang currentBarang;
-    User currentUser;
+    int total = 0; // representasi jumlah barang atau user yang tercatat
+    int n_riwayat_pembelian, n_wishlist;
+    Barang currentBarang; // menyimpan barang yg sedang diproses
+    User currentUser; // menyimpan user yg sedang diproses
     boolean exists;
 
     char filenameStr[50];

@@ -22,24 +22,24 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi 
 
             // Perlu pakai size agar bisa hitung jumlah elemen tanpa pop
             // karena save harus bisa digunakan tanpa quit
-            int total = *arrayUsers.TI[i].riwayat_pembelian.size;
+            int total = (GetElmt(*arrayUsers, i)).riwayat_pembelian->size;
             fprintf(file, "%d\n", total);
 
             barang_dibeli currentBarangDibeli;
             for(int i = 0; i < total; i++){
                 barang_dibeli currentBarangDibeli;
-                PopStack(&arrayUsers->TI[i].riwayat_pembelian, &currentBarangDibeli);
+                PopStack(arrayUsers->TI[i].riwayat_pembelian, &currentBarangDibeli);
                 fprintf(file, "%d %s\n", currentBarangDibeli.totalharga, currentBarangDibeli.name);
             }
 
             total = 0;
-            address currentAddress = First(arrayUsers->TI[i].wishlist);
+            address currentAddress = First(*(arrayUsers->TI[i].wishlist));
             while(currentAddress != Nuh){
                 total++;
                 currentAddress = currentAddress->next;
             }
 
-            currentAddress = First(arrayUsers->TI[i].wishlist);
+            currentAddress = First(*(arrayUsers->TI[i].wishlist));
             for(int i = 0; i < total; i++){
                 fprintf(file, "%s\n", Info(currentAddress));
             }
