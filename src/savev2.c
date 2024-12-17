@@ -22,7 +22,7 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi 
 
             // Perlu pakai size agar bisa hitung jumlah elemen tanpa pop
             // karena save harus bisa digunakan tanpa quit
-            int total = arrayUsers->TI[i].riwayat_pembelian.size;
+            int total = *arrayUsers.TI[i].riwayat_pembelian.size;
             fprintf(file, "%d\n", total);
 
             barang_dibeli currentBarangDibeli;

@@ -89,7 +89,6 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk comm
             InsVLast(currentUser.wishlist, X);
         }
 
-        printf("banyak riwayat 1: %d\n", currentUser.riwayat_pembelian->size);
         SetEl(arrayUsers, i, currentUser);
     }
     arrayUsers->Neff = total;
