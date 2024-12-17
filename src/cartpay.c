@@ -29,7 +29,7 @@ void cartpay(TabInt arrayUsers, int useridx, ArrayDin arrayItems, Map cart, Stac
                 printf("Uang kamu hanya %d, tidak cukup untuk membeli keranjang!\n", arrayUsers.TI[useridx].money);
             } else {
                 int maxprice = -1;
-                Barang maxitem;
+                barang_dibeli maxitem;
                 boolean found = false;
                 int idxBarang;
                 for (int i=0 ; i < cart.Count ; i++) {
@@ -43,11 +43,11 @@ void cartpay(TabInt arrayUsers, int useridx, ArrayDin arrayItems, Map cart, Stac
                     int harga = ((cart.Elements[i].Value)*arrayItems.A[idxBarang].price);
                     if (cart.Elements[i].Value > maxprice) {
                         copyStringMap(maxitem.name, cart.Elements[i].Key);
-                        copyStringMap(maxitem.price, harga);
+                        copyStringMap(maxitem.totalharga, harga);
                         maxprice = harga;
                     }
                 }
-                Push(&history, maxitem); // Push barang dengan total harga paling mahal saja
+                PushStack(&history, maxitem); // Push barang dengan total harga paling mahal saja
                 arrayUsers.TI[useridx].money = arrayUsers.TI[useridx].money - totalPrice;
 
                 printf("\n");
