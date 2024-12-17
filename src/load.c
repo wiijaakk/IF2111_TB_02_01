@@ -44,9 +44,20 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
 
         // Memasukkan informasi user ke arrayUsers
         for (int i = 0; i < total; i++) {
+            Stack riwayat;
+            List wishlist;
+            Map keranjang;
+            CreateEmptyStack(&riwayat);
+            CreateEmptyListLinier(&wishlist);
+            CreateEmptyMap(&keranjang);
+
+            currentUser.riwayat_pembelian = &riwayat;
+            currentUser.keranjang = &keranjang;
+            currentUser.wishlist = &wishlist;
+            
             ADVFileWordSpace();
             currentUser.money = wordToInt(currentWord);
-            
+
             ADVFileWordSpace();
             for (int j = 0; j < currentWord.Length; j++) {
                 currentUser.name[j] = currentWord.TabWord[j];
@@ -58,6 +69,35 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
                 currentUser.password[j] = currentWord.TabWord[j];
             }
             currentUser.password[currentWord.Length] = '\0';
+
+            ADVFileWordNewLine();
+            n_riwayat_pembelian = wordToInt(currentWord);
+            for(int i = 0; i < n_riwayat_pembelian; i++){
+                barang_dibeli X;
+
+                ADVFileWordSpace();
+                X.totalharga = wordToInt(currentWord);
+
+                ADVFileWordNewLine();
+                for (int j = 0; j < currentWord.Length; j++) {
+                    X.name[j] = currentWord.TabWord[j];
+                }
+                X.name[currentWord.Length] = '\0';
+                PushStack(currentUser.riwayat_pembelian, X);
+            }
+
+            ADVFileWordNewLine();
+            n_wishlist = wordToInt(currentWord);
+            for(int i = 0; i < n_wishlist; i++){
+                nama_barang X;
+
+                ADVFileWordNewLine();
+                for (int j = 0; j < currentWord.Length; j++) {
+                    X[j] = currentWord.TabWord[j];
+                }
+                X[currentWord.Length] = '\0';
+                InsVLast(currentUser.wishlist, X);
+            }
 
             SetEl(arrayUsers, i, currentUser);
         }
