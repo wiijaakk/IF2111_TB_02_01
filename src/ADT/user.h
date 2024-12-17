@@ -11,9 +11,9 @@ typedef struct {
   char name[MAX_LEN];
   char password[MAX_LEN];
   int money;
-  Map keranjang;
-  Stack riwayat_pembelian;
-  List wishlist;
+  Map *keranjang;
+  Stack *riwayat_pembelian;
+  List *wishlist;
 } User;
 
 #endif
