@@ -1,6 +1,6 @@
-#include "../../ADT/stack/stack.h"
-#include "../../ADT/setmap/map.h"
-#include "../../ADT/linkedlist/listlinier.h"
+#include "../ADT/stack/stack.h"
+#include "../ADT/setmap/map.h"
+#include "../ADT/linkedlist/listlinier.h"
 
 #ifndef USER_H
 #define USER_H

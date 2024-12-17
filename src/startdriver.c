@@ -1,28 +1,29 @@
 #include <stdio.h>
-#include "start.h"
+#include "startv2.h"
 
-int main() { // Fungsi untuk mencoba fungsi START
+void printBarang(ArrayDin arraydin){
+    for(int i = 0; i < Length(arraydin); i++){
+        printf("%d. %s - %d\n", (Get(arraydin, i)).price, (Get(arraydin, i)).name);
+    }
+}
+
+void printUser (TabInt array){
+    for (int i = GetFirstIdx(array); i <= GetLastIdx(array); i++) {
+        printf("%d. Uang: %d - Username: %s - Password: %s\n", (GetElmt(array, i)).money, (GetElmt(array, i)).name, (GetElmt(array, i)).password);
+    }
+}
+
+int main() {
     ArrayDin arrayItems;
     TabInt arrayUsers;
     arrayItems = MakeArrayDin();
     MakeEmpty(&arrayUsers);
     
-    printf("Masukkan command: ");
-    StartWordNewLine();
-
-    if (compareWordToString(currentWord, "START")) {
-        startStore(&arrayItems, &arrayUsers);
-        
-        printf("Daftar Barang:\n");
-        for (int i = 0; i < Length(arrayItems); i++) {
-            printf("Barang %d - ", i+1);
-            printf("Harga: %d, Nama: %s\n", (Get(arrayItems, i)).price, (Get(arrayItems, i)).name);
-        }
-        
-        printf("Daftar User:\n");
-        for (int i = GetFirstIdx(arrayUsers); i <= GetLastIdx(arrayUsers); i++) {
-            printf("User %d - ", i);
-            printf("Uang: %d, Username: %s, Password: %s\n", (GetElmt(arrayUsers, i)).money, (GetElmt(arrayUsers, i)).name, (GetElmt(arrayUsers, i)).password);
-        }
-    }
+    startStore(&arrayItems, &arrayUsers);
+    
+    printf("Daftar Nama Barang dan Harga:\n");
+    printBarang(arrayItems);
+    
+    printf("Daftar User:\n");
+    printUser(arrayUsers);
 }

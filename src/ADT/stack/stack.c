@@ -2,18 +2,18 @@
 #include "stack.h"
 
 void CreateEmptyStack(Stack *S){
-    Top(*S) = Nil;
+    Top(*S) = Stack_Nil;
 }
 
 boolean IsEmptyStack(Stack S){
-    return Top(S)==Nil;
+    return Top(S)==Stack_Nil;
 }
 
 boolean IsFullStack(Stack S){
     return Top(S)==MaxEl-1;
 }
 
-void PushStackStack(Stack * S, infotype X){
+void PushStack(Stack * S, barang_dibeli X){
     if(IsEmptyStack(*S)){
         Top(*S)=0;
     }
@@ -23,10 +23,10 @@ void PushStackStack(Stack * S, infotype X){
     InfoTop(*S) = X;
 }
 
-void PopStack(Stack * S, infotype* X){
+void PopStack(Stack * S, barang_dibeli* X){
     *X = InfoTop(*S);
     if(Top(*S)==0){
-        Top(*S) = Nil;
+        Top(*S) = Stack_Nil;
     }
     else{
         Top(*S)--;

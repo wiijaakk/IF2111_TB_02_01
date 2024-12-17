@@ -1,5 +1,5 @@
 #include "../../boolean.h"
-#include "../ADT/user.h"
+#include "../../ADT/user.h"
 
 #ifndef ARRAY_H
 #define ARRAY_H

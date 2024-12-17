@@ -4,19 +4,19 @@
 #define map_H
 
 /* MODUL Map
-Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
+Deklarasi stack yang dengan implementasi array eksplisit-astatik rata kiri
 */
 
 // #define false 0
 // #define true 1
-#define Nil 0
+#define Map_Nil 0
 #define MaxEl 100
 #define Undefined -999
 
 // typedef int bool;
 typedef char keytype[MaxEl];
 typedef int valuetype;
-typedef int address;
+typedef int map_address;
 
 typedef struct {
 	keytype Key;
@@ -25,7 +25,7 @@ typedef struct {
 
 typedef struct {
 	infotype Elements[MaxEl];
-	address Count;
+	map_address Count;
 } Map;
 
 /* Definisi Map M kosong : M.Count = Nil */

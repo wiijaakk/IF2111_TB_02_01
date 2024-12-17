@@ -69,13 +69,13 @@ void InsertAt(ArrayDin *array, Barang el, IdxType i);
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, Barang el);
+void InsertLastArrDin(ArrayDin *array, Barang el);
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, Barang el);
+void InsertFirstArrDin(ArrayDin *array, Barang el);
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin

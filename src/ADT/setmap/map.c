@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "map.h"
-#include "boolean.h"
+#include "../../boolean.h"
 
 void copyString(char *dest, const char *src) {
     while (*src != '\0') {
@@ -24,11 +24,11 @@ int compareStrings(const char *key1, const char *key2) {
 
 
 void CreateEmptyMap(Map *M){
-    M->Count = Nil;
+    M->Count = Map_Nil;
 }
 
 boolean IsEmptyMap(Map M){
-    return (M.Count == Nil);
+    return (M.Count == Map_Nil);
 }
 
 boolean IsFullMap(Map M){
@@ -75,7 +75,7 @@ void DeleteMap(Map *M, keytype k, valuetype v){
         if(M->Elements[idx].Value-v<=0){
             M->Elements[idx].Value = 0;
             if(M->Count==1){
-                M->Count = Nil;
+                M->Count = Map_Nil;
             }
             else{
                 for(int i = idx+1; i<M->Count; i++){

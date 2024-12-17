@@ -10,7 +10,7 @@ void CreateEmptyListLinier(List *L){
     L->First = Nuh;
 }
 
-address AlokasiListLinier(infotype X){
+address AlokasiListLinier(nama_barang X){
      address P = (address) malloc (sizeof(ElmtList));
      if (P!=NULL){
         copyString(P->info, X);
@@ -26,7 +26,7 @@ void DealokasiListLinier(address *P){
     free(*P);
 }
 
-address SearchListLinier(List L, infotype X){
+address SearchListLinier(List L, nama_barang X){
     address now = First(L);
     while(now->next!=Nuh){
         if(now->info!=X){
@@ -42,8 +42,8 @@ address SearchListLinier(List L, infotype X){
     return Nuh;
 }
 
-void InsVFirst(List *L, infotype X){
-    address P = Alokasi(X);
+void InsVFirst(List *L, nama_barang X){
+    address P = AlokasiListLinier(X);
     if(P!=Nuh){
         if(IsEmptyListLinier(*L)){
             L->First = P;
@@ -55,25 +55,25 @@ void InsVFirst(List *L, infotype X){
     }
 }
 
-void InsVLast (List *L, infotype X){
-    address P = Alokasi(X);
+void InsVLast (List *L, nama_barang X){
+    address P = AlokasiListLinier(X);
     if(P!=Nuh){
         InsertLast(L, P);
     }
 }
 
-void DelVFirst (List *L, infotype *X){
+void DelVFirst (List *L, nama_barang *X){
     address P;
     DelFirst(L, &P);
     copyString(*X, P->info);
-    Dealokasi (&P);
+    DealokasiListLinier (&P);
 }
 
-void DelVLast (List *L, infotype *X){
+void DelVLast (List *L, nama_barang *X){
     address P;
     DelLast(L, &P);
     copyString(*X, P->info);
-    Dealokasi (&P);
+    DealokasiListLinier (&P);
 }
 
 void InsertFirst (List *L, address P){
@@ -105,8 +105,8 @@ void DelFirst (List *L, address *P){
     (*P)->next = Nuh;
 }
 
-void DelP (List *L, infotype X){
-    address P = Search(*L, X);
+void DelP (List *L, nama_barang X){
+    address P = SearchListLinier(*L, X);
     if(P!=Nuh){
         address now = First(*L);
         if(P == now){

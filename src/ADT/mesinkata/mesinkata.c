@@ -77,9 +77,7 @@ boolean isEndWord() {
 }
 
 void StartFileWord(char* input){
-    //printf("a");
     StartReadFile(input);
-    //printf("b");
     IgnoreBlanksFile();
     if (currentChar == BLANK || currentChar == NEWLINE)
     {
