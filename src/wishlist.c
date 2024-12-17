@@ -1,39 +1,5 @@
 #include "wishlist.h"
 
-void wishlist(TabInt *arruser, int useridx, ArrayDin arrayItems,  char arg[]){
-    //CreateEmptyListLinier(&WL);
-    removeFirstnString(arg, 9);
-    if (check_strV2(arg, "ADD\0")){
-        WLadd(arruser, useridx, arrayItems, arg);
-    }else if (check_str(arg, "SWAP\0")){
-        int n1;
-        int n2;
-        removeFirstnString(arg, 5);
-        n1 = arg[0] - '0';
-        n2 = arg[2] - '0';
-        WLswap(arruser, useridx, n1, n2);
-    }else if (check_str(arg, "REMOVE\0")){
-        if (check_strV2(arg, "REMOVE\0")){
-            WLremove(arruser, useridx);
-        }else{
-            removeFirstnString(arg, 7);
-            int i = 0;
-            int n = 0;
-            while (arg[i] != '\0')
-            {
-                n*=10;
-                n += arg[i] - '0';
-            }
-            WLremovei(arruser, useridx, n);    
-        }       
-    }else if (check_strV2(arg, "CLEAR\0")){
-        WLclear(arruser, useridx);
-    }else if (check_strV2(arg, "SHOW\0")){
-        WLshow(arruser, useridx);
-    }else{
-        printf("Command Tidak Valid\n");
-    }
-}
 
 void WLadd(TabInt *arruser, int useridx, ArrayDin arrayItems,  char arg[]){
     boolean found = false;
@@ -154,8 +120,44 @@ void WLshow(TabInt *arruser, int useridx){
 
 void WLclear(TabInt *arruser, int useridx){
     while (!IsEmptyListLinier){
-        int x;
+        nama_barang x;
         DelVLast(&WL, &x);
     }   
     printf("Wishlist telah dikosongkan.\n");
+}
+
+
+void wishlist(TabInt *arruser, int useridx, ArrayDin arrayItems,  char arg[]){
+    //CreateEmptyListLinier(&WL);
+    removeFirstnString(arg, 9);
+    if (check_strV2(arg, "ADD\0")){
+        WLadd(arruser, useridx, arrayItems, arg);
+    }else if (check_str(arg, "SWAP\0")){
+        int n1;
+        int n2;
+        removeFirstnString(arg, 5);
+        n1 = arg[0] - '0';
+        n2 = arg[2] - '0';
+        WLswap(arruser, useridx, n1, n2);
+    }else if (check_str(arg, "REMOVE\0")){
+        if (check_strV2(arg, "REMOVE\0")){
+            WLremove(arruser, useridx);
+        }else{
+            removeFirstnString(arg, 7);
+            int i = 0;
+            int n = 0;
+            while (arg[i] != '\0')
+            {
+                n*=10;
+                n += arg[i] - '0';
+            }
+            WLremovei(arruser, useridx, n);    
+        }       
+    }else if (check_strV2(arg, "CLEAR\0")){
+        WLclear(arruser, useridx);
+    }else if (check_strV2(arg, "SHOW\0")){
+        WLshow(arruser, useridx);
+    }else{
+        printf("Command Tidak Valid\n");
+    }
 }

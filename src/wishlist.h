@@ -5,7 +5,7 @@
 #include "str.h"
 #include "ADT.h"
 
-#define WL (arruser[useridx].TI->wishlist)
+#define WL (*((arruser[useridx].TI)->wishlist))
 
 typedef struct {
   char name[50];
