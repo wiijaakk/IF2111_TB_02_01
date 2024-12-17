@@ -20,16 +20,12 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi 
         for(int i = 0; i < NbElmt(*arrayUsers); i++){
             fprintf(file, "%d %s %s\n", arrayUsers->TI[i].money, arrayUsers->TI[i].name, arrayUsers->TI[i].password);
 
-            int total = 0;
-            barang_dibeli currentBarangDibeli;
-            for(int i = 0; !IsEmptyStack(arrayUsers[i].TI->riwayat_pembelian); i++){
-                PopStack(&arrayUsers->TI[i].riwayat_pembelian, &currentBarangDibeli);
-                PushStack(&arrayUsers->TI[i].riwayat_pembelian, currentBarangDibeli);
-                total++;
-            }
-            
+            // Perlu pakai size agar bisa hitung jumlah elemen tanpa pop
+            // karena save harus bisa digunakan tanpa quit
+            int total = arrayUsers->TI[i].riwayat_pembelian.size;
             fprintf(file, "%d\n", total);
 
+            barang_dibeli currentBarangDibeli;
             for(int i = 0; i < total; i++){
                 barang_dibeli currentBarangDibeli;
                 PopStack(&arrayUsers->TI[i].riwayat_pembelian, &currentBarangDibeli);

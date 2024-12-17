@@ -16,7 +16,6 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
     filenameStr[filename.Length] = '\0';
     snprintf(fullPath, sizeof(fullPath), "%s%s", SAVE_FOLDER, filenameStr); // Menggabungkan folder (../save/) dengan filename input user
 
-
     if (isFileValid(fullPath)) {   
         // Membuka file
         StartFileWord(fullPath);
@@ -35,7 +34,7 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
             }
             currentBarang.name[currentWord.Length] = '\0';
 
-            InsertLast(arrayItems, currentBarang);
+            InsertLastArrDin(arrayItems, currentBarang);
         }
 
         // Membaca total user yang tersimpan dalam file

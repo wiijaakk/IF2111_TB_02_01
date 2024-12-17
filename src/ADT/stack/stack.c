@@ -3,6 +3,7 @@
 
 void CreateEmptyStack(Stack *S){
     Top(*S) = Stack_Nil;
+    S->size = 0;
 }
 
 boolean IsEmptyStack(Stack S){
@@ -21,6 +22,7 @@ void PushStack(Stack * S, barang_dibeli X){
         Top(*S)++;
     }
     InfoTop(*S) = X;
+    S->size++;
 }
 
 void PopStack(Stack * S, barang_dibeli* X){
@@ -31,4 +33,5 @@ void PopStack(Stack * S, barang_dibeli* X){
     else{
         Top(*S)--;
     }
+    S->size--;
 }

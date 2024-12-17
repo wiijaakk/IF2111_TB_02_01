@@ -14,7 +14,8 @@ typedef int stack_address;
 
 typedef struct { 
   barang_dibeli T[MaxEl]; 
-  stack_address TOP; 
+  stack_address TOP;
+  int size;
 } Stack;
 
 #define Top(S) (S).TOP
