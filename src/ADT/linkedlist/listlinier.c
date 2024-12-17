@@ -121,6 +121,21 @@ void DelP (List *L, nama_barang X){
     }
 }
 
+void DelAddr (List *L, address P){
+    if(P!=Nuh){
+        address now = First(*L);
+        if(P == now){
+            DelFirst(L, &P);
+        }
+        else{
+            while(now->next!=P){
+                now = now->next;
+            }
+            DelAfter(L, &P, now);
+        }
+    }
+}
+
 void DelLast (List *L, address *P){
 	address last = First(*L);
 	address prec = Nuh;
