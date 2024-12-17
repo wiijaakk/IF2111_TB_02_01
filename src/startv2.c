@@ -34,13 +34,20 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk comm
 
     // Memasukkan informasi user ke arrayUsers
     for (int i = 0; i < total; i++) {
-        CreateEmptyStack(&currentUser.riwayat_pembelian);
-        CreateEmptyListLinier(&currentUser.wishlist);
-        CreateEmptyMap(&currentUser.keranjang);
+        Stack riwayat;
+        List wishlist;
+        Map keranjang;
+        CreateEmptyStack(&riwayat);
+        CreateEmptyListLinier(&wishlist);
+        CreateEmptyMap(&keranjang);
+
+        currentUser.riwayat_pembelian = &riwayat;
+        currentUser.keranjang = &keranjang;
+        currentUser.wishlist = &wishlist;
         
         ADVFileWordSpace();
         currentUser.money = wordToInt(currentWord);
-        
+
         ADVFileWordSpace();
         for (int j = 0; j < currentWord.Length; j++) {
             currentUser.name[j] = currentWord.TabWord[j];
@@ -57,28 +64,32 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk comm
         n_riwayat_pembelian = wordToInt(currentWord);
         for(int i = 0; i < n_riwayat_pembelian; i++){
             barang_dibeli X;
+
             ADVFileWordSpace();
             X.totalharga = wordToInt(currentWord);
+
             ADVFileWordNewLine();
             for (int j = 0; j < currentWord.Length; j++) {
                 X.name[j] = currentWord.TabWord[j];
             }
             X.name[currentWord.Length] = '\0';
-            PushStack(&currentUser.riwayat_pembelian, X);
+            PushStack(currentUser.riwayat_pembelian, X);
         }
 
         ADVFileWordNewLine();
         n_wishlist = wordToInt(currentWord);
         for(int i = 0; i < n_wishlist; i++){
             nama_barang X;
+
             ADVFileWordNewLine();
             for (int j = 0; j < currentWord.Length; j++) {
                 X[j] = currentWord.TabWord[j];
             }
             X[currentWord.Length] = '\0';
-            InsVLast(&currentUser.wishlist, X);
+            InsVLast(currentUser.wishlist, X);
         }
 
+        printf("banyak riwayat 1: %d\n", currentUser.riwayat_pembelian->size);
         SetEl(arrayUsers, i, currentUser);
     }
     arrayUsers->Neff = total;
