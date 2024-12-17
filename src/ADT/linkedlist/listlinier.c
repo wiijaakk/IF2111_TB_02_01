@@ -13,7 +13,7 @@ void CreateEmptyListLinier(List *L){
 address AlokasiListLinier(nama_barang X){
      address P = (address) malloc (sizeof(ElmtList));
      if (P!=NULL){
-        copyString(P->info, X);
+        copyStringMap(P->info, X);
         P->next = Nuh;
         return P;
      }
@@ -65,14 +65,14 @@ void InsVLast (List *L, nama_barang X){
 void DelVFirst (List *L, nama_barang *X){
     address P;
     DelFirst(L, &P);
-    copyString(*X, P->info);
+    copyStringMap(*X, P->info);
     DealokasiListLinier (&P);
 }
 
 void DelVLast (List *L, nama_barang *X){
     address P;
     DelLast(L, &P);
-    copyString(*X, P->info);
+    copyStringMap(*X, P->info);
     DealokasiListLinier (&P);
 }
 
