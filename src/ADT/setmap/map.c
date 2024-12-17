@@ -2,7 +2,7 @@
 #include "map.h"
 #include "../../boolean.h"
 
-void copyString(char *dest, const char *src) {
+void copyStringMap(char *dest, const char *src) {
     while (*src != '\0') {
         *dest = *src;
         dest++;
@@ -53,13 +53,13 @@ void InsertMap(Map *M, keytype k, valuetype v){
     if(!IsMemberMap(*M,k)){
         if(IsEmptyMap(*M)){
             M->Count = 1;
-            copyString(M->Elements[0].Key, k);
+            copyStringMap(M->Elements[0].Key, k);
             M->Elements[0].Value = v;
         }
         else{
             int idx = M->Count;
             M->Count++;
-            copyString(M->Elements[idx].Key, k);
+            copyStringMap(M->Elements[idx].Key, k);
             M->Elements[idx].Value = v;
         }
     }

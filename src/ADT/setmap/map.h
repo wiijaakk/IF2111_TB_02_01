@@ -32,7 +32,7 @@ typedef struct {
 /* M.Count = jumlah element Map */
 /* M.Elements = tempat penyimpanan element Map */
 
-void copyString(char *dest, const char *src);
+void copyStringMap(char *dest, const char *src);
 
 int compareStrings(const char *key1, const char *key2);
 
