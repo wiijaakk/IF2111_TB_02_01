@@ -43,7 +43,7 @@ void cartpay(TabInt arrayUsers, int useridx, ArrayDin arrayItems, Map cart, Stac
                     int harga = ((cart.Elements[i].Value)*arrayItems.A[idxBarang].price);
                     if (cart.Elements[i].Value > maxprice) {
                         copyStringMap(maxitem.name, cart.Elements[i].Key);
-                        copyStringMap(maxitem.totalharga, harga);
+                        maxitem.totalharga = harga;
                         maxprice = harga;
                     }
                 }

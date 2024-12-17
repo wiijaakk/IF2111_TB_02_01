@@ -9,7 +9,7 @@ void cartadd(ArrayDin arrayItems, Map cart, Barang barang, int quantity) {
         } else if (quantity < 0) {
             printf("Barang yang dimasukkan ke dalam keranjang harus berjumlah positif!\n");
         } else {
-            InsertMap(&cart, &barang, quantity);
+            InsertMap(&cart, barang.name, quantity);
             printf("Berhasil menambahkan %d %s ke keranjang belanja!\n", quantity, barang);
         }
     }
