@@ -2,7 +2,7 @@
 
 
 void cartpay(TabInt arrayUsers, int useridx, ArrayDin arrayItems, Map cart, Stack history) {
-    if (isEmptyMap(cart)) {
+    if (IsEmptyMap(cart)) {
         printf("Keranjang kamu kosong!\n");
     } else {
         printf("Kamu akan membeli barang-barang berikut:\n");
