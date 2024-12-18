@@ -21,6 +21,8 @@
 #include "boolean.h"
 #include "work.h"
 #include "workchallenge.h"
+#include "history.h"
+#include "profile.h"
 
 
 int main() {
@@ -122,6 +124,10 @@ int main() {
                 storeremove(&arrayItems);
             } else if (check_str(CurrentFrasa.TabWord, "CART")) {
                 cartfunction(&arrayUsers, username_idx, arrayItems, CurrentFrasa.TabWord);
+            } else if (check_str(CurrentFrasa.TabWord, "HISTORY")) {
+                history(*arrayUsers.TI[username_idx].riwayat_pembelian, CurrentFrasa.TabWord);
+            } else if(compareFrasaToString(CurrentFrasa, "PROFILE")) {
+                profile(arrayUsers, username_idx);
             } else if (compareFrasaToString(CurrentFrasa, "LOGOUT")) {
                 logout_User(username, &username_idx);
                 loginStatus=false;

@@ -18,7 +18,7 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
 			  ../src/quit.c \
 			  ../src/register.c \
 			  ../src/savev2.c \
-			  ../src/startv2.c \
+			  ../src/startv3.c \
 			  ../src/storelist.c \
 			  ../src/storeremove.c \
 			  ../src/storerequest.c \
@@ -29,6 +29,8 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
               ../src/workchallenge.c \
               ../src/str.c \
 			  ../src/main.c \
+			  ../src/history.c \
+			  ../src/Profile.c \
 
 CC := gcc
 ObjDir := ./
