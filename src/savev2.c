@@ -19,16 +19,15 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi 
         fprintf(file, "%d\n", NbElmt(*arrayUsers)); // Memasukkan baris Total Users
         for(int i = 0; i < NbElmt(*arrayUsers); i++){
             fprintf(file, "%d %s %s\n", arrayUsers->TI[i].money, arrayUsers->TI[i].name, arrayUsers->TI[i].password);
-
             // Perlu pakai size agar bisa hitung jumlah elemen tanpa pop
             // karena save harus bisa digunakan tanpa quit
             int total = (GetElmt(*arrayUsers, i)).riwayat_pembelian->size;
             fprintf(file, "%d\n", total);
-
+            
             barang_dibeli currentBarangDibeli;
-            for(int i = 0; i < total; i++){
-                barang_dibeli currentBarangDibeli;
+            while(!IsEmptyStack(*arrayUsers->TI[i].riwayat_pembelian)){
                 PopStack(arrayUsers->TI[i].riwayat_pembelian, &currentBarangDibeli);
+                printf("%d %s\n", currentBarangDibeli.totalharga, currentBarangDibeli.name);
                 fprintf(file, "%d %s\n", currentBarangDibeli.totalharga, currentBarangDibeli.name);
             }
 
@@ -39,9 +38,12 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi 
                 currentAddress = currentAddress->next;
             }
 
+            fprintf(file, "%d\n", total);
+
             currentAddress = First(*(arrayUsers->TI[i].wishlist));
             for(int i = 0; i < total; i++){
                 fprintf(file, "%s\n", Info(currentAddress));
+                currentAddress = currentAddress->next;
             }
         }
 
