@@ -72,7 +72,7 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) {
                 PushStack(arrayUsers[useridx].TI->riwayat_pembelian, maxitem); // Push barang dengan total harga paling mahal saja
                 arrayUsers[useridx].TI->money = arrayUsers[useridx].TI->money - totalPrice;
 
-                for (int i=0 ; i<arrayUsers[useridx].TI->keranjang->Count ; i++) {
+                for (int i=0 ; i<=arrayUsers[useridx].TI->keranjang->Count ; i++) {
                     DeleteMap(arrayUsers[useridx].TI->keranjang, arrayUsers[useridx].TI->keranjang->Elements[i].Key, arrayUsers[useridx].TI->keranjang->Elements[i].Value);
                 }
 
