@@ -24,7 +24,7 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk comm
         }
         currentBarang.name[currentWord.Length] = '\0';
 
-        InsertLast(arrayItems, currentBarang);
+        InsertLastArrDin(arrayItems, currentBarang);
     }
 
     // Membaca total user yang tersimpan dalam file

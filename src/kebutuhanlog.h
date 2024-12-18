@@ -2,7 +2,7 @@
 #define STRING_H
 
 // Fungsi untuk menghitung panjang string
-int strlen(const char *str);
+int strlength(const char *str);
 
 // Fungsi untuk menyalin string
 char *strcpy(char *dest, const char *src);

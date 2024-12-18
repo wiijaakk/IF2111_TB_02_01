@@ -1,6 +1,6 @@
 #include "kebutuhanlog.h"
 
-int strlen(const char *str) {
+int strlength(const char *str) {
     int length = 0;
     while (str[length] != '\0') {
         length++;

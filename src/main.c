@@ -2,13 +2,14 @@
 #include <stdlib.h>
 #include "ADT.h"
 
-#include "start.h"
+#include "startv2.h"
 #include "login.h"
 #include "logout.h"
 #include "storelist.h"
 #include "storeremove.h"
 #include "storerequest.h"
 #include "storesupply.h"
+#include "cart.h"
 #include "str.h"
 #include "save.h"
 #include "register.h"
@@ -96,12 +97,15 @@ int main() {
 
         //printf("==2\n");
         while (sessionStatus && loginStatus && !compareFrasaToString(CurrentFrasa, "QUIT")) { // Loop Main Menu (sudah memulai sesi dan sudah login)
+            // PrintArrayDin(arrayItems);
+            // cartshow(&arrayUsers, username_idx, arrayItems);
             printf("Masukkan command: ");
             STARTFRASA(); // Menerima masukan berupa semua kata yang ada pada input hingga bertemu newline
             char forsave[50]; // Khusus untuk fungsi SAVE
             copyStr(CurrentFrasa.TabWord, forsave);
+            // toupperstr(CurrentFrasa.TabWord);
             toupperstr(forsave);
-            //printf("%s\n", CurrentFrasa.TabWord);
+            printf("%s\n", CurrentFrasa.TabWord);
             if (compareFrasaToString(CurrentFrasa, "WORK")) {
                 work_(&arrayUsers, username_idx);
             } else if (compareFrasaToString(CurrentFrasa, "WORK CHALLENGE")) {
@@ -116,6 +120,8 @@ int main() {
                 storesupply(&arrayItems, &barang);
             } else if (compareFrasaToString(CurrentFrasa, "STORE REMOVE")) {
                 storeremove(&arrayItems);
+            } else if (check_str(CurrentFrasa.TabWord, "CART")) {
+                cartfunction(&arrayUsers, username_idx, arrayItems, CurrentFrasa.TabWord);
             } else if (compareFrasaToString(CurrentFrasa, "LOGOUT")) {
                 logout_User(username, &username_idx);
                 loginStatus=false;

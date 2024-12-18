@@ -36,13 +36,21 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk comm
     for (int i = 0; i < total; i++) {
         Stack riwayat;
         List wishlist;
-        Map keranjang;
+        // Map keranjang;
+        Map *keranjang = (Map *)malloc(sizeof(Map));
+        if (keranjang == NULL) {
+            printf("Gagal mengalokasikan memori untuk keranjang.\n");
+            exit(1);
+        }
+
         CreateEmptyStack(&riwayat);
         CreateEmptyListLinier(&wishlist);
-        CreateEmptyMap(&keranjang);
+        CreateEmptyMap(keranjang);
+        // CreateEmptyMap(&keranjang);
 
         currentUser.riwayat_pembelian = &riwayat;
-        currentUser.keranjang = &keranjang;
+        currentUser.keranjang = keranjang;
+        // currentUser.keranjang = &keranjang;
         currentUser.wishlist = &wishlist;
         
         ADVFileWordSpace();
