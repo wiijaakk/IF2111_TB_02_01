@@ -38,7 +38,7 @@ boolean IsFullMap(Map M){
 valuetype ValueMap(Map M, keytype k){
     if(IsMemberMap(M, k)){
         for(int i = 0; i<M.Count; i++){
-        if(M.Elements[i].Key == k){
+        if(compareStrings(M.Elements[i].Key, k) == 0){
             return M.Elements[i].Value;
             break;
         }
