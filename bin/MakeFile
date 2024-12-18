@@ -23,10 +23,7 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
 			  ../src/storeremove.c \
 			  ../src/storerequest.c \
 			  ../src/storesupply.c \
-			  ../src/cartadd.c \
-			  ../src/cartshow.c \
-			  ../src/cartremove.c \
-			  ../src/cartpay.c \
+			  ../src/cart.c \
 			  ../src/wishlist.c \
               ../src/work.c \
               ../src/workchallenge.c \
