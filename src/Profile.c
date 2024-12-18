@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include "user.h"
+#include "profile.h"
 
-void profile(User user) {
+void profile(TabInt arrayUsers, int user_idx) {
     /*
     // Menampilkan nama pengguna
     printf("Nama : %s\n", username_sekarang);
@@ -10,6 +9,6 @@ void profile(User user) {
     printf("Saldo : %d\n", arruser->TI[useridx].money);
     */
     
-    printf("Nama     : %s\n", user.name);
-    printf("Saldo    : %d\n", user.money);
+    printf("Nama     : %s\n", arrayUsers.TI[user_idx].name);
+    printf("Saldo    : %d\n", arrayUsers.TI[user_idx].money);
 }
