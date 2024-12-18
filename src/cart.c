@@ -34,7 +34,7 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) {
             boolean found = false;
             int idxBarang;
             for (int j=0 ; j<arrayItems.Neff; j++) {
-                if (compareStrings(arrayUsers[useridx].TI->keranjang->Elements[i].Key, arrayItems.A[j].name)) {
+                if (compareStrings(arrayUsers[useridx].TI->keranjang->Elements[i].Key, arrayItems.A[j].name) == 0) {
                     found = true;
                     idxBarang = j;
                     break;
@@ -46,7 +46,7 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) {
         }
         printf("Total biaya yang harus dikeluarkan adalah %d, apakah jadi dibeli? (Ya/Tidak): ", totalPrice);
         STARTFRASA();
-        if (compareFrasaToString(CurrentFrasa, "Ya")) {
+        if (check_str(CurrentFrasa.TabWord, "Ya")) {
             if (arrayUsers[useridx].TI->money < totalPrice) {
                 printf("Uang kamu hanya %d, tidak cukup untuk membeli keranjang!\n", arrayUsers[useridx].TI->money);
             } else {
@@ -56,7 +56,7 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) {
                 int idxBarang;
                 for (int i=0 ; i < arrayUsers[useridx].TI->keranjang->Count ; i++) {
                     for (int j=0 ; j<arrayItems.Neff; j++) {
-                        if (compareStrings(arrayUsers[useridx].TI->keranjang->Elements[i].Key, arrayItems.A[j].name)) {
+                        if (compareStrings(arrayUsers[useridx].TI->keranjang->Elements[i].Key, arrayItems.A[j].name) == 0) {
                             found = true;
                             idxBarang = j;
                             break;
@@ -72,11 +72,15 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) {
                 PushStack(arrayUsers[useridx].TI->riwayat_pembelian, maxitem); // Push barang dengan total harga paling mahal saja
                 arrayUsers[useridx].TI->money = arrayUsers[useridx].TI->money - totalPrice;
 
+                for (int i=0 ; i<arrayUsers[useridx].TI->keranjang->Count ; i++) {
+                    DeleteMap(arrayUsers[useridx].TI->keranjang, arrayUsers[useridx].TI->keranjang->Elements[i].Key, arrayUsers[useridx].TI->keranjang->Elements[i].Value);
+                }
+
                 printf("\n");
                 printf("Selamat kamu telah membeli barang-barang tersebut!\n");
                 // Beli barang, masuk histori pembelian
             }
-        } else if (compareFrasaToString(CurrentFrasa, "Tidak")) {
+        } else if (check_str(CurrentFrasa.TabWord, "Tidak")) {
         } else {
             printf("Input yang anda masukkan tidak valid!\n");
         }
