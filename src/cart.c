@@ -90,20 +90,18 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) {
 void cartremove(TabInt *arrayUsers, int useridx, Barang barang, int quantity) {
     boolean found = false;
     for (int i=0; i<arrayUsers->TI[useridx].keranjang->Count; i++) {
-        printf("masuk check\n");
         if (check_str(arrayUsers->TI[useridx].keranjang->Elements[i].Key, barang.name)) {
             found = true;
-            printf("bisa found\n");
         }
     }
     if (!found) {
         printf("Barang tidak ada di keranjang belanja!\n");
     } else {
         if (quantity > ValueMap(*arrayUsers->TI[useridx].keranjang, barang.name)) {
-            printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", ValueMap(*arrayUsers->TI[useridx].keranjang, barang.name), barang);
+            printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", ValueMap(*arrayUsers->TI[useridx].keranjang, barang.name), barang.name);
         } else {
             DeleteMap(arrayUsers->TI[useridx].keranjang, barang.name, quantity);
-            printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", quantity, barang);
+            printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", quantity, barang.name);
         }
     }
 }
