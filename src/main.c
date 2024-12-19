@@ -23,6 +23,7 @@
 #include "workchallenge.h"
 #include "history.h"
 #include "profile.h"
+#include "globalalignment.h"
 
 
 int main() {
@@ -107,7 +108,7 @@ int main() {
             copyStr(CurrentFrasa.TabWord, forsave);
             // toupperstr(CurrentFrasa.TabWord);
             toupperstr(forsave);
-            printf("%s\n", CurrentFrasa.TabWord);
+            // printf("%s\n", CurrentFrasa.TabWord);
             if (compareFrasaToString(CurrentFrasa, "WORK")) {
                 work_(&arrayUsers, username_idx);
             } else if (compareFrasaToString(CurrentFrasa, "WORK CHALLENGE")) {
@@ -122,6 +123,8 @@ int main() {
                 storesupply(&arrayItems, &barang);
             } else if (compareFrasaToString(CurrentFrasa, "STORE REMOVE")) {
                 storeremove(&arrayItems);
+            } else if (compareFrasaToString(CurrentFrasa, "GLOBALALIGNMENT")) {
+                globalalignment();
             } else if (check_str(CurrentFrasa.TabWord, "CART")) {
                 cartfunction(&arrayUsers, username_idx, arrayItems, CurrentFrasa.TabWord);
             } else if (check_str(CurrentFrasa.TabWord, "HISTORY")) {
