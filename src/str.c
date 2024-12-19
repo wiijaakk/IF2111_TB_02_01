@@ -1,4 +1,6 @@
 #include "str.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 void copyStr(char *in, char *out) {
     int i = 0;
@@ -62,6 +64,20 @@ int check_strV2(char str1[], char str2[]){
         check = 0;
     }
     
+    return check;    
+}
+
+int check_strV3(char str1[], char str2[]){
+    int check = 1;
+    int i = 0;
+    while (str2[i] != '\0' && check)
+    {
+        if (str1[i] != str2[i])
+        {
+            check = 0;
+        }
+        i++;
+    }
     return check;    
 }
 
