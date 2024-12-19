@@ -38,6 +38,14 @@ void Register_User(TabInt * arrayUsers){ // Fungsi untuk command REGISTER
             idx++;
         }
         arrayUsers->TI[arrayUsers->Neff].money = 0;
+        arrayUsers->TI[arrayUsers->Neff].riwayat_pembelian = malloc(sizeof(Stack));
+        arrayUsers->TI[arrayUsers->Neff].wishlist = malloc(sizeof(List));
+        arrayUsers->TI[arrayUsers->Neff].keranjang = malloc(sizeof(Map));
+
+        CreateEmptyStack(arrayUsers->TI[arrayUsers->Neff].riwayat_pembelian);
+        CreateEmptyListLinier(arrayUsers->TI[arrayUsers->Neff].wishlist);
+        CreateEmptyMap(arrayUsers->TI[arrayUsers->Neff].keranjang);
+        
         arrayUsers->Neff++;
         printf("Akun dengan username %s telah berhasil dibuat. Silakan LOGIN untuk melanjutkan.\n", username);
     }
