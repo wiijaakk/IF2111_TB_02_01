@@ -46,7 +46,7 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) {
         }
         printf("Total biaya yang harus dikeluarkan adalah %d, apakah jadi dibeli? (Ya/Tidak): ", totalPrice);
         STARTFRASA();
-        if (check_str(CurrentFrasa.TabWord, "Ya")) {
+        if (check_strV2(CurrentFrasa.TabWord, "Ya")) {
             if (arrayUsers->TI[useridx].money < totalPrice) {
                 printf("Uang kamu hanya %d, tidak cukup untuk membeli keranjang!\n", arrayUsers->TI[useridx].money);
             } else {
@@ -78,9 +78,8 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) {
 
                 printf("\n");
                 printf("Selamat kamu telah membeli barang-barang tersebut!\n");
-                // Beli barang, masuk histori pembelian
             }
-        } else if (check_str(CurrentFrasa.TabWord, "Tidak")) {
+        } else if (check_strV2(CurrentFrasa.TabWord, "Tidak")) {
         } else {
             printf("Input yang anda masukkan tidak valid!\n");
         }
@@ -97,7 +96,9 @@ void cartremove(TabInt *arrayUsers, int useridx, Barang barang, int quantity) {
     if (!found) {
         printf("Barang tidak ada di keranjang belanja!\n");
     } else {
-        if (quantity > ValueMap(*arrayUsers->TI[useridx].keranjang, barang.name)) {
+        if (quantity <= 0) {
+            printf("Tidak berhasil mengurangi, masukan angka harus positif!\n");
+        } else if (quantity > ValueMap(*arrayUsers->TI[useridx].keranjang, barang.name)) {
             printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", ValueMap(*arrayUsers->TI[useridx].keranjang, barang.name), barang.name);
         } else {
             DeleteMap(arrayUsers->TI[useridx].keranjang, barang.name, quantity);
@@ -117,15 +118,12 @@ void cartshow(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) {
             boolean found = false;
             int idxBarang;
             for (int j=0 ; j<arrayItems.Neff; j++) {
-                // printf("[%d]:\n", j);
                 if (compareStrings(arrayUsers->TI[useridx].keranjang->Elements[i].Key, arrayItems.A[j].name) == 0) {
                     found = true;
-                    // printf("Found!\n");
                     idxBarang = j;
                     break;
                 }
             }
-            // printf("%d\n", arrayItems.A[idxBarang].price);
             int harga = ((arrayUsers->TI[useridx].keranjang->Elements[i].Value)*arrayItems.A[idxBarang].price);
             printf("%d\t\t| %s\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
             totalPrice += harga;
@@ -156,9 +154,9 @@ void cartfunction(TabInt *arrayUsers, int useridx, ArrayDin arrayItems, char arg
         keepLastWord(arg2);
         int quantity = stringToInteger(arg2);
         cartremove(arrayUsers, useridx, barang, quantity);
-    } else if (check_str(arg, "SHOW\0")) {
+    } else if (check_strV2(arg, "SHOW\0")) {
         cartshow(arrayUsers, useridx, arrayItems);
-    } else if (check_str(arg, "PAY\0")) {
+    } else if (check_strV2(arg, "PAY\0")) {
         cartpay(arrayUsers, useridx, arrayItems);
     } else {
         printf("Perintah yang anda masukkan tidak valid!\n");
