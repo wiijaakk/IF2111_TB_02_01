@@ -56,23 +56,20 @@ int main() {
     printf("             s e l e c t  << START >>  o r  << LOAD [file.txt] >>  o r  << HELP >>\n");
     while (!compareFrasaToString(CurrentFrasa, "QUIT")) // Program akan berjalan terus hingga user memasukkan input QUIT
     {
-        // startStore(&arrayItems, &arrayUsers);
         while (!sessionStatus && !loginStatus) { // Loop untuk ketika pengguna belum memulai sesi (belum START atau LOAD)
             printf("Masukkan command: ");
             STARTWORD(); // Menerima masukan berupa satu kata
-            //printf("%s %d\n", currentWord.TabWord, EndWord);
             if (compareWordToString(currentWord, "START")) {
                 startStore(&arrayItems, &arrayUsers);
                 sessionStatus = true;
             } else if (compareWordToString(currentWord, "LOAD")) {
                 STARTWORD(); // Khusus untuk LOAD, jika masukan kata pertama berupa "LOAD", maka akan membaca masukan berikutnya yaitu filename
-                //printf("%s\n", currentWord.TabWord);
                 load(currentWord, &arrayItems, &arrayUsers, &sessionStatus);
             } else if (compareWordToString(currentWord, "HELP")) {
                 help(sessionStatus, loginStatus);
             } else if (compareWordToString(currentWord, "QUIT")) {
-                printf("Program berhasil dihentikan"); // Khusus QUIT pada fungsi ini tidak dapat melakukan SAVE, karena sesi belum dimulai
-                break;
+                printf("Program berhasil dihentikan.\n"); // Khusus QUIT pada fungsi ini tidak dapat melakukan SAVE, karena sesi belum dimulai
+                exit(1);
             } else { // Untuk kasus input invalid
                 printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
             }
@@ -83,7 +80,6 @@ int main() {
         while (sessionStatus && !loginStatus) { // Loop untuk ketika pengguna sudah memulai sesi namun belum login
             printf("Masukkan command: ");
             STARTFRASA(); // Menerima masukan berupa semua kata pada input hingga bertemu newline
-            //printf("%s %d\n", CurrentFrasa.TabWord, EndWord);
             if (compareFrasaToString(CurrentFrasa, "REGISTER")) {
                 Register_User(&arrayUsers);
             } else if (compareFrasaToString(CurrentFrasa, "LOGIN")) {
@@ -100,15 +96,12 @@ int main() {
 
         //printf("==2\n");
         while (sessionStatus && loginStatus && !compareFrasaToString(CurrentFrasa, "QUIT")) { // Loop Main Menu (sudah memulai sesi dan sudah login)
-            // PrintArrayDin(arrayItems);
-            // cartshow(&arrayUsers, username_idx, arrayItems);
             printf("Masukkan command: ");
             STARTFRASA(); // Menerima masukan berupa semua kata yang ada pada input hingga bertemu newline
             char forsave[50]; // Khusus untuk fungsi SAVE
             copyStr(CurrentFrasa.TabWord, forsave);
             // toupperstr(CurrentFrasa.TabWord);
             toupperstr(forsave);
-            // printf("%s\n", CurrentFrasa.TabWord);
             if (compareFrasaToString(CurrentFrasa, "WORK")) {
                 work_(&arrayUsers, username_idx);
             } else if (compareFrasaToString(CurrentFrasa, "WORK CHALLENGE")) {
@@ -136,7 +129,6 @@ int main() {
                 loginStatus=false;
             } else if (check_str(forsave, "SAVE")) {
                 removeFirstnString(CurrentFrasa.TabWord, 5); // Khusus untuk SAVE, perlu dilakukan pemisahan antara command "SAVE" dengan masukan "<filename.txt>"
-                //printf("%s\n", CurrentFrasa.TabWord);
                 save(CurrentFrasa.TabWord, &arrayItems, &arrayUsers);
             } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
                 quit(filename, &arrayItems, &arrayUsers);
