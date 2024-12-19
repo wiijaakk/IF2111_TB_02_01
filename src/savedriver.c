@@ -37,6 +37,4 @@ int main(){
         user->keranjang = NULL;
         user->wishlist = NULL;
     }
-
-    printf("Oke");
 }

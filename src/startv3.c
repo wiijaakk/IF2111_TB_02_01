@@ -59,7 +59,7 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk comm
 
         ADVFileWordNewLine();
         n_riwayat_pembelian = wordToInt(currentWord);
-        for(int i = 0; i < n_riwayat_pembelian; i++){
+        for (int i = 0; i < n_riwayat_pembelian; i++) {
             barang_dibeli X;
 
             ADVFileWordSpace();
@@ -75,7 +75,7 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk comm
 
         ADVFileWordNewLine();
         n_wishlist = wordToInt(currentWord);
-        for(int i = 0; i < n_wishlist; i++){
+        for (int i = 0; i < n_wishlist; i++) {
             nama_barang X;
 
             ADVFileWordNewLine();

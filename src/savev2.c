@@ -19,7 +19,7 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi 
         }
 
         fprintf(file, "%d\n", NbElmt(*arrayUsers)); // Memasukkan baris Total Users
-        for(int i = 0; i < NbElmt(*arrayUsers); i++){
+        for (int i = 0; i < NbElmt(*arrayUsers); i++) {
             fprintf(file, "%d %s %s\n", arrayUsers->TI[i].money, arrayUsers->TI[i].name, arrayUsers->TI[i].password);
 
             // Perlu atribut size untuk hitung jumlah elemen
@@ -29,15 +29,15 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi 
             // Memasukkan riwayat_pembelian user ke tempStack dahulu
             // untuk menjaga urutan penulisan barang_dibeli yang terbalik
             barang_dibeli currentBarangDibeli;
-            while(!IsEmptyStack(*arrayUsers->TI[i].riwayat_pembelian)){
+            while (!IsEmptyStack(*arrayUsers->TI[i].riwayat_pembelian)) {
                 PopStack(arrayUsers->TI[i].riwayat_pembelian, &currentBarangDibeli);
                 PushStack(&tempStack, currentBarangDibeli);
             }
 
             // Memasukkan barang_dibeli ke file
             // dan memasukkannya kembali ke stack riwayat_pembelian
-            // jika user tidak quit setelah save
-            while(!IsEmptyStack(tempStack)){
+            // karena user mungkin tidak quit setelah save
+            while (!IsEmptyStack(tempStack)) {
                 PopStack(&tempStack, &currentBarangDibeli);
                 fprintf(file, "%d %s\n", currentBarangDibeli.totalharga, currentBarangDibeli.name);
                 PushStack(arrayUsers->TI[i].riwayat_pembelian, currentBarangDibeli);
@@ -46,7 +46,7 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi 
             // Menghitung jumlah barang wishlist dan memasukkannya ke file
             total = 0;
             address currentAddress = First(*(arrayUsers->TI[i].wishlist));
-            while(currentAddress != Nuh){
+            while (currentAddress != Nuh) {
                 total++;
                 currentAddress = currentAddress->next;
             }
@@ -54,7 +54,7 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi 
 
             // Memasukkan baris nama barang di wishlist
             currentAddress = First(*(arrayUsers->TI[i].wishlist));
-            for(int i = 0; i < total; i++){
+            for (int i = 0; i < total; i++) {
                 fprintf(file, "%s\n", Info(currentAddress));
                 currentAddress = currentAddress->next;
             }

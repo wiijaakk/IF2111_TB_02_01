@@ -69,7 +69,7 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
 
             ADVFileWordNewLine();
             n_riwayat_pembelian = wordToInt(currentWord);
-            for(int i = 0; i < n_riwayat_pembelian; i++){
+            for (int i = 0; i < n_riwayat_pembelian; i++) {
                 barang_dibeli X;
 
                 ADVFileWordSpace();
@@ -85,7 +85,7 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
 
             ADVFileWordNewLine();
             n_wishlist = wordToInt(currentWord);
-            for(int i = 0; i < n_wishlist; i++){
+            for (int i = 0; i < n_wishlist; i++) {
                 nama_barang X;
 
                 ADVFileWordNewLine();
