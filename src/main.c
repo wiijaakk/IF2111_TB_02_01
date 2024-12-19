@@ -19,6 +19,7 @@
 #include "help.h"
 #include "bioweapon.h"
 #include "boolean.h"
+#include "wishlist.h"
 #include "work.h"
 #include "workchallenge.h"
 #include "history.h"
@@ -100,8 +101,9 @@ int main() {
             STARTFRASA(); // Menerima masukan berupa semua kata yang ada pada input hingga bertemu newline
             char forsave[50]; // Khusus untuk fungsi SAVE
             copyStr(CurrentFrasa.TabWord, forsave);
-            // toupperstr(CurrentFrasa.TabWord);
+            toupperstr(CurrentFrasa.TabWord);
             toupperstr(forsave);
+            // PrintInfoListLinier(*arrayUsers.TI[username_idx].wishlist);
             if (compareFrasaToString(CurrentFrasa, "WORK")) {
                 work_(&arrayUsers, username_idx);
             } else if (compareFrasaToString(CurrentFrasa, "WORK CHALLENGE")) {
@@ -118,6 +120,8 @@ int main() {
                 storeremove(&arrayItems);
             } else if (compareFrasaToString(CurrentFrasa, "GLOBALALIGNMENT")) {
                 globalalignment();
+            } else if (check_str(CurrentFrasa.TabWord, "WISHLIST")) {
+                wishlist(&arrayUsers, username_idx, arrayItems, CurrentFrasa.TabWord);
             } else if (check_str(CurrentFrasa.TabWord, "CART")) {
                 cartfunction(&arrayUsers, username_idx, arrayItems, CurrentFrasa.TabWord);
             } else if (check_str(CurrentFrasa.TabWord, "HISTORY")) {

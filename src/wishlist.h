@@ -2,16 +2,11 @@
 #define __WISHLISH_H__
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "str.h"
 #include "ADT.h"
 
-#define WL (*((arruser[useridx].TI)->wishlist))
-
-typedef struct {
-  char name[50];
-  int salary;
-  int duration;
-} work;
+#define WL (*arruser->TI[useridx].wishlist)
 
 void wishlist(TabInt *arruser, int useridx, ArrayDin arrayItems,  char arg[]);
 

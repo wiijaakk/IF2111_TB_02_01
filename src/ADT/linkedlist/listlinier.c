@@ -166,10 +166,10 @@ void PrintInfoListLinier(List L){
     if(!IsEmptyListLinier(L)){
         address W = First(L);
         while(W->next!=Nuh){
-            printf("%d,", W->info);
+            printf("%s,", W->info);
             W = W->next;
         }
-        printf("%d", W->info);
+        printf("%s", W->info);
     }
     printf("]\n");
 }
