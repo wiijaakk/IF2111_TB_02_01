@@ -1,7 +1,7 @@
 #include "../../boolean.h"
 
-#ifndef stackt_H
-#define stackt_H
+#ifndef stack_H
+#define stack_H
 
 #define Stack_Nil -1
 #define MaxEl 100
