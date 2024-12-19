@@ -20,7 +20,7 @@ void IgnoreBlanksFile()
     /* Mengabaikan satu atau beberapa BLANK
        I.S. : currentChar sembarang
        F.S. : currentChar ≠ BLANK atau currentChar = NEWLINE */
-    while (currentChar == BLANK || currentChar == NEWLINE)
+    while ((currentChar == BLANK || currentChar == NEWLINE) && !endOfFile)
     {
         ADVFile();
     }
@@ -79,7 +79,7 @@ boolean isEndWord() {
 void StartFileWord(char* input){
     StartReadFile(input);
     IgnoreBlanksFile();
-    if (currentChar == BLANK || currentChar == NEWLINE)
+    if (currentChar == BLANK || currentChar == NEWLINE || endOfFile)
     {
         EndWord = true;
     }
