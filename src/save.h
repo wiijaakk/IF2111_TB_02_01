@@ -8,6 +8,6 @@
 
 #define SAVE_FOLDER "../save/"
 
-void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers);
+void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers, int length);
 
 #endif

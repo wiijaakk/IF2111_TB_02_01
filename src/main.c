@@ -133,7 +133,7 @@ int main() {
                 loginStatus=false;
             } else if (check_str(CurrentFrasa.TabWord, "SAVE")) {
                 removeFirstnString(CurrentFrasa.TabWord, 5); // Khusus untuk SAVE, perlu dilakukan pemisahan antara command "SAVE" dengan masukan "<filename.txt>"
-                save(CurrentFrasa.TabWord, &arrayItems, &arrayUsers);
+                save(CurrentFrasa.TabWord, &arrayItems, &arrayUsers, CurrentFrasa.Length);
             } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
                 quit(&arrayItems, &arrayUsers);
             } else if (compareFrasaToString(CurrentFrasa, "LOGIN")){ // Ini dibuat untuk mengatasi kasus ketika pengguna sudah login, kemudian mencoba login lagi
