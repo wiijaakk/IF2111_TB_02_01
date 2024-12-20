@@ -39,7 +39,6 @@ int main() {
     CreateQueuebarang(&barang);
     boolean sessionStatus = false; // Variabel untuk mengecek apakah pengguna sudah START/LOAD
     boolean loginStatus = false; // Variabel untuk mengecek apakah pengguna sudah LOGIN
-    char filename[] = "config.txt"; // Untuk kasus ketika pengguna ingin SAVE melalui QUIT, akan disimpan di config.txt
     
     printf("\n"); // Print banner judul ketika memulai program
     printf("                   -----------  W  E  L  C  O  M  E     T  O  ------------\n");
@@ -89,23 +88,19 @@ int main() {
             } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
                 help(sessionStatus, loginStatus);
             } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
-                quit(filename, &arrayItems, &arrayUsers); // Meskipun belum login, pengguna dapat melakukan SAVE melalui QUIT, untuk menyimpan data user baru (jika ada)
+                quit(&arrayItems, &arrayUsers); // Meskipun belum login, pengguna dapat melakukan SAVE melalui QUIT, untuk menyimpan data user baru (jika ada)
                 break;
             } else { // Untuk kasus input invalid
                 printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
             }
         }
 
-        //printf("==2\n");
         while (sessionStatus && loginStatus && !compareFrasaToString(CurrentFrasa, "QUIT")) { // Loop Main Menu (sudah memulai sesi dan sudah login)
             printf("Masukkan command: ");
             STARTFRASA(); // Menerima masukan berupa semua kata yang ada pada input hingga bertemu newline
-            char forsave[50]; // Khusus untuk fungsi SAVE
-            copyStr(CurrentFrasa.TabWord, forsave);
-            if (!check_str(CurrentFrasa.TabWord, "CART")) { // Khusus fungsi Cart tidak bisa dibuat kapital semua inputannya, kasus khusus
+            if (!check_str(CurrentFrasa.TabWord, "CART") && !check_str(CurrentFrasa.TabWord, "SAVE")) { // Khusus fungsi Cart tidak bisa dibuat kapital semua inputannya, kasus khusus
                 toupperstr(CurrentFrasa.TabWord);
             }
-            toupperstr(forsave);
             // PrintInfoListLinier(*arrayUsers.TI[username_idx].wishlist);
             if (compareFrasaToString(CurrentFrasa, "WORK")) {
                 work_(&arrayUsers, username_idx);
@@ -136,11 +131,11 @@ int main() {
             } else if (compareFrasaToString(CurrentFrasa, "LOGOUT")) {
                 logout_User(username, &username_idx);
                 loginStatus=false;
-            } else if (check_str(forsave, "SAVE")) {
+            } else if (check_str(CurrentFrasa.TabWord, "SAVE")) {
                 removeFirstnString(CurrentFrasa.TabWord, 5); // Khusus untuk SAVE, perlu dilakukan pemisahan antara command "SAVE" dengan masukan "<filename.txt>"
                 save(CurrentFrasa.TabWord, &arrayItems, &arrayUsers);
             } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
-                quit(filename, &arrayItems, &arrayUsers);
+                quit(&arrayItems, &arrayUsers);
             } else if (compareFrasaToString(CurrentFrasa, "LOGIN")){ // Ini dibuat untuk mengatasi kasus ketika pengguna sudah login, kemudian mencoba login lagi
                 Login_User(arrayUsers, &loginStatus, username, &username_idx);
             } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
