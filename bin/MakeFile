@@ -32,6 +32,7 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
 			  ../src/history.c \
 			  ../src/Profile.c \
 			  ../src/globalalignment.c \
+			  ../src/optimasirute.c \
 
 CC := gcc
 ObjDir := ./
