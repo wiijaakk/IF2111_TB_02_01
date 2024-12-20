@@ -21,14 +21,12 @@ PURRMART adalah sebuah aplikasi yang dapat mensimulasikan aktivitas beli barang 
 Sistem yang akan dibangun adalah sebuah program berbasis command line interface (CLI) yang dibuat dalam bahasa C. Program ini akan menggunakan sejumlah abstract data type (ADT) yang telah dipelajari di mata kuliah ini.
 
 ## Cara Kompilasi Program
-> 1. **Instalasi Tool Make**
->
->    Make adalah tool command line interface untuk melakukan build executable code otomatis. Terdapat beberapa cara untuk melakukan instalasi, dengan cara :
+>    Make adalah tool command line interface untuk melakukan build executable code otomatis dan mampu mempermudah kompilasi program.
 > 1. **Lakukan instalasi MinGW melalui** https://mingw-w64.org/
 > 2. **Tambahkan path ke bin MinGW ke PATH sistem komputer Anda**
-> 2. **Lakukan git clone atau unduh kode melalui zip**
+> 3. **Lakukan git clone atau unduh kode melalui zip**
 > 3. **Masuk ke directory bin**
-> 4. **Jalankan :**
+> 5. **Jalankan :**
 >
 >    ```powershell
 >    make
@@ -59,12 +57,16 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
 |
 ├── docs
 │   ├─── IF2111_Form Asistensi Tugas Besar 01.pdf			    
-│   ├─── IF2111_TB_02_01.pdf		     
-│   └─── Spesifikasi Tugas Besar 1 IF2111 2024_2025.pdf				                 
+│   ├─── IF2111_Form Asistensi Tugas Besar 02.pdf
+│   ├─── IF2111_TB_02_01.pdf			    
+│   ├─── IF2111_TB_02_02.pdf
+│   ├─── Spesifikasi Tugas Besar 1 IF2111 2024_2025.pdf     
+│   └─── Spesifikasi Tugas Besar 2 IF2111 2024_2025.pdf
 |
 ├── save
 │   ├─── config.txt 			    
-│   ├─── dummyfile.txt 			     
+│   ├─── dummyfile.txt
+│   ├─── empty.txt 			     
 │   ├─── invalid.txt				     
 │   └─── word.txt                     
 │ 
@@ -80,6 +82,11 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
     │      │       ├─── arraydin.h
     │      │       ├─── arraydin.c
     │      │       └─── arraydindriver.c
+    │      │
+    │      ├─── linkedlist
+    │      │       ├─── listlinier.h
+    │      │       ├─── listlinier.c
+    │      │       └─── listlinierdriver.c
     │      │
     │      ├─── mesinfrasa
     │      │       ├─── mesinfrasa.h
@@ -101,54 +108,85 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
     │      │       ├─── queue.c
     │      │       └─── queuedriver.c
     │      │
-    │      └─── queuebarang
-    │              ├─── queuebarang.h
-    │              ├─── queuebarang.c
-    │              └─── queuebarangdriver.c
+    │      ├─── queuebarang
+    │      │       ├─── queuebarang.h
+    │      │       ├─── queuebarang.c
+    │      │       └─── queuebarangdriver.c
+    │      │
+    │      ├─── setmap
+    │      │       ├─── map.h
+    │      │       ├─── map.c
+    │      │       └─── mapdriver.c
+    │      │
+    │      ├─── stack
+    │      │       ├─── stack.h
+    │      │       ├─── stack.c
+    │      │       └─── stackdriver.c
+    │      │
+    │      └─── user.h
     │
-    └─── ADT.h
-           ├─── banner.txt
-           ├─── users.txt
-           ├─── word.txt
-           ├─── bioweapon.c
-           ├─── bioweapon.h
-           ├─── help.c
-           ├─── help.h
-           ├─── kebutuhanlog.c
-           ├─── kebutuhanlog.h
-           ├─── load.c
-           ├─── load.h
-           ├─── loaddriver.c
-           ├─── login.c
-           ├─── login.h
-           ├─── logout.c
-           ├─── logout.h
-           ├─── main.c
-           ├─── queuebarang.c
-           ├─── queuebarang.h
-           ├─── quit.c
-           ├─── quit.h
-           ├─── register.c
-           ├─── register.h
-           ├─── save.c
-           ├─── save.h
-           ├─── start.c
-           ├─── start.h
-           ├─── startdriver.c
-           ├─── storedriver.c
-           ├─── storelist.c
-           ├─── storelist.h
-           ├─── storeremove.c
-           ├─── storeremove.h
-           ├─── storerequest.c
-           ├─── storerequest.h
-           ├─── storesupply.c
-           ├─── storesupply.h
-           ├─── str.c
-           ├─── str.h
-           ├─── work.c
-           ├─── work.h
-           ├─── workchallenge.c
-           ├─── workchallenge.h
-           └─── workdriver.c
+    ├─── ADT.h
+    ├─── Profile.c
+    ├─── Profile.h
+    ├─── banner.txt
+    ├─── bioweapon.c
+    ├─── bioweapon.h
+    ├─── boolean.h
+    ├─── cart.c
+    ├─── cart.h
+    ├─── ga_driver.c
+    ├─── globalalignment.c
+    ├─── globalalignment.h
+    ├─── help.c
+    ├─── help.h
+    ├─── history.c
+    ├─── history.h
+    ├─── kebutuhanlog.c
+    ├─── kebutuhanlog.h
+    ├─── load.c
+    ├─── load.h
+    ├─── loaddriver.c
+    ├─── loadv2.c
+    ├─── login.c
+    ├─── login.h
+    ├─── logout.c
+    ├─── logout.h
+    ├─── main.c
+    ├─── optimasirute.c
+    ├─── optimasirute.h
+    ├─── or_driver.c
+    ├─── quit.c
+    ├─── quit.h
+    ├─── register.c
+    ├─── register.h
+    ├─── save.c
+    ├─── save.h
+    ├─── savedriver.c
+    ├─── savev2.c
+    ├─── start.c
+    ├─── start.h
+    ├─── startdriver.c
+    ├─── startv2.c
+    ├─── startv2.h
+    ├─── startv3.c
+    ├─── storedriver.c
+    ├─── storelist.c
+    ├─── storelist.h
+    ├─── storeremove.c
+    ├─── storeremove.h
+    ├─── storerequest.c
+    ├─── storerequest.h
+    ├─── storesupply.c
+    ├─── storesupply.h
+    ├─── str.c
+    ├─── str.h
+    ├─── users.txt
+    ├─── wishlist.c
+    ├─── wishlist.h
+    ├─── word.txt
+    ├─── work.c
+    ├─── work.h
+    ├─── workchallenge.c
+    ├─── workchallenge.h
+    └─── workdriver.c
  ```
