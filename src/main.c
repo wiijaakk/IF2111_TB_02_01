@@ -89,7 +89,7 @@ int main() {
                 help(sessionStatus, loginStatus);
             } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
                 quit(&arrayItems, &arrayUsers); // Meskipun belum login, pengguna dapat melakukan SAVE melalui QUIT, untuk menyimpan data user baru (jika ada)
-                break;
+                exit(1);
             } else { // Untuk kasus input invalid
                 printf("Input command tidak valid!\nKetik \"HELP\" untuk command-command yang valid!\n");
             }
@@ -136,6 +136,7 @@ int main() {
                 save(CurrentFrasa.TabWord, &arrayItems, &arrayUsers, CurrentFrasa.Length);
             } else if (compareFrasaToString(CurrentFrasa, "QUIT")) {
                 quit(&arrayItems, &arrayUsers);
+                exit(1);
             } else if (compareFrasaToString(CurrentFrasa, "LOGIN")){ // Ini dibuat untuk mengatasi kasus ketika pengguna sudah login, kemudian mencoba login lagi
                 Login_User(arrayUsers, &loginStatus, username, &username_idx);
             } else if (compareFrasaToString(CurrentFrasa, "HELP")) {
