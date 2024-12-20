@@ -28,7 +28,7 @@ void WLadd(TabInt *arruser, int useridx, ArrayDin arrayItems,  char arg[]){
         toupperstr(str);
         if(check_strV2(in, str)){ // Case barang valid/ada di list barang
             InsVLast(&WL, curr.name);
-            printf("Berhasil menambahkan %s ke wishlish!\n", curr.name);
+            printf("Berhasil menambahkan %s ke wishlist!\n", curr.name);
             found = true;
         }
         i++;
