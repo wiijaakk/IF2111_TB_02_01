@@ -25,6 +25,7 @@
 #include "history.h"
 #include "profile.h"
 #include "globalalignment.h"
+#include "optimasirute.h"
 
 
 int main() {
@@ -101,7 +102,9 @@ int main() {
             STARTFRASA(); // Menerima masukan berupa semua kata yang ada pada input hingga bertemu newline
             char forsave[50]; // Khusus untuk fungsi SAVE
             copyStr(CurrentFrasa.TabWord, forsave);
-            toupperstr(CurrentFrasa.TabWord);
+            if (!check_str(CurrentFrasa.TabWord, "CART")) { // Khusus fungsi Cart tidak bisa dibuat kapital semua inputannya, kasus khusus
+                toupperstr(CurrentFrasa.TabWord);
+            }
             toupperstr(forsave);
             // PrintInfoListLinier(*arrayUsers.TI[username_idx].wishlist);
             if (compareFrasaToString(CurrentFrasa, "WORK")) {
@@ -120,6 +123,8 @@ int main() {
                 storeremove(&arrayItems);
             } else if (compareFrasaToString(CurrentFrasa, "GLOBALALIGNMENT")) {
                 globalalignment();
+            } else if (compareFrasaToString(CurrentFrasa, "OPTIMASIRUTE")) {
+                optimasirute();
             } else if (check_str(CurrentFrasa.TabWord, "WISHLIST")) {
                 wishlist(&arrayUsers, username_idx, arrayItems, CurrentFrasa.TabWord);
             } else if (check_str(CurrentFrasa.TabWord, "CART")) {
