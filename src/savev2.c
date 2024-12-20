@@ -4,7 +4,6 @@ void save(char* fileName, ArrayDin* arrayItems, TabInt* arrayUsers, int length) 
     char fullPath[200];
     Stack tempStack;
     CreateEmptyStack(&tempStack);
-    boolean isTXTSave;
 
     if(fileName[length-1] != 't' && fileName[length-2] != 'x' && fileName[length-3] != 't' && fileName[length-4] != '.'){
         printf("Nama file harus dengan format .txt\n");        

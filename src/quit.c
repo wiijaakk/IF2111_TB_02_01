@@ -14,21 +14,18 @@ void quit(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk command QU
     } while ((input != 'Y' && input != 'y') && (input != 'N' && input != 'n')); // Meminta masukan terus hingga input valid
 
     if (input == 'Y' || input == 'y') { // Jika pengguna menjawab yes, maka akan dilakukan SAVE pada config.txt
-        while (isTXT == false){
+        STARTFRASA();
+        while(!isTXT){
             printf("Masukkan nama save file: ");
             STARTFRASA();
-            if(CurrentFrasa.TabWord[CurrentFrasa.Length-1] == 't'){
-                if(CurrentFrasa.TabWord[CurrentFrasa.Length-2] == 'x'){
-                    if(CurrentFrasa.TabWord[CurrentFrasa.Length-3] == 't'){
-                        if(CurrentFrasa.TabWord[CurrentFrasa.Length-4] == '.'){
-                            save(CurrentFrasa.TabWord, arrayItems, arrayUsers);
-                            printf("Data sesi kali ini telah berhasil disimpan!\n\n");
-                            isTXT = true;
-                        }
-                    }
-                }
+            if(CurrentFrasa.TabWord[CurrentFrasa.Length-1] != 't' && CurrentFrasa.TabWord[CurrentFrasa.Length-2] != 'x' && CurrentFrasa.TabWord[CurrentFrasa.Length-3] != 't' && CurrentFrasa.TabWord[CurrentFrasa.Length-4] != '.'){ 
+                printf("Nama save file harus dengan format .txt\n");
             }
-            printf("Nama file harus dengan format .txt\n");
+            else{
+                save(CurrentFrasa.TabWord, arrayItems, arrayUsers, CurrentFrasa.Length);
+                printf("Data sesi kali ini telah berhasil disimpan!\n");
+                isTXT = true;
+            }
         }
     }
 
