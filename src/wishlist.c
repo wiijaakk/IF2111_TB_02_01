@@ -6,9 +6,7 @@ void WLadd(TabInt *arruser, int useridx, ArrayDin arrayItems,  char arg[]){
     boolean inWL = false;
     printf("Masukkan nama barang: ");
     STARTFRASA();
-    // printf("%s\n", CurrentFrasa.TabWord);
     char in[100];
-    // printf("%s\n", in);
     copyStr(CurrentFrasa.TabWord, in);
     toupperstr(in);
     int panjang = arrayItems.Neff;
@@ -29,9 +27,7 @@ void WLadd(TabInt *arruser, int useridx, ArrayDin arrayItems,  char arg[]){
         copyStr(curr.name, str);
         toupperstr(str);
         if(check_strV2(in, str)){
-            // PrintInfoListLinier(WL);
             InsVLast(&WL, curr.name);
-            // PrintInfoListLinier(WL);
             printf("Berhasil menambahkan %s ke wishlish!\n", curr.name);
             found = true;
         }
@@ -45,9 +41,7 @@ void WLadd(TabInt *arruser, int useridx, ArrayDin arrayItems,  char arg[]){
 }
 
 void WLswap(TabInt *arruser, int useridx,  int n1, int n2){
-    // printf("%d %d\n", n1, n2);
-    if(NbElmtListLinier(WL) >= n2){
-        // printf("%d %d\n", n1, n2);
+    if(NbElmtListLinier(WL) >= n2 && n2 > 0 && n1 > 0){
         address p1 = First(WL);
         address p2 = First(WL);
         char v1[100];
@@ -64,6 +58,15 @@ void WLswap(TabInt *arruser, int useridx,  int n1, int n2){
         InsertAfter(&WL, AlokasiListLinier(v2), p1);
         DelAddr(&WL, p1);
         DelAddr(&WL, p2);
+        printf("Berhasil menukar posisi %s dengan %s pada wishlist!\n", v1, v2);
+    }else if (NbElmtListLinier(WL) >= n1 && n1 > 0){
+        address p;
+        for (int i = 0; i < n1-1; i++){
+            p = p->next;
+        }
+        printf("Gagal menukar posisi %s!\n", p->info);
+    }else{
+        printf("Tidak ada barang pada posisi %d dan/atau %d\n", n1, n2);
     }
 }
 
@@ -95,7 +98,7 @@ void WLremove(TabInt *arruser, int useridx){
 }
 
 void WLremovei(TabInt *arruser, int useridx, int n){
-    if (n <= NbElmtListLinier(WL)){
+    if (n <= NbElmtListLinier(WL) && n > 0){
         address p = First(WL);
         for (int i = 0; i < n-1; i++){
             p = p->next;
@@ -135,43 +138,34 @@ void WLclear(TabInt *arruser, int useridx){
 
 
 void wishlist(TabInt *arruser, int useridx, ArrayDin arrayItems,  char arg[]){
-    // printf("masukWL\n");
     removeFirstnString(arg, 9);
-    // printf("%s\n", arg);
     if (check_strV2(arg, "ADD\0")){
-        // printf("1\n");
         WLadd(arruser, useridx, arrayItems, arg);
     }else if (check_strV3(arg, "SWAP\0")){
-        // printf("2\n");
-        int n1;
-        int n2;
+        char arg2[50];
         removeFirstnString(arg, 5);
-        n1 = arg[0] - '0';
-        n2 = arg[2] - '0';
+        copyStr(arg, arg2);
+        removeLastWord(arg);
+        keepLastWord(arg2);
+        int n1 = stringToInteger(arg);
+        int n2 = stringToInteger(arg2);
+        if(n1 > n2){
+            int t = n1;
+            n1 = n2;
+            n2 = t;
+        }
         WLswap(arruser, useridx, n1, n2);
     }else if (check_strV3(arg, "REMOVE\0")){
-        // printf("3\n");
         if (check_strV2(arg, "REMOVE\0")){
-            // printf("3a\n");
             WLremove(arruser, useridx);
         }else{
-            removeFirstnString(arg, 7);
-            // printf("3b\n");
-            int i = 0;
-            int n = 0;
-            while (arg[i] != '\0')
-            {
-                n*=10;
-                n += arg[i] - '0';
-                i++;
-            }
+            keepLastWord(arg);
+            int n = stringToInteger(arg);
             WLremovei(arruser, useridx, n);    
         }       
     }else if (check_strV2(arg, "CLEAR\0")){
-        // printf("4\n");
         WLclear(arruser, useridx);
     }else if (check_strV2(arg, "SHOW\0")){
-        // printf("5\n");
         WLshow(arruser, useridx);
     }else{
         printf("Command Tidak Valid\n");
