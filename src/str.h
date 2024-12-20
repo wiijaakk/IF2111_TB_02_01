@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int strlen(char str[]);
+int stringlen(char str[]);
 
 void copyStr(char *in, char *out);
 

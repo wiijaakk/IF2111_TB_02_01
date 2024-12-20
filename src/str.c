@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int strlen(char str[]) {
+int stringlen(char str[]) {
     int length = 0;
     while (str[length] != '\0') {
         length++;
@@ -111,7 +111,7 @@ void removeFirstnString(char str[], int offset){
 }
 
 void removeLastWord(char str[]) {
-    int i = strlen(str) - 1; // Mulai dari akhir string
+    int i = stringlen(str) - 1; // Mulai dari akhir string
 
     // Loop mundur untuk mencari spasi terakhir
     while (i >= 0 && str[i] != ' ') {

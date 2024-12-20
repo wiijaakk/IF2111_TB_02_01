@@ -49,11 +49,11 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi C
                 }
             }
             int harga = ((arrayUsers->TI[useridx].keranjang->Elements[i].Value)*arrayItems.A[idxBarang].price); // Menghitung harga barang yang dibeli
-            if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 5) { // Jika nama barang kurang dari sama dengan 5 karakter
+            if (stringlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 5) { // Jika nama barang kurang dari sama dengan 5 karakter
                 printf("%d\t\t| %s\t\t\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
-            } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 11) { // Jika nama barang kurang dari sama dengan 11 karakter
+            } else if (stringlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 11) { // Jika nama barang kurang dari sama dengan 11 karakter
                 printf("%d\t\t| %s\t\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
-            } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 20) { // Jika nama barang kurang dari sama dengan 20 karakter
+            } else if (stringlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 20) { // Jika nama barang kurang dari sama dengan 20 karakter
                 printf("%d\t\t| %s\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
             } else { // Jika nama barang lebih dari 20 karakter
                 printf("%d\t\t| %s\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
@@ -168,11 +168,11 @@ void cartshow(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi 
                 }
             }
             int harga = ((arrayUsers->TI[useridx].keranjang->Elements[i].Value)*arrayItems.A[idxBarang].price); // Menghitung harga barang
-            if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 5) { // Jika nama barang kurang dari sama dengan 5 karakter
+            if (stringlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 5) { // Jika nama barang kurang dari sama dengan 5 karakter
                 printf("%d\t\t| %s\t\t\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
-            } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 11) { // Jika nama barang kurang dari sama dengan 11 karakter
+            } else if (stringlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 11) { // Jika nama barang kurang dari sama dengan 11 karakter
                 printf("%d\t\t| %s\t\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
-            } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 20) { // Jika nama barang kurang dari sama dengan 20 karakter
+            } else if (stringlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 20) { // Jika nama barang kurang dari sama dengan 20 karakter
                 printf("%d\t\t| %s\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
             } else { // Jika nama barang lebih dari 20 karakter
                 printf("%d\t\t| %s\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
