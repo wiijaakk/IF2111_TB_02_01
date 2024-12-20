@@ -1,7 +1,6 @@
 #include "cart.h"
 
 void cartadd(TabInt *arrayUsers, int useridx, ArrayDin arrayItems, Barang barang, int quantity) { // Fungsi CART ADD
-    int cek_null = stringToInteger(barang.name);
     boolean found = false;
     for (int i=0 ; i<arrayItems.Neff ; i++) {       // For loop mengecek apakah barang ada pada toko
         Barang curr = Get(arrayItems, i);
@@ -9,14 +8,12 @@ void cartadd(TabInt *arrayUsers, int useridx, ArrayDin arrayItems, Barang barang
             found = true;
         }
     }
-    if (cek_null == 0) {
+    if (quantity == 0) { // Kasus jika masukan angka nol atau kosong
         printf("Masukan angka tidak boleh kosong!\n");
     } else if (!found) { // Jika barang tidak ada di toko
         printf("Barang tidak ada di toko!\n");
     } else { // Jika barang ada di toko
-        if (quantity == 0) { // Kasus quantity sama dengan nol
-            printf("Jumlah barang yang dimasukkan ke dalam cart tidak bisa 0!\n");
-        } else if (quantity < 0) { // Kasus quantity bilangan negatif
+        if (quantity < 0) { // Kasus quantity bilangan negatif
             printf("Barang yang dimasukkan ke dalam keranjang harus berjumlah positif!\n");
         } else { // Kasus normal (quantity positif)
             InsertMap(arrayUsers->TI[useridx].keranjang, barang.name, quantity);
