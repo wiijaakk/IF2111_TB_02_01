@@ -2,6 +2,7 @@
 
 void cartadd(TabInt *arrayUsers, int useridx, ArrayDin arrayItems, Barang barang, int quantity) { // Fungsi CART ADD
     boolean found = false;
+    Barang curr2;
     for (int i=0 ; i<arrayItems.Neff ; i++) {       // For loop mengecek apakah barang ada pada toko
         Barang curr = Get(arrayItems, i);
         char str[50];
@@ -12,6 +13,7 @@ void cartadd(TabInt *arrayUsers, int useridx, ArrayDin arrayItems, Barang barang
         toupperstr(in);
         if (check_strV2(str, in)) {
             found = true;
+            copyStr2(curr2.name, curr.name);
         }
     }
     if (quantity == 0) { // Kasus jika masukan angka nol atau kosong
@@ -22,9 +24,9 @@ void cartadd(TabInt *arrayUsers, int useridx, ArrayDin arrayItems, Barang barang
         if (quantity < 0) { // Kasus quantity bilangan negatif
             printf("Barang yang dimasukkan ke dalam keranjang harus berjumlah positif!\n");
         } else { // Kasus normal (quantity positif)
-            InsertMap(arrayUsers->TI[useridx].keranjang, barang.name, quantity);
+            InsertMap(arrayUsers->TI[useridx].keranjang, curr2.name, quantity);
 
-            printf("Berhasil menambahkan %d %s ke keranjang belanja!\n", quantity, barang.name);
+            printf("Berhasil menambahkan %d %s ke keranjang belanja!\n", quantity, curr2.name);
         }
     }
 }
@@ -102,6 +104,7 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi C
 
 void cartremove(TabInt *arrayUsers, int useridx, Barang barang, int quantity) { // Fungsi utama CART REMOVE
     boolean found = false;
+    Barang curr;
     for (int i=0; i<arrayUsers->TI[useridx].keranjang->Count; i++) { // For loop mencari barang di keranjang
         char str[50];
         char in[50];
@@ -111,6 +114,7 @@ void cartremove(TabInt *arrayUsers, int useridx, Barang barang, int quantity) { 
         toupperstr(in);
         if (check_str(str, in)) {
             found = true;
+            copyStr2(curr.name, arrayUsers->TI[useridx].keranjang->Elements[i].Key);
         }
     }
     if (!found) { // Kasus barang tidak ada di keranjang
@@ -118,11 +122,11 @@ void cartremove(TabInt *arrayUsers, int useridx, Barang barang, int quantity) { 
     } else { // Kasus normal (barang ada di keranjang)
         if (quantity <= 0) { // Kasus input quantity 0 atau bilangan negatif
             printf("Tidak berhasil mengurangi, masukan angka harus positif!\n");
-        } else if (quantity > ValueMap(*arrayUsers->TI[useridx].keranjang, barang.name)) { // Kasus input quantity melebihi banyak barangnya di keranjang
-            printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", ValueMap(*arrayUsers->TI[useridx].keranjang, barang.name), barang.name);
+        } else if (quantity > ValueMap(*arrayUsers->TI[useridx].keranjang, curr.name)) { // Kasus input quantity melebihi banyak barangnya di keranjang
+            printf("Tidak berhasil mengurangi, hanya terdapat %d %s pada keranjang!\n", ValueMap(*arrayUsers->TI[useridx].keranjang, barang.name), curr.name);
         } else { // Kasus normal (input quantity positif dan tidak melebihi banyak barangnya yang ada di keranjang)
-            DeleteMap(arrayUsers->TI[useridx].keranjang, barang.name, quantity);
-            printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", quantity, barang.name);
+            DeleteMap(arrayUsers->TI[useridx].keranjang, curr.name, quantity);
+            printf("Berhasil mengurangi %d %s dari keranjang belanja!\n", quantity, curr.name);
         }
     }
 }
