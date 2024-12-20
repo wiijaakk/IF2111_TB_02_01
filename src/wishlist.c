@@ -60,7 +60,7 @@ void WLswap(TabInt *arruser, int useridx,  int n1, int n2){
         DelAddr(&WL, p2);
         printf("Berhasil menukar posisi %s dengan %s pada wishlist!\n", v1, v2);
     }else if (NbElmtListLinier(WL) >= n1 && n1 > 0){
-        address p;
+        address p = First(WL);
         for (int i = 0; i < n1-1; i++){
             p = p->next;
         }
