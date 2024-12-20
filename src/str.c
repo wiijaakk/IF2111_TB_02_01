@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+int strlen(char str[]) {
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+
+    return length;
+}
+
 void copyStr(char *in, char *out) {
     int i = 0;
     while (in[i] != '\0') {

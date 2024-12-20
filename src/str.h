@@ -1,10 +1,11 @@
 #ifndef __STR_H__
 #define __STR_H__
 
-#include <string.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+int strlen(char str[]);
 
 void copyStr(char *in, char *out);
 
