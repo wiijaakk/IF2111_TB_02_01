@@ -4,7 +4,13 @@ void cartadd(TabInt *arrayUsers, int useridx, ArrayDin arrayItems, Barang barang
     boolean found = false;
     for (int i=0 ; i<arrayItems.Neff ; i++) {       // For loop mengecek apakah barang ada pada toko
         Barang curr = Get(arrayItems, i);
-        if (check_strV2(curr.name, barang.name)) {
+        char str[50];
+        char in[50];
+        copyStr2(str, curr.name);
+        copyStr2(in, barang.name);
+        toupperstr(str);
+        toupperstr(in);
+        if (check_strV2(str, in)) {
             found = true;
         }
     }
@@ -28,7 +34,7 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi C
         printf("Keranjang kamu kosong!\n");
     } else { // Kasus normal (ada barang di keranjang)
         printf("Kamu akan membeli barang-barang berikut:\n");
-        printf("Kuantitas\t| Nama\t\t| Total\n");
+        printf("Kuantitas\t| Nama\t\t\t\t| Total\n");
         int totalPrice = 0; // Variabel untuk total harga semua barang di keranjang
         for (int i=0 ; i< arrayUsers->TI[useridx].keranjang->Count ; i++) { // For loop untuk iterasi setiap barang di keranjang
             boolean found = false;
@@ -97,7 +103,13 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi C
 void cartremove(TabInt *arrayUsers, int useridx, Barang barang, int quantity) { // Fungsi utama CART REMOVE
     boolean found = false;
     for (int i=0; i<arrayUsers->TI[useridx].keranjang->Count; i++) { // For loop mencari barang di keranjang
-        if (check_str(arrayUsers->TI[useridx].keranjang->Elements[i].Key, barang.name)) {
+        char str[50];
+        char in[50];
+        copyStr2(str, arrayUsers->TI[useridx].keranjang->Elements[i].Key);
+        copyStr2(in, barang.name);
+        toupperstr(str);
+        toupperstr(in);
+        if (check_str(str, in)) {
             found = true;
         }
     }

@@ -98,7 +98,7 @@ int main() {
         while (sessionStatus && loginStatus && !compareFrasaToString(CurrentFrasa, "QUIT")) { // Loop Main Menu (sudah memulai sesi dan sudah login)
             printf("Masukkan command: ");
             STARTFRASA(); // Menerima masukan berupa semua kata yang ada pada input hingga bertemu newline
-            if (!check_str(CurrentFrasa.TabWord, "CART") && !check_str(CurrentFrasa.TabWord, "SAVE")) { // Khusus fungsi Cart tidak bisa dibuat kapital semua inputannya, kasus khusus
+            if (!check_str(CurrentFrasa.TabWord, "SAVE")) { // Khusus fungsi Cart tidak bisa dibuat kapital semua inputannya, kasus khusus
                 toupperstr(CurrentFrasa.TabWord);
             }
             // PrintInfoListLinier(*arrayUsers.TI[username_idx].wishlist);
