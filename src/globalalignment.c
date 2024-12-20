@@ -29,16 +29,28 @@ void globalalignment(){
     STARTFRASA();
     int i = 0;
     while(CurrentFrasa.TabWord[i]!='\0'){
-        referensi[i] = CurrentFrasa.TabWord[i];
-        i++;
+        if(CurrentFrasa.TabWord[i]!='A' && CurrentFrasa.TabWord[i]!='G' && CurrentFrasa.TabWord[i]!='T' && CurrentFrasa.TabWord[i]!='C'){
+            printf("Masukan sekuens tidak valid.\n");
+            return;
+        }
+        else{
+            referensi[i] = CurrentFrasa.TabWord[i];
+            i++;
+        }
     }
     int panjang_referensi = i;
     printf("Masukan sekuens query:     ");
     STARTFRASA();
     i = 0;
     while(CurrentFrasa.TabWord[i]!='\0'){
-        query[i] = CurrentFrasa.TabWord[i];
-        i++;
+        if(CurrentFrasa.TabWord[i]!='A' && CurrentFrasa.TabWord[i]!='G' && CurrentFrasa.TabWord[i]!='T' && CurrentFrasa.TabWord[i]!='C'){
+            printf("Masukan sekuens tidak valid.\n");
+            return;
+        }
+        else{
+            query[i] = CurrentFrasa.TabWord[i];
+            i++;
+        }
     }
     int panjang_query = i;
     // printf("%d, %d\n", panjang_referensi, panjang_query);
