@@ -26,22 +26,6 @@ void DealokasiListLinier(address *P){
     free(*P);
 }
 
-address SearchListLinier(List L, nama_barang X){
-    address now = First(L);
-    while(now->next!=Nuh){
-        if(now->info!=X){
-            now = now->next;
-        }
-        else{
-            return now;
-        }
-    }
-    if(now->info==X){
-        return now;
-    }
-    return Nuh;
-}
-
 void InsVFirst(List *L, nama_barang X){
     address P = AlokasiListLinier(X);
     if(P!=Nuh){
@@ -103,22 +87,6 @@ void DelFirst (List *L, address *P){
     *P = First(*L);
     First(*L) = First(*L)->next;
     (*P)->next = Nuh;
-}
-
-void DelP (List *L, nama_barang X){
-    address P = SearchListLinier(*L, X);
-    if(P!=Nuh){
-        address now = First(*L);
-        if(P == now){
-            DelFirst(L, &P);
-        }
-        else{
-            while(now->next!=P){
-                now = now->next;
-            }
-            DelAfter(L, &P, now);
-        }
-    }
 }
 
 void DelAddr (List *L, address P){

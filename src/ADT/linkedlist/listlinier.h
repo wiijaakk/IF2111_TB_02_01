@@ -46,12 +46,6 @@ void DealokasiListLinier(address *P);
 /* F.S. P dikembalikan ke sistem */
 /* Melakukan dealokasi/pengembalian address P */
 
-/****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address SearchListLinier(List L, nama_barang X);
-/* Mencari apakah ada elemen list dengan info(P)= X */
-/* Jika ada, mengirimkan address elemen tersebut. */
-/* Jika tidak ada, mengirimkan Nil */
-
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
 void InsVFirst (List *L, nama_barang X);
@@ -93,12 +87,6 @@ void DelFirst (List *L, address *P);
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* First element yg baru adalah suksesor elemen pertama yang lama */
-void DelP (List *L, nama_barang X);
-/* I.S. Sembarang */
-/* F.S. Jika ada elemen list beraddress P, dengan info(P)=X  */
-/* Maka P dihapus dari list dan di-dealokasi */
-/* Jika tidak ada elemen list dengan info(P)=X, maka list tetap */
-/* List mungkin menjadi kosong karena penghapusan */
 void DelAddr (List *L, address P);
 void DelLast (List *L, address *P);
 /* I.S. List tidak kosong */
