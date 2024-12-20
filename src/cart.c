@@ -51,7 +51,7 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi C
             int harga = ((arrayUsers->TI[useridx].keranjang->Elements[i].Value)*arrayItems.A[idxBarang].price); // Menghitung harga barang yang dibeli
             if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 5) { // Jika nama barang kurang dari sama dengan 5 karakter
                 printf("%d\t\t| %s\t\t\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
-            } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 10) { // Jika nama barang kurang dari sama dengan 10 karakter
+            } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 11) { // Jika nama barang kurang dari sama dengan 11 karakter
                 printf("%d\t\t| %s\t\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
             } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 20) { // Jika nama barang kurang dari sama dengan 20 karakter
                 printf("%d\t\t| %s\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
@@ -88,14 +88,15 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi C
                 PushStack(arrayUsers->TI[useridx].riwayat_pembelian, maxitem); // Push barang dengan total harga paling mahal saja
                 arrayUsers->TI[useridx].money = arrayUsers->TI[useridx].money - totalPrice; // Mengurangi uang pengguna
 
-                for (int i=0 ; i<=arrayUsers->TI[useridx].keranjang->Count ; i++) { // For loop menghapus semua barang di keranjang
-                    DeleteMap(arrayUsers->TI[useridx].keranjang, arrayUsers->TI[useridx].keranjang->Elements[i].Key, arrayUsers->TI[useridx].keranjang->Elements[i].Value);
+                while(!IsEmptyMap(*arrayUsers->TI[useridx].keranjang)) {
+                    DeleteMap(arrayUsers->TI[useridx].keranjang, arrayUsers->TI[useridx].keranjang->Elements[0].Key, arrayUsers->TI[useridx].keranjang->Elements[0].Value);
                 }
 
                 printf("\n");
                 printf("Selamat kamu telah membeli barang-barang tersebut!\n");
             }
         } else if (check_strV2(CurrentFrasa.TabWord, "Tidak")) { // Jika "Tidak"
+            printf("Proses pembelian dibatalkan.\n");
         } else { // Jika input tidak valid (selain "Ya" dan "Tidak")
             printf("Input yang anda masukkan tidak valid!\n");
         }
@@ -151,7 +152,7 @@ void cartshow(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi 
             int harga = ((arrayUsers->TI[useridx].keranjang->Elements[i].Value)*arrayItems.A[idxBarang].price); // Menghitung harga barang
             if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 5) { // Jika nama barang kurang dari sama dengan 5 karakter
                 printf("%d\t\t| %s\t\t\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
-            } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 10) { // Jika nama barang kurang dari sama dengan 10 karakter
+            } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 11) { // Jika nama barang kurang dari sama dengan 11 karakter
                 printf("%d\t\t| %s\t\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
             } else if (strlen(arrayUsers->TI[useridx].keranjang->Elements[i].Key) <= 20) { // Jika nama barang kurang dari sama dengan 20 karakter
                 printf("%d\t\t| %s\t\t| %d\n", arrayUsers->TI[useridx].keranjang->Elements[i].Value, arrayUsers->TI[useridx].keranjang->Elements[i].Key, harga);
