@@ -33,8 +33,10 @@ typedef struct {
 /* M.Elements = tempat penyimpanan element Map */
 
 void copyStringMap(char *dest, const char *src);
+/* dest = src */
 
 int compareStrings(const char *key1, const char *key2);
+/* Jika key1 == key2, return 0. Jika key1!=key2, return selain 0 */
 
 void CreateEmptyMap(Map *M);
 /* I.S. Sembarang */
