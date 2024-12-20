@@ -68,6 +68,7 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi C
             } else { // Kasus normal (uang cukup)
                 int maxprice = -1; // Variabel untuk mencari barang dengan harga termahal di keranjang
                 barang_dibeli maxitem; // Variabel barang yang memiliki harga tertinggi/termahal
+                int idx_maxitem;
                 boolean found = false;
                 int idxBarang;
                 for (int i=0 ; i < arrayUsers->TI[useridx].keranjang->Count ; i++) { // For loop untuk iterasi setiap barang di keranjang
@@ -80,11 +81,28 @@ void cartpay(TabInt *arrayUsers, int useridx, ArrayDin arrayItems) { // Fungsi C
                     }
                     int harga = ((arrayUsers->TI[useridx].keranjang->Elements[i].Value)*arrayItems.A[idxBarang].price); // Menghitung harga barang
                     if (harga > maxprice) { // Jika menemukan barang dengan harga lebih tinggi
-                        copyStringMap(maxitem.name, arrayUsers->TI[useridx].keranjang->Elements[i].Key);
-                        maxitem.totalharga = harga;
+                        copyStr2(maxitem.name, arrayUsers->TI[useridx].keranjang->Elements[i].Key);
                         maxprice = harga;
+                        idx_maxitem = i;
+                    } else if (harga == maxprice) { // Kasus jika total harga dua buah barang sama
+                        int iteration = 0; // Variabel untuk iterasi perbandingan huruf per huruf
+                        char currMaxItem[50];
+                        char currItem[50];
+                        copyStr2(currMaxItem, maxitem.name);
+                        copyStr2(currItem, arrayUsers->TI[useridx].keranjang->Elements[i].Key);
+                        toupperstr(currMaxItem); // Dua barang dibuat kapital
+                        toupperstr(currItem);
+
+                        while (currMaxItem[iteration] == currItem[iteration]) { // Loop hingga menemukan huruf yang berbeda pada kedua barang
+                            iteration++;
+                        }
+                        if (currItem[iteration] > currMaxItem[iteration]) { // Jika lexical order barang pada indeks i lebih besar dari barang yang ada di maxItem
+                            copyStringMap(maxitem.name, arrayUsers->TI[useridx].keranjang->Elements[i].Key); // maxitem berubah ke barang di indeks i
+                            idx_maxitem = i; // indeks max item juga berubah ke barang di indeks i
+                        }
                     }
                 }
+                maxitem.totalharga = totalPrice; // Harga yang dimasukkan ke riwayat pembelian adalah total harga pada pembelian keranjang tersebut
                 PushStack(arrayUsers->TI[useridx].riwayat_pembelian, maxitem); // Push barang dengan total harga paling mahal saja
                 arrayUsers->TI[useridx].money = arrayUsers->TI[useridx].money - totalPrice; // Mengurangi uang pengguna
 
