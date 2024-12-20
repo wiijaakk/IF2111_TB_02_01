@@ -6,7 +6,9 @@ void history(Stack history, char arg[]) {
     int N = stringToInteger(arg);
     // printf("%d\n", arg);
     // printf("%d\n", N);
-    if (IsEmptyStack(history)) {
+    if (N <= 0) {
+        printf("Masukan angka harus bernilai positif!\n");
+    } else if (IsEmptyStack(history)) {
         printf("Kamu belum membeli barang apapun!\n");
     } else {
         printf("Riwayat pembelian barang:\n");
