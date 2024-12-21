@@ -1,6 +1,48 @@
 #include <stdio.h>
 #include "optimasirute.h"
 
+int jarak_terkecil;
+int *rute_terbaik;
+int *rute;
+int *kunjungi;
+
+void cari_rute(int jarak, Din_matrix graf, int node_sekarang, int jumlah_node_didatangi, int node){
+    if(jumlah_node_didatangi == node){
+        if(jarak<jarak_terkecil || jarak_terkecil==-1){
+            jarak_terkecil = jarak;
+            for(int i = 0; i<node; i++){
+                rute_terbaik[i] = rute[i];
+            }
+        }
+        return;
+    }
+    for(int i = 0; i<node; i++){
+        if(kunjungi[i]==0 && graf[node_sekarang][i]!=-1 && i!=node_sekarang){
+            kunjungi[i] = 1;
+            rute[jumlah_node_didatangi] = i;
+            cari_rute(jarak+graf[node_sekarang][i], graf, i, jumlah_node_didatangi+1,node);
+            kunjungi[i] = 0;
+        }
+    }
+    return;
+}
+
+Din_matrix buatgraf(int node){
+    Din_matrix adj = (int**)malloc(node*sizeof(int*));
+    for(int i = 0; i<node; i++){
+        adj[i] = (int*)malloc(node*sizeof(int));
+        for (int j = 0; j < node; j++) {
+            if(i==j){
+                adj[i][j] = 0;
+            }
+            else{
+                adj[i][j] = -1;
+            }
+        }
+    }
+    return adj;
+}
+
 void optimasirute(){
     printf("Masukkan jumlah lokasi pengiriman (node): ");
     STARTWORD();
@@ -20,21 +62,15 @@ void optimasirute(){
     printf("Masukkan jumlah rute (edge): ");
     STARTWORD();
     int edge = wordToInt(currentWord);
-    if(edge!=((node*(node-1))/2)){
-        printf("Jumlah rute tidak menghubungkan tiap lokasi pengiriman tepat sekali. Silakan coba lagi.\n");
+    if(edge>((node*(node-1))/2)){
+        printf("Jumlah rute melebihi batas. Silakan coba lagi. \n");
         return;
     }
-    int adj_matrix[MAX_NODE+1][MAX_NODE+1];
-    for(int i = 0; i<node; i++){
-        for(int j = 0; j<node; j++){
-            if(i==j){
-                adj_matrix[i][j] = 0;
-            }
-            else{
-                adj_matrix[i][j] = -1;
-            }
-        }
+    else if(edge<node-1){
+        printf("Jumlah rute terlalu sedikit. Silakan coba lagi.\n");
+        return;
     }
+    Din_matrix adj = buatgraf(node);
     printf("Masukkan jarak antarlokasi (weight):\n");
     int i =0;
     while(i<edge){
@@ -48,52 +84,43 @@ void optimasirute(){
             printf("Node yang kamu masukkan tidak valid. Silakan coba lagi.\n");
             continue;
         }
+        if(asal==tujuan){
+            printf("Kamu tidak bisa membuat jarak ke node yang sama. Silakan coba lagi.\n");
+            continue;
+        }
         if(jarak<=0){
             printf("Jarak yang kamu masukkan tidak valid. Silakan coba lagi.\n");
             continue;
         }
-        if(adj_matrix[asal][tujuan]!=-1 || adj_matrix[tujuan][asal]!=-1){
+        if(adj[asal][tujuan]!=-1 || adj[tujuan][asal]!=-1){
             printf("Anda sudah memasukkan jarak di antara kedua node ini. Silakan coba node lainnya.\n");
             continue;
         }
         else{
-            adj_matrix[asal][tujuan] = jarak;
-            adj_matrix[tujuan][asal] = jarak;
+            adj[asal][tujuan] = jarak;
+            adj[tujuan][asal] = jarak;
         }
         i++;
     }
-    printf("\nData telah diterima. Silakan tunggu... :D\n\n");
-    int kunjungi[MAX_NODE] = {0};
-    int urutan[MAX_NODE];
-    int total_jarak = 0;
-    int node_sekarang = 0;
-    urutan[0] = node_sekarang;
-    kunjungi[node_sekarang] = 1;
-    for(int j = 1; j<node; j++){
-        int terdekat = -1;
-        int jarak_antara = -1;
-        for(int k = 0; k<node; k++){
-            if((kunjungi[k]==0)&&adj_matrix[node_sekarang][k]!=0){
-                if(jarak_antara==-1){
-                    terdekat = k;
-                    jarak_antara = adj_matrix[node_sekarang][k];
-                }
-                else{
-                    if(jarak_antara>adj_matrix[node_sekarang][k]){
-                        terdekat = k;
-                        jarak_antara = adj_matrix[node_sekarang][k];
-                    }
-                }
-            }
+    printf("\nData diterima, silakan tunggu.\n\n");
+    rute_terbaik = (int*)malloc(node*sizeof(int));
+    rute = (int*)malloc(node*sizeof(int));
+    kunjungi = (int*)malloc(node*sizeof(int));
+    for(int i = 0; i<node; i++){
+        kunjungi[i] = 0;
+    }
+    rute[0] = 0;
+    kunjungi[0] = 1;
+    jarak_terkecil = -1;
+    cari_rute(0, adj, 0, 1, node);
+    if(jarak_terkecil==-1){
+        printf("Tidak semua node dapat dikunjungi tepat sekali. Silakan coba lagi.\n");
+    }
+    else{
+        printf("A-ha! Rute paling efektif adalah ");
+        for(int i = 0; i<node-1; i++){
+            printf("%d-", rute_terbaik[i]);
         }
-        urutan[j] = terdekat;
-        kunjungi[terdekat] = 1;
-        total_jarak+=jarak_antara;
-        node_sekarang = terdekat;
+        printf("%d dengan total jarak %d.\n", rute_terbaik[node-1], jarak_terkecil);
     }
-    printf("Yay, ketemu! Rute paling efektif adalah ");
-    for(int i = 0; i<node-1; i++){
-        printf("%d-", urutan[i]);
-    }
-    printf("%d.\n", urutan[node-1]);
 }
