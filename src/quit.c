@@ -14,17 +14,18 @@ void quit(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk command QU
     } while ((input != 'Y' && input != 'y') && (input != 'N' && input != 'n')); // Meminta masukan terus hingga input valid
 
     if (input == 'Y' || input == 'y') { // Jika pengguna menjawab yes, maka akan dilakukan SAVE pada config.txt
-        STARTFRASA();
         while(!isTXT){
             printf("Masukkan nama save file: ");
-            STARTFRASA();
-            if(CurrentFrasa.TabWord[CurrentFrasa.Length-1] != 't' && CurrentFrasa.TabWord[CurrentFrasa.Length-2] != 'x' && CurrentFrasa.TabWord[CurrentFrasa.Length-3] != 't' && CurrentFrasa.TabWord[CurrentFrasa.Length-4] != '.'){ 
+            StartWordNewLine();
+            currentWord.TabWord[currentWord.Length] = '\0';
+            if(currentWord.TabWord[currentWord.Length-1] != 't' || currentWord.TabWord[currentWord.Length-2] != 'x' || currentWord.TabWord[currentWord.Length-3] != 't' || currentWord.TabWord[currentWord.Length-4] != '.'){ 
                 printf("Nama save file harus dengan format .txt\n");
             }
             else{
-                save(CurrentFrasa.TabWord, arrayItems, arrayUsers, CurrentFrasa.Length);
+                save(currentWord.TabWord, arrayItems, arrayUsers, currentWord.Length);
                 printf("Data sesi kali ini telah berhasil disimpan!\n");
                 isTXT = true;
+                break;
             }
         }
     }
