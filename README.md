@@ -67,7 +67,9 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
 │   ├─── config.txt 			    
 │   ├─── dummyfile.txt
 │   ├─── empty.txt 			     
-│   ├─── invalid.txt				     
+│   ├─── invalid.txt	
+│   ├─── invalid2.txt
+│   ├─── lama.txt					     
 │   └─── word.txt                     
 │ 
 └── src
