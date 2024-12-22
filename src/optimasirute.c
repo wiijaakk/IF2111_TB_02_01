@@ -46,6 +46,22 @@ Din_matrix buatgraf(int node){
 void optimasirute(){
     printf("Masukkan jumlah lokasi pengiriman (node): ");
     STARTWORD();
+    int idx = 0;
+    int angka = 0;
+    while(currentWord.TabWord[idx]!='\0'){
+        if(currentWord.TabWord[idx]<'0' || currentWord.TabWord[idx]>'9'){
+            printf("Jumlah yang kamu masukkan tidak valid. Silakan coba lagi.\n");
+            return;
+        }
+        else{
+            angka++;
+        }
+        idx++;
+    }
+    if(angka==0){
+        printf("Masukkan kamu kosong. Silakan coba lagi.\n");
+        return;
+    }
     int node = wordToInt(currentWord);
     if(node>MAX_NODE){
         printf("Jumlah lokasi pengiriman melebihi batas maksimal. Silakan coba lagi.\n");
@@ -61,6 +77,22 @@ void optimasirute(){
     }
     printf("Masukkan jumlah rute (edge): ");
     STARTWORD();
+    idx = 0;
+    angka = 0;
+    while(currentWord.TabWord[idx]!='\0'){
+        if(currentWord.TabWord[idx]<'0' || currentWord.TabWord[idx]>'9'){
+            printf("Jumlah yang kamu masukkan tidak valid. Silakan coba lagi.\n");
+            return;
+        }
+        else{
+            angka++;
+        }
+        idx++;
+    }
+    if(angka==0){
+        printf("Masukkan kamu kosong. Silakan coba lagi.\n");
+        return;
+    }
     int edge = wordToInt(currentWord);
     if(edge>((node*(node-1))/2)){
         printf("Jumlah rute melebihi batas. Silakan coba lagi. \n");
@@ -75,10 +107,66 @@ void optimasirute(){
     int i =0;
     while(i<edge){
         STARTWORD();
+        idx = 0;
+        angka = 0;
+        int status = 1;
+        int kosong = 0;
+        while(currentWord.TabWord[idx]!='\0'){
+            if(currentWord.TabWord[idx]<'0' || currentWord.TabWord[idx]>'9'){
+                status = 0;
+                break;
+            }
+            else{
+                angka++;
+            }
+            idx++;
+        }
+        if(angka==0 && status==1){
+            kosong = 1;
+        }
         int asal = wordToInt(currentWord);
         STARTWORD();
+        idx = 0;
+        angka = 0;
+        while(currentWord.TabWord[idx]!='\0'){
+            if(currentWord.TabWord[idx]<'0' || currentWord.TabWord[idx]>'9'){
+                status = 0;
+                break;
+            }
+            else{
+                angka++;
+            }
+            idx++;
+        }
+        if(angka==0 && status==1){
+            kosong = 1;
+        }
         int tujuan = wordToInt(currentWord);
         STARTWORD();
+        idx = 0;
+        angka = 0;
+        while(currentWord.TabWord[idx]!='\0'){
+            if(currentWord.TabWord[idx]<'0' || currentWord.TabWord[idx]>'9'){
+                status = 0;
+                break;
+            }
+            else{
+                angka++;
+            }
+            idx++;
+        }
+        if(status == 0){
+            printf("Jumlah yang kamu masukkan tidak valid. Silakan coba lagi.\n");
+            continue;
+        }
+        else if(angka==0 && status==1){
+            printf("Masukkan kamu kosong. Silakan coba lagi.\n");
+            continue;
+        }
+        if(kosong == 1){
+            printf("Masukkan kamu kosong. Silakan coba lagi.\n");
+            continue;
+        }
         int jarak = wordToInt(currentWord);
         if((asal<0 || asal>=node) || (tujuan<0 || tujuan>=node)){
             printf("Node yang kamu masukkan tidak valid. Silakan coba lagi.\n");
