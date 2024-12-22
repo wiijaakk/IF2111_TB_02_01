@@ -59,7 +59,7 @@ void optimasirute(){
         idx++;
     }
     if(angka==0){
-        printf("Masukkan kamu kosong. Silakan coba lagi.\n");
+        printf("Masukan kamu kosong. Silakan coba lagi.\n");
         return;
     }
     int node = wordToInt(currentWord);
@@ -90,7 +90,7 @@ void optimasirute(){
         idx++;
     }
     if(angka==0){
-        printf("Masukkan kamu kosong. Silakan coba lagi.\n");
+        printf("Masukan kamu kosong. Silakan coba lagi.\n");
         return;
     }
     int edge = wordToInt(currentWord);
@@ -160,11 +160,11 @@ void optimasirute(){
             continue;
         }
         else if(angka==0 && status==1){
-            printf("Masukkan kamu kosong. Silakan coba lagi.\n");
+            printf("Masukan kamu kosong. Silakan coba lagi.\n");
             continue;
         }
         if(kosong == 1){
-            printf("Masukkan kamu kosong. Silakan coba lagi.\n");
+            printf("Masukan kamu kosong. Silakan coba lagi.\n");
             continue;
         }
         int jarak = wordToInt(currentWord);
