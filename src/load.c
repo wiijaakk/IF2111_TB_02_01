@@ -27,13 +27,13 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
         StartFileWord(fullPath);
         if (!EndWord) {
 
-            for(int i = 0; i < currentWord.Length; i++){
-                if(currentWord.TabWord[i] < 48 || currentWord.TabWord[i] > 57){
+            for (int i = 0; i < currentWord.Length; i++) {
+                if (currentWord.TabWord[i] < 48 || currentWord.TabWord[i] > 57) {
                     isIntBarang = false;
                 }
             }
             
-            if(isIntBarang){
+            if (isIntBarang) {
                 // Membaca total barang yang tersimpan dalam file
                 total = wordToInt(currentWord);
 
@@ -55,17 +55,17 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
             // Membaca total user yang tersimpan dalam file
             ADVFileWordNewLine();
 
-            for(int i = 0; i < currentWord.Length; i++){
-                if(currentWord.TabWord[i] < 48 || currentWord.TabWord[i] > 57){
+            for (int i = 0; i < currentWord.Length; i++) {
+                if (currentWord.TabWord[i] < 48 || currentWord.TabWord[i] > 57) {
                     isIntUser = false;
                 }
             }
 
-            if(!isIntBarang){
+            if (!isIntBarang) {
                 isIntUser = false;
             }
 
-            if(isIntUser){
+            if (isIntUser) {
                 total = wordToInt(currentWord);
 
                 // Memasukkan informasi user ke arrayUsers
@@ -94,18 +94,18 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
                     currentUser.password[currentWord.Length] = '\0';
 
                     ADVFileWordNewLine();
-                    for(int i = 0; i < currentWord.Length; i++){
+                    for (int i = 0; i < currentWord.Length; i++) {
                         if(currentWord.TabWord[i] == ' '){
                             riwayat_exist = false;
                             break;
                         }
                     }
 
-                    if(!isIntBarang || !isIntUser){
+                    if (!isIntBarang || !isIntUser) {
                         riwayat_exist = false;
                     }
 
-                    if(riwayat_exist){
+                    if (riwayat_exist) {
                         n_riwayat_pembelian = wordToInt(currentWord);
                         for (int i = 0; i < n_riwayat_pembelian; i++) {
                             barang_dibeli X;
@@ -123,18 +123,18 @@ void load(Word filename, ArrayDin* arrayItems, TabInt* arrayUsers, boolean * Ses
                     }
 
                     ADVFileWordNewLine();
-                    for(int i = 0; i < currentWord.Length; i++){
-                        if(currentWord.TabWord[i] == ' '){
+                    for (int i = 0; i < currentWord.Length; i++) {
+                        if (currentWord.TabWord[i] == ' ') {
                             wishlist_exist = false;
                             break;
                         }
                     }
 
-                    if(!isIntBarang || !isIntUser){
+                    if (!isIntBarang || !isIntUser) {
                         wishlist_exist = false;
                     }
 
-                    if(wishlist_exist){
+                    if (wishlist_exist) {
                         n_wishlist = wordToInt(currentWord);
                         for (int i = 0; i < n_wishlist; i++) {
                             nama_barang X;
