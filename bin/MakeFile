@@ -12,13 +12,13 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
 			  ../src/bioweapon.c \
 			  ../src/help.c \
 			  ../src/kebutuhanlog.c \
-			  ../src/loadv2.c \
+			  ../src/load.c \
 			  ../src/logout.c \
 			  ../src/login.c \
 			  ../src/quit.c \
 			  ../src/register.c \
-			  ../src/savev2.c \
-			  ../src/startv3.c \
+			  ../src/save.c \
+			  ../src/start.c \
 			  ../src/storelist.c \
 			  ../src/storeremove.c \
 			  ../src/storerequest.c \

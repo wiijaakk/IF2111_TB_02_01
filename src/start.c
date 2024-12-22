@@ -4,6 +4,7 @@
 
 void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk command START
     int total = 0; // representasi jumlah barang atau user yang tercatat
+    int n_riwayat_pembelian, n_wishlist;
     Barang currentBarang; // menyimpan barang yg sedang diproses
     User currentUser; // menyimpan user yg sedang diproses
 
@@ -33,9 +34,17 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk comm
 
     // Memasukkan informasi user ke arrayUsers
     for (int i = 0; i < total; i++) {
+        currentUser.riwayat_pembelian = malloc(sizeof(Stack));
+        currentUser.wishlist = malloc(sizeof(List));
+        currentUser.keranjang = malloc(sizeof(Map));
+
+        CreateEmptyStack(currentUser.riwayat_pembelian);
+        CreateEmptyListLinier(currentUser.wishlist);
+        CreateEmptyMap(currentUser.keranjang);
+
         ADVFileWordSpace();
         currentUser.money = wordToInt(currentWord);
-        
+
         ADVFileWordSpace();
         for (int j = 0; j < currentWord.Length; j++) {
             currentUser.name[j] = currentWord.TabWord[j];
@@ -48,9 +57,38 @@ void startStore(ArrayDin* arrayItems, TabInt* arrayUsers) { // Fungsi untuk comm
         }
         currentUser.password[currentWord.Length] = '\0';
 
-        SetEl(arrayUsers, i , currentUser);
-    }
-    arrayUsers->Neff = total;
+        ADVFileWordNewLine();
+        n_riwayat_pembelian = wordToInt(currentWord);
+        for (int i = 0; i < n_riwayat_pembelian; i++) {
+            barang_dibeli X;
 
+            ADVFileWordSpace();
+            X.totalharga = wordToInt(currentWord);
+
+            ADVFileWordNewLine();
+            for (int j = 0; j < currentWord.Length; j++) {
+                X.name[j] = currentWord.TabWord[j];
+            }
+            X.name[currentWord.Length] = '\0';
+            PushStack(currentUser.riwayat_pembelian, X);
+        }
+
+        ADVFileWordNewLine();
+        n_wishlist = wordToInt(currentWord);
+        for (int i = 0; i < n_wishlist; i++) {
+            nama_barang X;
+
+            ADVFileWordNewLine();
+            for (int j = 0; j < currentWord.Length; j++) {
+                X[j] = currentWord.TabWord[j];
+            }
+            X[currentWord.Length] = '\0';
+            InsVLast(currentUser.wishlist, X);
+        }
+
+        SetEl(arrayUsers, i, currentUser);
+    }
+
+    arrayUsers->Neff = total;
     printf("File konfigurasi berhasil dibaca. PURRMART berhasil dijalankan.\n");
 }
