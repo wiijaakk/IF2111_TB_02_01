@@ -1,6 +1,7 @@
-2
+3
 10 Shrinkinator
 20 Landslideinator
+50000000 Tiga Negara Bagian
 1
 10 dummy inidummy
 0

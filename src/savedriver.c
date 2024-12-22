@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "save.h"
-
-#include <stdlib.h>
-#include <stdio.h>
-#include "save.h"
-#include "startv2.h"
+#include "start.h"
 
 int main(){
     ArrayDin arrayItems;
@@ -26,7 +22,7 @@ int main(){
 
     PushStack(arrayUsers.TI[0].riwayat_pembelian, newBarangDibeli);
     
-    save("empty.txt", &arrayItems, &arrayUsers);
+    save("empty.txt", &arrayItems, &arrayUsers, 9);
 
     for (int i = 0; i < NbElmt(arrayUsers); i++) {
         User *user = &(arrayUsers.TI[i]);

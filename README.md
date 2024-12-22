@@ -146,7 +146,6 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
     ├─── load.c
     ├─── load.h
     ├─── loaddriver.c
-    ├─── loadv2.c
     ├─── login.c
     ├─── login.h
     ├─── logout.c
@@ -162,13 +161,9 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
     ├─── save.c
     ├─── save.h
     ├─── savedriver.c
-    ├─── savev2.c
     ├─── start.c
     ├─── start.h
     ├─── startdriver.c
-    ├─── startv2.c
-    ├─── startv2.h
-    ├─── startv3.c
     ├─── storedriver.c
     ├─── storelist.c
     ├─── storelist.h
