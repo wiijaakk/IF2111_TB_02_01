@@ -37,7 +37,7 @@ COMMON_SRC := ../src/ADT/mesinkarakter/mesinkarakter.c \
 CC := gcc
 ObjDir := ./
 BinDir := ./
-OUTPUTBIN := output.exe
+OUTPUTBIN := PurrMart.exe
 CFLAGS := 
 
 

@@ -44,7 +44,7 @@ Sistem yang akan dibangun adalah sebuah program berbasis command line interface 
 > **Masuk ke directory bin dan jalankan :**
 >
 > ```powershell
-> ./output.exe
+> ./PurrMart.exe
 > ```
 
 ## Struktur Program
